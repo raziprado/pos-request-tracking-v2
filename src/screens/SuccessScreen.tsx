@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Image, Modal, Pressable, Dimensions, StyleSheet } from 'react-native';
+import { ScrollView, View, Image, Modal, Pressable, Dimensions, Platform, LayoutChangeEvent, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SvgScreen, Hotspot, Mask } from '../components/SvgScreen';
@@ -17,6 +17,7 @@ type Nav = NativeStackNavigationProp<RootStackParamList>;
 
 const SVG_SHARE_W = 395;
 const SVG_SHARE_H = 287;
+const DESIGN_WIDTH = 375;
 
 const ICONS = [
   { src: whatsappIcon, card: { x: 37, y: 103, w: 60, h: 60 }, img: { x: 1, y: 77, w: 132, h: 111 } },
@@ -28,8 +29,14 @@ const ICONS = [
 export function SuccessScreen() {
   const nav = useNavigation<Nav>();
   const [shareVisible, setShareVisible] = useState(false);
-  const deviceWidth = Dimensions.get('window').width;
-  const shareScale = deviceWidth / SVG_SHARE_W;
+  const fallbackWidth = Platform.OS === 'web' ? DESIGN_WIDTH : Dimensions.get('window').width;
+  const [sheetWidth, setSheetWidth] = useState(fallbackWidth);
+  const shareScale = sheetWidth / SVG_SHARE_W;
+
+  const onSheetLayout = (e: LayoutChangeEvent) => {
+    const w = e.nativeEvent.layout.width;
+    if (w > 0) setSheetWidth(w);
+  };
 
   const hotspots: Hotspot[] = [
     { x: 296, y: 530, width: 36, height: 36, onPress: () => setShareVisible(true) },
@@ -57,7 +64,7 @@ export function SuccessScreen() {
 
       <Modal visible={shareVisible} transparent animationType="slide">
         <Pressable style={styles.overlay} onPress={() => setShareVisible(false)}>
-          <View style={styles.sheetContainer}>
+          <View style={styles.sheetContainer} onLayout={onSheetLayout}>
             <View style={{ position: 'relative' }}>
               <SvgScreen
                 Svg={Svg7_6}
