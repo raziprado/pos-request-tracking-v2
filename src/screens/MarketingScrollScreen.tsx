@@ -1,9 +1,10 @@
 import React from 'react';
-import { ScrollView, View, Image, Pressable, Text, Dimensions, StyleSheet } from 'react-native';
+import { ScrollView, View, Image, Pressable, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SvgScreen, Hotspot, Mask } from '../components/SvgScreen';
 import { RootStackParamList } from '../navigation/PosRequestNavigator';
+import { useScreenWidth } from '../context/ScreenWidthContext';
 
 import Svg1_3 from '../../assets/screens/Screen1_3.svg';
 
@@ -16,7 +17,7 @@ const PAD = 8;
 
 export function MarketingScrollScreen() {
   const nav = useNavigation<Nav>();
-  const deviceWidth = Dimensions.get('window').width;
+  const deviceWidth = useScreenWidth();
   const scale = deviceWidth / DESIGN_WIDTH;
 
   const goAddress = () => nav.navigate('Address_2_1');

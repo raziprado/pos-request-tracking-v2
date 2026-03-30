@@ -3,6 +3,7 @@ import { Platform, View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { FlowProvider } from './src/context/FlowContext';
+import { ScreenWidthProvider } from './src/context/ScreenWidthContext';
 import { PosRequestNavigator } from './src/navigation/PosRequestNavigator';
 
 const PHONE_WIDTH = 390;
@@ -30,11 +31,13 @@ export default function App() {
   return (
     <PhoneFrame>
       <SafeAreaProvider>
-        <FlowProvider>
-          <NavigationContainer>
-            <PosRequestNavigator />
-          </NavigationContainer>
-        </FlowProvider>
+        <ScreenWidthProvider>
+          <FlowProvider>
+            <NavigationContainer>
+              <PosRequestNavigator />
+            </NavigationContainer>
+          </FlowProvider>
+        </ScreenWidthProvider>
       </SafeAreaProvider>
     </PhoneFrame>
   );

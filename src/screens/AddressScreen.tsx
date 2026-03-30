@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Dimensions, StyleSheet } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SvgScreen, Hotspot, Mask } from '../components/SvgScreen';
 import { RootStackParamList } from '../navigation/PosRequestNavigator';
+import { useScreenWidth } from '../context/ScreenWidthContext';
 
 import Svg2_1 from '../../assets/screens/Screen2_1.svg';
 
@@ -16,7 +17,7 @@ const RADIO_2 = { cx: 36, cy: 399.5, r: 6 };
 export function AddressScreen() {
   const nav = useNavigation<Nav>();
   const [selected, setSelected] = useState(0);
-  const deviceWidth = Dimensions.get('window').width;
+  const deviceWidth = useScreenWidth();
   const scale = deviceWidth / DESIGN_WIDTH;
 
   const masks: Mask[] = [

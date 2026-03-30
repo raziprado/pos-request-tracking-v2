@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Image, Dimensions, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SvgScreen, Hotspot } from '../components/SvgScreen';
 import { RootStackParamList } from '../navigation/PosRequestNavigator';
+import { useScreenWidth } from '../context/ScreenWidthContext';
 
 import Svg1_1 from '../../assets/screens/Screen1_1.svg';
 
@@ -17,7 +18,7 @@ const IMG_RECT_H = 514.897;
 
 export function MarketingScreen() {
   const nav = useNavigation<Nav>();
-  const deviceWidth = Dimensions.get('window').width;
+  const deviceWidth = useScreenWidth();
   const scale = deviceWidth / DESIGN_WIDTH;
 
   const goAddress = () => nav.navigate('Address_2_1');

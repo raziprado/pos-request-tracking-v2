@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { ScrollView, View, Modal, Pressable, PanResponder, Dimensions, StyleSheet } from 'react-native';
+import { ScrollView, View, Modal, Pressable, PanResponder, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SvgScreen, Hotspot } from '../components/SvgScreen';
 import { RootStackParamList } from '../navigation/PosRequestNavigator';
+import { useScreenWidth } from '../context/ScreenWidthContext';
 
 import Svg5_1 from '../../assets/screens/Screen5_1.svg';
 import Svg5_2 from '../../assets/screens/Screen5_2.svg';
@@ -16,7 +17,7 @@ export function PaymentMethodScreen() {
   const nav = useNavigation<Nav>();
   const [sheetVisible, setSheetVisible] = useState(false);
   const navigated = useRef(false);
-  const deviceWidth = Dimensions.get('window').width;
+  const deviceWidth = useScreenWidth();
   const scale = deviceWidth / W;
 
   const goNext = () => {
