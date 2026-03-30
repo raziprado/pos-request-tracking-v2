@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     width: PHONE_WIDTH,
     height: PHONE_HEIGHT,
     backgroundColor: '#fff',
-    borderRadius: 32,
     overflow: 'hidden',
   },
 });
