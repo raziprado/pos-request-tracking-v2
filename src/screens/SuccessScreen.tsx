@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Image, Modal, Pressable, StyleSheet } from 'react-native';
+import { ScrollView, View, Image, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SvgScreen, Hotspot, Mask } from '../components/SvgScreen';
+import { InlineModal } from '../components/InlineModal';
 import { RootStackParamList } from '../navigation/PosRequestNavigator';
 import { useScreenWidth } from '../context/ScreenWidthContext';
 
@@ -57,7 +58,7 @@ export function SuccessScreen() {
         <SvgScreen Svg={Svg7_5} svgHeight={812} hotspots={hotspots} />
       </ScrollView>
 
-      <Modal visible={shareVisible} transparent animationType="slide">
+      <InlineModal visible={shareVisible}>
         <Pressable style={styles.overlay} onPress={() => setShareVisible(false)}>
           <View style={styles.sheetContainer}>
             <View style={{ position: 'relative' }}>
@@ -98,7 +99,7 @@ export function SuccessScreen() {
             </View>
           </View>
         </Pressable>
-      </Modal>
+      </InlineModal>
     </View>
   );
 }

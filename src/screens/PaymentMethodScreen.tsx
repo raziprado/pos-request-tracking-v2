@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { ScrollView, View, Modal, Pressable, PanResponder, StyleSheet } from 'react-native';
+import { ScrollView, View, Pressable, PanResponder, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SvgScreen, Hotspot } from '../components/SvgScreen';
+import { InlineModal } from '../components/InlineModal';
 import { RootStackParamList } from '../navigation/PosRequestNavigator';
 import { useScreenWidth } from '../context/ScreenWidthContext';
 
@@ -52,13 +53,13 @@ export function PaymentMethodScreen() {
         <SvgScreen Svg={Svg5_1} svgHeight={812} hotspots={hotspots} />
       </ScrollView>
 
-      <Modal visible={sheetVisible} transparent animationType="slide">
+      <InlineModal visible={sheetVisible}>
         <Pressable style={styles.overlay} onPress={() => setSheetVisible(false)}>
           <View style={styles.sheetContainer}>
             <SvgScreen Svg={Svg5_2} svgWidth={375} svgHeight={545} hotspots={sheetHotspots} />
           </View>
         </Pressable>
-      </Modal>
+      </InlineModal>
     </View>
   );
 }
