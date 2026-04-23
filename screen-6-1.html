@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela 6.1 - Revise seu pedido</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #F2F2F7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .iphone-frame {
+      position: relative;
+      width: 393px;
+      height: 852px;
+      background: #1C1C1E;
+      border-radius: 55px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 0 0 2px #2c2c2e, 0 0 0 4px #1a1a1c, 0 30px 80px rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .iphone-screen {
+      width: 375px;
+      height: 812px;
+      background: #FFFFFF;
+      border-radius: 47px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen {
+      width: 375px;
+      height: 812px;
+      background: #FFFFFF;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 18px 24px 10px 32px;
+      width: 375px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+    .status-bar-time {
+      font-family: -apple-system, 'SF Pro Text', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+      color: rgba(0, 0, 0, 0.96);
+      letter-spacing: -0.24px;
+    }
+    .status-bar-icons { display: flex; align-items: center; gap: 5.5px; }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 375px;
+      height: 56px;
+      flex-shrink: 0;
+    }
+    .back-button {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .progress-bar {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 128px;
+      height: 2px;
+      background: #EFEFEF;
+      border-radius: 64px;
+    }
+    .progress-indicator {
+      width: 116px;
+      height: 2px;
+      background: #714F8F;
+      border-radius: 64px;
+    }
+
+    .content-area {
+      flex: 1;
+      overflow-y: auto;
+      width: 375px;
+    }
+
+    .product-snapshot {
+      display: flex;
+      align-items: center;
+      padding: 0 16px 12px 24px;
+      gap: 12px;
+      width: 375px;
+      min-height: 117px;
+    }
+    .snapshot-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+    }
+    .snapshot-title {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .snapshot-info {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .snapshot-asset {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .list-rows {
+      display: flex;
+      flex-direction: column;
+      width: 375px;
+    }
+
+    .row-divider {
+      width: 375px;
+      height: 1px;
+      background: #EFEFEF;
+    }
+
+    .list-row {
+      display: flex;
+      flex-direction: column;
+      width: 375px;
+    }
+    .list-row-content-standard {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      gap: 16px;
+      width: 375px;
+    }
+    .list-row-content-compact {
+      display: flex;
+      align-items: center;
+      padding: 8px 24px;
+      gap: 16px;
+      width: 375px;
+    }
+
+    .row-leading-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .row-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+    }
+    .row-primary-label {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.64);
+    }
+    .row-description {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .row-description-dim {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+
+    .row-trailing {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 24px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .toggle-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 24px;
+      background: #6A6A6A;
+      border-radius: 64px;
+    }
+    .toggle-knob {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 2px;
+      top: 2px;
+      background: #FFFFFF;
+      border-radius: 80px;
+      box-shadow: 0px 2.4px 6.4px rgba(0, 0, 0, 0.1), 0px 0.8px 0.8px rgba(0, 0, 0, 0.01);
+      transition: left 0.2s, right 0.2s;
+    }
+    .toggle.on .toggle-bg {
+      background: #714F8F;
+    }
+    .toggle.on .toggle-knob {
+      left: auto;
+      right: 2px;
+    }
+
+    .bottom-bar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 24px;
+      gap: 16px;
+      width: 375px;
+      flex-shrink: 0;
+      background: #FFFFFF;
+    }
+    .btn-primary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 327px;
+      height: 48px;
+      background: #714F8F;
+      border-radius: 64px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary-label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: #FFFFFF;
+    }
+    .footnote {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.64);
+      text-align: center;
+      width: 327px;
+    }
+    .footnote a {
+      color: #820AD1;
+      text-decoration: none;
+    }
+
+    .edit-overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 375px;
+      height: 812px;
+      background: rgba(0, 0, 0, 0.64);
+      z-index: 100;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    .edit-overlay.visible { display: flex; }
+
+    .edit-sheet {
+      width: 375px;
+      background: #FFFFFF;
+      border-radius: 16px 16px 0 0;
+      display: flex;
+      flex-direction: column;
+      max-height: 652px;
+      overflow-y: auto;
+    }
+
+    .edit-header {
+      padding: 24px 24px 0;
+      display: flex;
+      align-items: center;
+    }
+    .edit-close {
+      width: 24px; height: 24px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .edit-title-section {
+      padding: 8px 24px 24px;
+    }
+    .edit-title {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .edit-fields {
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      flex: 1;
+    }
+    .edit-field {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .edit-field-label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+    .edit-field-label.active {
+      color: rgba(0, 0, 0, 0.64);
+    }
+    .edit-field-input {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+      border: none;
+      outline: none;
+      padding: 0;
+      width: 100%;
+      background: transparent;
+      caret-color: #652590;
+    }
+    .edit-field-input::placeholder {
+      color: rgba(0, 0, 0, 0.32);
+    }
+    .edit-field-input.disabled {
+      color: rgba(0, 0, 0, 0.32);
+      pointer-events: none;
+    }
+    .edit-field-divider {
+      width: 100%;
+      height: 2px;
+      background: #EFEFEF;
+    }
+    .edit-field-input:focus + .edit-field-divider {
+      background: #652590;
+    }
+
+    .edit-buttons {
+      padding: 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .edit-btn-salvar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 327px;
+      height: 48px;
+      background: #EFEFEF;
+      border-radius: 64px;
+      border: none;
+      cursor: default;
+    }
+    .edit-btn-salvar.enabled {
+      background: #714F8F;
+      cursor: pointer;
+    }
+    .edit-btn-salvar-label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+    .edit-btn-salvar.enabled .edit-btn-salvar-label {
+      color: #FFFFFF;
+    }
+    .edit-btn-secondary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 327px;
+      height: 48px;
+      background: #EFEFEF;
+      border-radius: 64px;
+      border: none;
+      cursor: pointer;
+    }
+    .edit-btn-secondary-label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .period-overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 375px;
+      height: 812px;
+      background: rgba(0, 0, 0, 0.64);
+      z-index: 100;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    .period-overlay.visible { display: flex; }
+
+    .period-sheet {
+      width: 375px;
+      height: 468px;
+      background: #FFFFFF;
+      border-radius: 16px 16px 0 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .period-header {
+      padding: 24px 24px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .period-title-section {
+      padding: 8px 24px 24px;
+    }
+    .period-title {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .period-tiles {
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .period-tiles-row {
+      display: flex;
+      gap: 8px;
+    }
+    .period-tile {
+      flex: 1;
+      box-sizing: border-box;
+      padding: 16px;
+      background: #FFFFFF;
+      border: 2px solid #EFEFEF;
+      border-radius: 16px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      height: 108px;
+    }
+    .period-tile.selected {
+      background: #F8F6F9;
+      border-color: #714F8F;
+    }
+    .period-tile-icon {
+      width: 24px;
+      height: 24px;
+    }
+    .period-tile-icon img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+    .period-tile.selected .period-tile-icon img {
+      filter: url(#purple-icon-filter);
+    }
+    .period-tile-title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .period-tile.selected .period-tile-title {
+      color: #652590;
+    }
+    .period-tile-desc {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 130%;
+      color: rgba(0, 0, 0, 0.64);
+    }
+    .period-tile.selected .period-tile-desc {
+      color: #652590;
+    }
+    .period-tile-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .period-bottom {
+      padding: 16px 24px;
+    }
+    .period-btn-salvar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 327px;
+      height: 48px;
+      background: #EFEFEF;
+      border-radius: 64px;
+      border: none;
+      cursor: default;
+    }
+    .period-btn-salvar.enabled {
+      background: #714F8F;
+      cursor: pointer;
+    }
+    .period-btn-salvar-label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+    .period-btn-salvar.enabled .period-btn-salvar-label {
+      color: #FFFFFF;
+    }
+
+    .pay-overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 375px;
+      height: 812px;
+      background: rgba(0, 0, 0, 0.64);
+      z-index: 100;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    .pay-overlay.visible { display: flex; }
+
+    .pay-sheet {
+      width: 375px;
+      background: #FFFFFF;
+      border-radius: 16px 16px 0 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pay-header {
+      padding: 24px 24px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .pay-title-section {
+      padding: 8px 24px 24px;
+    }
+    .pay-title {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .pay-section-label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.64);
+      padding: 14px 24px 0;
+    }
+
+    .pay-radio-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .pay-radio-row {
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      height: 56px;
+      gap: 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #EFEFEF;
+    }
+    .pay-radio-row:last-child {
+      border-bottom: none;
+    }
+    .pay-radio-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #6A6A6A;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pay-radio-row.selected .pay-radio-circle {
+      border-color: #714F8F;
+    }
+    .pay-radio-inner {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: transparent;
+    }
+    .pay-radio-row.selected .pay-radio-inner {
+      background: #714F8F;
+    }
+    .pay-radio-label {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .pay-date-section {
+      display: none;
+    }
+    .pay-date-section.visible {
+      display: block;
+    }
+    .pay-date-label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.64);
+      padding: 16px 24px 16px;
+    }
+    .pay-date-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 24px 20px;
+      gap: 8px;
+    }
+    .pay-date-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 120%;
+      letter-spacing: -0.4px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .pay-date-item.selected {
+      background: #F8F6F9;
+      border-color: #714F8F;
+      color: #652590;
+    }
+
+    .pay-divider {
+      height: 1px;
+      background: #EFEFEF;
+    }
+
+    .pay-bottom {
+      padding: 16px 24px;
+    }
+    .pay-btn-salvar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 48px;
+      background: #EFEFEF;
+      border-radius: 64px;
+      border: none;
+      cursor: default;
+    }
+    .pay-btn-salvar.enabled {
+      background: #714F8F;
+      cursor: pointer;
+    }
+    .pay-btn-salvar-label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+    .pay-btn-salvar.enabled .pay-btn-salvar-label {
+      color: #FFFFFF;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="iphone-frame">
+    <div class="iphone-screen">
+      <div class="screen">
+
+        <div class="status-bar">
+          <div class="status-bar-time">11:08</div>
+          <div class="status-bar-icons">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><path d="M2 6.667C2.552 6.667 3 7.115 3 7.667V9.667C3 10.219 2.552 10.667 2 10.667H1C0.448 10.667 0 10.219 0 9.667V7.667C0 7.115 0.448 6.667 1 6.667H2ZM6.667 4.667C7.219 4.667 7.667 5.115 7.667 5.667V9.667C7.667 10.219 7.219 10.667 6.667 10.667H5.667C5.115 10.667 4.667 10.219 4.667 9.667V5.667C4.667 5.115 5.115 4.667 5.667 4.667H6.667ZM11.333 2.333C11.885 2.333 12.333 2.781 12.333 3.333V9.667C12.333 10.219 11.885 10.667 11.333 10.667H10.333C9.781 10.667 9.333 10.219 9.333 9.667V3.333C9.333 2.781 9.781 2.333 10.333 2.333H11.333ZM16 0C16.552 0 17 0.448 17 1V9.667C17 10.219 16.552 10.667 16 10.667H15C14.448 10.667 14 10.219 14 9.667V1C14 0.448 14.448 0 15 0H16Z" fill="rgba(0,0,0,0.96)"/></svg>
+            <svg width="15" height="11" viewBox="0 0 15.334 11" fill="none"><path d="M5.949 8.427C7.229 7.344 9.106 7.344 10.386 8.427C10.45 8.485 10.488 8.568 10.489 8.654C10.491 8.741 10.456 8.824 10.395 8.885L8.39 10.907C8.331 10.967 8.251 11 8.167 11C8.083 11 8.003 10.967 7.944 10.907L5.939 8.885C5.877 8.824 5.843 8.741 5.845 8.654C5.847 8.568 5.884 8.485 5.948 8.427ZM3.273 5.73C6.032 3.165 10.304 3.165 13.064 5.73C13.126 5.79 13.161 5.872 13.162 5.959C13.163 6.045 13.129 6.128 13.068 6.19L11.909 7.36C11.79 7.48 11.597 7.482 11.475 7.365C10.569 6.546 9.389 6.092 8.167 6.092C6.946 6.092 5.768 6.546 4.862 7.365C4.74 7.482 4.546 7.48 4.427 7.36L3.269 6.19C3.208 6.128 3.173 6.045 3.174 5.959C3.175 5.872 3.21 5.79 3.273 5.73ZM0.597 3.039C4.829 -1.013 11.504 -1.013 15.736 3.039C15.798 3.099 15.833 3.182 15.833 3.268C15.833 3.353 15.8 3.436 15.739 3.497L14.579 4.667C14.46 4.787 14.265 4.788 14.144 4.67C12.531 3.138 10.392 2.284 8.167 2.284C5.942 2.284 3.802 3.138 2.19 4.67C2.068 4.788 1.874 4.787 1.755 4.667L0.594 3.497C0.533 3.436 0.5 3.353 0.5 3.268C0.501 3.182 0.536 3.099 0.597 3.039Z" fill="rgba(0,0,0,0.96)"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.833" width="21" height="10.333" rx="3.5" stroke="rgba(0,0,0,0.96)" stroke-opacity="0.35"/><path opacity="0.4" d="M23 4V8C23.805 7.661 24.328 6.873 24.328 6C24.328 5.127 23.805 4.339 23 4" fill="rgba(0,0,0,0.96)"/><rect x="2" y="2.333" width="18" height="7.333" rx="2.3" fill="rgba(0,0,0,0.96)"/></svg>
+          </div>
+        </div>
+
+        <div class="top-bar">
+          <button class="back-button" id="btn-back">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+              <g transform="translate(5.955, 2.744)">
+                <path d="M0.244078 6.66667L6.91074 0L8.08926 1.17851L2.01184 7.25592L8.08926 13.3333L6.91074 14.5118L0.244078 7.84518C-0.0813592 7.51974 -0.0813592 6.9921 0.244078 6.66667Z" fill="rgba(0,0,0,0.64)"/>
+              </g>
+            </svg>
+          </button>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+        </div>
+
+        <div class="content-area">
+
+          <div class="product-snapshot">
+            <div class="snapshot-content">
+              <div class="snapshot-title">Revise seu pedido</div>
+              <div class="snapshot-info">Quantidade • 1 roxinha</div>
+            </div>
+            <div class="snapshot-asset">
+              <img src="assets/pos-terminal-illustration.png" alt="" style="width:100%; height:100%; object-fit:contain;">
+            </div>
+          </div>
+
+          <div class="list-rows">
+
+            <!-- Row 1: Endereço -->
+            <div class="list-row" id="row-endereco">
+              <div class="list-row-content-standard">
+                <div class="row-content">
+                  <div class="row-primary-label">Endereço</div>
+                  <div class="row-description" id="endereco-desc">Rua Capote Valente, 39 Apto. 902, Bloco B Pinheiros, São Paulo - SP</div>
+                </div>
+                <div class="row-trailing" id="pencil-endereco" style="cursor:pointer;">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                    <g transform="translate(2.149, 2.149)">
+                      <path d="M11.5656 6.78003L4.30964 14.036H1.66667V11.393L8.92259 4.13706L11.5656 6.78003ZM12.7441 5.60152L10.1011 2.95854L10.9048 2.15482C11.5557 1.50395 12.611 1.50395 13.2618 2.15482L13.5478 2.44078C14.1987 3.09165 14.1987 4.14693 13.5478 4.7978L12.7441 5.60152ZM14.7263 5.97631C16.0281 4.67456 16.0281 2.56401 14.7263 1.26226L14.4404 0.976311C13.1386 -0.325436 11.0281 -0.325437 9.72631 0.97631L0 10.7026V15.7026H5L14.7263 5.97631Z" fill="#652590"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: Previsão de entrega (compact) -->
+            <div class="list-row">
+              <div class="list-row-content-compact">
+                <div class="row-leading-icon">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                    <g transform="translate(0.833, 3.333)">
+                      <path d="M11.667 0C12.1272 0 12.5 0.373747 12.5 0.833984V2.5H15C16.8409 2.5 18.334 3.99304 18.334 5.83398V10.834H15.834C15.8338 12.2144 14.7144 13.3338 13.334 13.334C11.9534 13.334 10.8342 12.2145 10.834 10.834H6.66699C6.66682 12.2145 5.5476 13.334 4.16699 13.334C2.78639 13.334 1.66717 12.2145 1.66699 10.834H0V0.833984C0 0.373747 0.373747 0 0.833984 0H11.667ZM3.33398 10V11.667H5V10H3.33398ZM12.5 10V11.667H14.167V10H12.5ZM1.66699 1.66699V9.16699H2.30371C2.76148 8.65557 3.42661 8.33398 4.16699 8.33398C4.90737 8.33398 5.57251 8.65557 6.03027 9.16699H10.834V1.66699H1.66699ZM12.5 4.16699V8.47559C12.7606 8.38346 13.0418 8.33398 13.334 8.33398C14.0743 8.33408 14.7396 8.65561 15.1973 9.16699H16.667V7.5H15V5.83398H16.667C16.667 4.91351 15.9205 4.16699 15 4.16699H12.5Z" fill="rgba(0,0,0,0.96)"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="row-content">
+                  <div class="row-primary-label">Previsão de entrega: {{DD de MMMM}}</div>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+            </div>
+
+            <!-- Row 3: Período de entrega (75px) -->
+            <div class="list-row">
+              <div class="list-row-content-standard">
+                <div class="row-content">
+                  <div class="row-primary-label">Período de entrega</div>
+                  <div class="row-description" id="periodo-desc">Dia todo • 9h às 18h</div>
+                </div>
+                <div class="row-trailing" id="pencil-periodo" style="cursor:pointer;">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                    <g transform="translate(2.149, 2.149)">
+                      <path d="M11.5656 6.78003L4.30964 14.036H1.66667V11.393L8.92259 4.13706L11.5656 6.78003ZM12.7441 5.60152L10.1011 2.95854L10.9048 2.15482C11.5557 1.50395 12.611 1.50395 13.2618 2.15482L13.5478 2.44078C14.1987 3.09165 14.1987 4.14693 13.5478 4.7978L12.7441 5.60152ZM14.7263 5.97631C16.0281 4.67456 16.0281 2.56401 14.7263 1.26226L14.4404 0.976311C13.1386 -0.325436 11.0281 -0.325437 9.72631 0.97631L0 10.7026V15.7026H5L14.7263 5.97631Z" fill="#652590"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+            </div>
+
+            <!-- Row 4: Pagamento da mensalidade (75px) -->
+            <div class="list-row">
+              <div class="list-row-content-standard">
+                <div class="row-content">
+                  <div class="row-primary-label">Pagamento da mensalidade</div>
+                  <div class="row-description" id="pagamento-desc">Desconto nos recebíveis</div>
+                </div>
+                <div class="row-trailing" id="pencil-pagamento" style="cursor:pointer;">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                    <g transform="translate(2.149, 2.149)">
+                      <path d="M11.5656 6.78003L4.30964 14.036H1.66667V11.393L8.92259 4.13706L11.5656 6.78003ZM12.7441 5.60152L10.1011 2.95854L10.9048 2.15482C11.5557 1.50395 12.611 1.50395 13.2618 2.15482L13.5478 2.44078C14.1987 3.09165 14.1987 4.14693 13.5478 4.7978L12.7441 5.60152ZM14.7263 5.97631C16.0281 4.67456 16.0281 2.56401 14.7263 1.26226L14.4404 0.976311C13.1386 -0.325436 11.0281 -0.325437 9.72631 0.97631L0 10.7026V15.7026H5L14.7263 5.97631Z" fill="#652590"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+            </div>
+
+            <!-- Row 5: Código de entrega (75px) with toggle -->
+            <div class="list-row">
+              <div class="list-row-content-standard">
+                <div class="row-content">
+                  <div class="row-primary-label">Código de entrega</div>
+                  <div class="row-description-dim" id="codigo-desc">Sem código</div>
+                </div>
+                <div class="toggle" id="toggle-code">
+                  <div class="toggle-bg" id="toggle-bg"></div>
+                  <div class="toggle-knob" id="toggle-knob"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 6: Qualquer pessoa pode receber (compact) -->
+            <div class="list-row" id="row-receber">
+              <div class="list-row-content-compact">
+                <div class="row-leading-icon" id="lock-icon">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                    <g transform="translate(3.333, 1.667)">
+                      <path d="M5.83333 12.5L5.83333 10.8333H7.5V12.5H5.83333Z" fill="rgba(0,0,0,0.96)"/>
+                      <path d="M4.16667 4.16667V6.66667H13.3333V13.3333C13.3333 15.1743 11.8409 16.6667 10 16.6667H3.33333C1.49238 16.6667 0 15.1743 0 13.3333V6.66667H2.5V4.16667C2.5 1.90439 4.36006 0 6.66667 0C8.97327 0 10.8333 1.90439 10.8333 4.16667H9.16667C9.16667 2.81399 8.04196 1.66667 6.66667 1.66667C5.29138 1.66667 4.16667 2.81399 4.16667 4.16667ZM10 15C10.9205 15 11.6667 14.2538 11.6667 13.3333V8.33333H1.66667V13.3333C1.66667 14.2538 2.41286 15 3.33333 15H10Z" fill="rgba(0,0,0,0.96)"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="row-content">
+                  <div class="row-primary-label" id="receber-label">Qualquer pessoa pode receber</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="bottom-bar">
+          <button class="btn-primary" id="btn-confirmar">
+            <span class="btn-primary-label">Confirmar pedido</span>
+          </button>
+          <div class="footnote">Ao confirmar, você <a href="#">aceita o regulamento</a>.</div>
+        </div>
+
+      </div>
+
+      <!-- Edit Address Bottom Sheet (6.3 / 6.4) -->
+      <div class="edit-overlay" id="edit-overlay">
+        <div class="edit-sheet">
+
+          <div class="edit-header">
+            <button class="edit-close" id="edit-close">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18.3642 7.05025L13.4144 12L18.3642 16.9497L16.9499 18.364L12.0002 13.4142L7.05044 18.364L5.63623 16.9497L10.586 12L5.63623 7.05025L7.05044 5.63604L12.0002 10.5858L16.9499 5.63604L18.3642 7.05025Z" fill="rgba(0,0,0,0.64)"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="edit-title-section">
+            <div class="edit-title">Editar número e complemento</div>
+          </div>
+
+          <div class="edit-fields">
+
+            <div class="edit-field">
+              <div class="edit-field-label">Endereço</div>
+              <input type="text" class="edit-field-input disabled" id="edit-endereco" value="Rua Capote Valente" readonly tabindex="-1">
+              <div class="edit-field-divider"></div>
+            </div>
+
+            <div class="edit-field">
+              <div class="edit-field-label active">Número</div>
+              <input type="text" class="edit-field-input" id="edit-numero" value="39" inputmode="numeric">
+              <div class="edit-field-divider"></div>
+            </div>
+
+            <div class="edit-field">
+              <div class="edit-field-label active">Complemento</div>
+              <input type="text" class="edit-field-input" id="edit-complemento" value="Apto. 902, Bloco B">
+              <div class="edit-field-divider"></div>
+            </div>
+
+            <div class="edit-field">
+              <div class="edit-field-label active">Ponto de referência</div>
+              <input type="text" class="edit-field-input" id="edit-referencia" value="" placeholder="Ex: em frente à mercearia">
+              <div class="edit-field-divider"></div>
+            </div>
+
+          </div>
+
+          <div class="edit-buttons">
+            <button class="edit-btn-salvar" id="edit-btn-salvar">
+              <span class="edit-btn-salvar-label">Salvar</span>
+            </button>
+            <button class="edit-btn-secondary" id="edit-btn-outro">
+              <span class="edit-btn-secondary-label">Escolher outro endereço</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Period Edit Bottom Sheet (6.5) -->
+      <svg width="0" height="0" style="position:absolute;">
+        <defs>
+          <filter id="purple-icon-filter" color-interpolation-filters="sRGB">
+            <feComponentTransfer>
+              <feFuncA type="discrete" tableValues="0 1 1 1 1 1 1 1 1 1"/>
+            </feComponentTransfer>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.396 0 0 0 0 0.145 0 0 0 0 0.565 0 0 0 1 0"/>
+          </filter>
+        </defs>
+      </svg>
+
+      <div class="period-overlay" id="period-overlay">
+        <div class="period-sheet">
+
+          <div class="period-header">
+            <button class="edit-close" id="period-close">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18.3642 7.05025L13.4144 12L18.3642 16.9497L16.9499 18.364L12.0002 13.4142L7.05044 18.364L5.63623 16.9497L10.586 12L5.63623 7.05025L7.05044 5.63604L12.0002 10.5858L16.9499 5.63604L18.3642 7.05025Z" fill="rgba(0,0,0,0.64)"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="period-title-section">
+            <div class="period-title">Alterar o período de entrega</div>
+          </div>
+
+          <div class="period-tiles">
+            <div class="period-tiles-row">
+              <div class="period-tile" data-period="manha" data-label="Manhã • 9h às 12h">
+                <div class="period-tile-icon">
+                  <img src="assets/icon-coffee.png" alt="">
+                </div>
+                <div class="period-tile-text">
+                  <div class="period-tile-title">Manhã</div>
+                  <div class="period-tile-desc">9h - 12h</div>
+                </div>
+              </div>
+              <div class="period-tile" data-period="tarde" data-label="Tarde • 12h às 15h">
+                <div class="period-tile-icon">
+                  <img src="assets/icon-sun.png" alt="">
+                </div>
+                <div class="period-tile-text">
+                  <div class="period-tile-title">Tarde</div>
+                  <div class="period-tile-desc">12h - 15h</div>
+                </div>
+              </div>
+            </div>
+            <div class="period-tiles-row">
+              <div class="period-tile" data-period="final-tarde" data-label="Final da tarde • 15h às 18h">
+                <div class="period-tile-icon">
+                  <img src="assets/icon-sunset.png" alt="">
+                </div>
+                <div class="period-tile-text">
+                  <div class="period-tile-title">Final da tarde</div>
+                  <div class="period-tile-desc">15h - 18h</div>
+                </div>
+              </div>
+              <div class="period-tile" data-period="dia-todo" data-label="Dia todo • 9h às 18h">
+                <div class="period-tile-icon">
+                  <img src="assets/icon-history.png" alt="">
+                </div>
+                <div class="period-tile-text">
+                  <div class="period-tile-title">Dia todo</div>
+                  <div class="period-tile-desc">9h - 18h</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="period-bottom">
+            <button class="period-btn-salvar" id="period-btn-salvar">
+              <span class="period-btn-salvar-label">Salvar</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Payment method bottom sheet (6.7 / 6.8 / 6.9) -->
+      <div class="pay-overlay" id="pay-overlay">
+        <div class="pay-sheet">
+          <div class="pay-header">
+            <svg id="pay-close" width="24" height="24" viewBox="0 0 24 24" fill="none" style="cursor:pointer;">
+              <path d="M5.14286 5.14286L18.8571 18.8571M5.14286 18.8571L18.8571 5.14286" stroke="rgba(0,0,0,0.64)" stroke-width="1.71429"/>
+            </svg>
+          </div>
+
+          <div class="pay-title-section">
+            <div class="pay-title">Alterar a forma de pagamento</div>
+          </div>
+
+          <div class="pay-section-label" id="pay-forma-label">Forma de pagamento</div>
+
+          <div class="pay-radio-list" id="pay-radio-list">
+            <div class="pay-radio-row" data-value="cartao">
+              <div class="pay-radio-circle"><div class="pay-radio-inner"></div></div>
+              <span class="pay-radio-label">Cartão Nu Empresas</span>
+            </div>
+            <div class="pay-radio-row" data-value="desconto">
+              <div class="pay-radio-circle"><div class="pay-radio-inner"></div></div>
+              <span class="pay-radio-label">Desconto nos recebíveis</span>
+            </div>
+            <div class="pay-radio-row" data-value="debito">
+              <div class="pay-radio-circle"><div class="pay-radio-inner"></div></div>
+              <span class="pay-radio-label">Débito em conta</span>
+            </div>
+          </div>
+
+          <div class="pay-date-section" id="pay-date-section">
+            <div class="pay-date-label">Dia do pagamento</div>
+            <div class="pay-date-row" id="pay-date-row">
+              <div class="pay-date-item" data-day="02">02</div>
+              <div class="pay-date-item" data-day="04">04</div>
+              <div class="pay-date-item" data-day="06">06</div>
+              <div class="pay-date-item" data-day="08">08</div>
+              <div class="pay-date-item" data-day="10">10</div>
+            </div>
+          </div>
+
+          <div class="pay-divider"></div>
+
+          <div class="pay-bottom">
+            <button class="pay-btn-salvar" id="pay-btn-salvar">
+              <span class="pay-btn-salvar-label">Salvar</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('btn-back').addEventListener('click', function() {
+      window.location.href = 'screen-5-1.html';
+    });
+
+    // Toggle: Código de entrega (6.1 <-> 6.2)
+    var toggleCode = document.getElementById('toggle-code');
+    var codigoDesc = document.getElementById('codigo-desc');
+    var lockIcon = document.getElementById('lock-icon');
+    var receberLabel = document.getElementById('receber-label');
+    var toggleOn = false;
+
+    var lockOpenSvg = '<svg width="24" height="24" viewBox="0 0 20 20" fill="none"><g transform="translate(3.333, 1.667)"><path d="M5.83333 12.5L5.83333 10.8333H7.5V12.5H5.83333Z" fill="rgba(0,0,0,0.96)"/><path d="M4.16667 4.16667V6.66667H13.3333V13.3333C13.3333 15.1743 11.8409 16.6667 10 16.6667H3.33333C1.49238 16.6667 0 15.1743 0 13.3333V6.66667H2.5V4.16667C2.5 1.90439 4.36006 0 6.66667 0C8.97327 0 10.8333 1.90439 10.8333 4.16667H9.16667C9.16667 2.81399 8.04196 1.66667 6.66667 1.66667C5.29138 1.66667 4.16667 2.81399 4.16667 4.16667ZM10 15C10.9205 15 11.6667 14.2538 11.6667 13.3333V8.33333H1.66667V13.3333C1.66667 14.2538 2.41286 15 3.33333 15H10Z" fill="rgba(0,0,0,0.96)"/></g></svg>';
+    var lockClosedSvg = '<svg width="24" height="24" viewBox="0 0 20 20" fill="none"><g transform="translate(3.333, 1.667)"><path d="M5.83333 12.5L5.83333 10.8333H7.5V12.5H5.83333Z" fill="rgba(0,0,0,0.96)"/><path d="M10.8333 6.66667H13.3333V13.3333C13.3333 15.1743 11.8409 16.6667 10 16.6667H3.33333C1.49238 16.6667 0 15.1743 0 13.3333V6.66667H2.5V4.16667C2.5 1.90439 4.36006 0 6.66667 0C8.97327 0 10.8333 1.90439 10.8333 4.16667V6.66667ZM4.16667 4.16667V6.66667H9.16667V4.16667C9.16667 2.81399 8.04196 1.66667 6.66667 1.66667C5.29138 1.66667 4.16667 2.81399 4.16667 4.16667ZM10 15C10.9205 15 11.6667 14.2538 11.6667 13.3333V8.33333H1.66667V13.3333C1.66667 14.2538 2.41286 15 3.33333 15H10Z" fill="rgba(0,0,0,0.96)"/></g></svg>';
+
+    toggleCode.addEventListener('click', function() {
+      toggleOn = !toggleOn;
+      if (toggleOn) {
+        toggleCode.classList.add('on');
+        codigoDesc.textContent = 'Exigir código na entrega';
+        codigoDesc.style.fontWeight = '500';
+        codigoDesc.style.color = 'rgba(0, 0, 0, 0.96)';
+        lockIcon.innerHTML = lockClosedSvg;
+        receberLabel.textContent = 'Quem tiver o código pode receber. Ele é gerado ao confirmar o pedido.';
+      } else {
+        toggleCode.classList.remove('on');
+        codigoDesc.textContent = 'Sem código';
+        codigoDesc.style.fontWeight = '';
+        codigoDesc.style.color = '';
+        lockIcon.innerHTML = lockOpenSvg;
+        receberLabel.textContent = 'Qualquer pessoa pode receber';
+      }
+    });
+
+    var editOverlay = document.getElementById('edit-overlay');
+    var editClose = document.getElementById('edit-close');
+    var pencilEndereco = document.getElementById('pencil-endereco');
+    var rowEndereco = document.getElementById('row-endereco');
+    var editNumero = document.getElementById('edit-numero');
+    var editComplemento = document.getElementById('edit-complemento');
+    var editReferencia = document.getElementById('edit-referencia');
+    var editBtnSalvar = document.getElementById('edit-btn-salvar');
+    var enderecoDesc = document.getElementById('endereco-desc');
+
+    var originalNumero = editNumero.value;
+    var originalComplemento = editComplemento.value;
+    var originalReferencia = editReferencia.value;
+
+    function openEditSheet() {
+      editOverlay.classList.add('visible');
+      checkSalvarState();
+    }
+
+    function closeEditSheet() {
+      editOverlay.classList.remove('visible');
+    }
+
+    function checkSalvarState() {
+      var numChanged = editNumero.value !== originalNumero;
+      var compChanged = editComplemento.value !== originalComplemento;
+      var refChanged = editReferencia.value !== originalReferencia;
+      if (numChanged || compChanged || refChanged) {
+        editBtnSalvar.classList.add('enabled');
+      } else {
+        editBtnSalvar.classList.remove('enabled');
+      }
+    }
+
+    pencilEndereco.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openEditSheet();
+    });
+
+    editClose.addEventListener('click', function() {
+      editNumero.value = originalNumero;
+      editComplemento.value = originalComplemento;
+      editReferencia.value = originalReferencia;
+      closeEditSheet();
+    });
+
+    editOverlay.addEventListener('click', function(e) {
+      if (e.target === editOverlay) {
+        editNumero.value = originalNumero;
+        editComplemento.value = originalComplemento;
+        editReferencia.value = originalReferencia;
+        closeEditSheet();
+      }
+    });
+
+    editNumero.addEventListener('input', checkSalvarState);
+    editComplemento.addEventListener('input', checkSalvarState);
+    editReferencia.addEventListener('input', checkSalvarState);
+
+    editBtnSalvar.addEventListener('click', function() {
+      if (!editBtnSalvar.classList.contains('enabled')) return;
+      var addr = 'Rua Capote Valente';
+      if (editNumero.value) addr += ', ' + editNumero.value;
+      if (editComplemento.value) addr += ' ' + editComplemento.value;
+      addr += ' Pinheiros, São Paulo - SP';
+      enderecoDesc.textContent = addr;
+      originalNumero = editNumero.value;
+      originalComplemento = editComplemento.value;
+      originalReferencia = editReferencia.value;
+      closeEditSheet();
+    });
+
+    // Period Edit (6.5)
+    var periodOverlay = document.getElementById('period-overlay');
+    var periodClose = document.getElementById('period-close');
+    var pencilPeriodo = document.getElementById('pencil-periodo');
+    var periodBtnSalvar = document.getElementById('period-btn-salvar');
+    var periodoDesc = document.getElementById('periodo-desc');
+    var periodTiles = document.querySelectorAll('.period-tile');
+
+    var currentPeriod = 'dia-todo';
+    var selectedPeriod = 'dia-todo';
+
+    function initPeriodSheet() {
+      periodTiles.forEach(function(t) {
+        if (t.dataset.period === currentPeriod) {
+          t.classList.add('selected');
+        } else {
+          t.classList.remove('selected');
+        }
+      });
+      selectedPeriod = currentPeriod;
+      periodBtnSalvar.classList.remove('enabled');
+    }
+
+    pencilPeriodo.addEventListener('click', function(e) {
+      e.stopPropagation();
+      initPeriodSheet();
+      periodOverlay.classList.add('visible');
+    });
+
+    periodClose.addEventListener('click', function() {
+      periodOverlay.classList.remove('visible');
+    });
+
+    periodOverlay.addEventListener('click', function(e) {
+      if (e.target === periodOverlay) {
+        periodOverlay.classList.remove('visible');
+      }
+    });
+
+    periodTiles.forEach(function(tile) {
+      tile.addEventListener('click', function() {
+        periodTiles.forEach(function(t) { t.classList.remove('selected'); });
+        tile.classList.add('selected');
+        selectedPeriod = tile.dataset.period;
+        if (selectedPeriod !== currentPeriod) {
+          periodBtnSalvar.classList.add('enabled');
+        } else {
+          periodBtnSalvar.classList.remove('enabled');
+        }
+      });
+    });
+
+    periodBtnSalvar.addEventListener('click', function() {
+      if (!periodBtnSalvar.classList.contains('enabled')) return;
+      currentPeriod = selectedPeriod;
+      var sel = document.querySelector('.period-tile[data-period="' + currentPeriod + '"]');
+      periodoDesc.textContent = sel.dataset.label;
+      periodOverlay.classList.remove('visible');
+    });
+
+    // Payment method bottom sheet (6.7 / 6.8 / 6.9)
+    var payOverlay = document.getElementById('pay-overlay');
+    var payClose = document.getElementById('pay-close');
+    var pencilPagamento = document.getElementById('pencil-pagamento');
+    var pagamentoDesc = document.getElementById('pagamento-desc');
+    var payRadioList = document.getElementById('pay-radio-list');
+    var payRadioRows = payRadioList.querySelectorAll('.pay-radio-row');
+    var payDateSection = document.getElementById('pay-date-section');
+    var payDateRow = document.getElementById('pay-date-row');
+    var payDateItems = payDateRow.querySelectorAll('.pay-date-item');
+    var payBtnSalvar = document.getElementById('pay-btn-salvar');
+    var payFormaLabel = document.getElementById('pay-forma-label');
+
+    var payMethodMap = {
+      'cartao': 'Cartão Nu Empresas',
+      'desconto': 'Desconto nos recebíveis',
+      'debito': 'Débito em conta'
+    };
+
+    var currentPayMethod = 'desconto';
+    var selectedPayMethod = 'desconto';
+    var selectedPayDate = null;
+
+    function initPaySheet() {
+      selectedPayMethod = currentPayMethod;
+      selectedPayDate = null;
+      payRadioRows.forEach(function(r) { r.classList.remove('selected'); });
+      var cur = payRadioList.querySelector('[data-value="' + currentPayMethod + '"]');
+      if (cur) cur.classList.add('selected');
+      payDateItems.forEach(function(d) { d.classList.remove('selected'); });
+      updatePayDateVisibility();
+      updatePaySalvarState();
+    }
+
+    function updatePayDateVisibility() {
+      if (selectedPayMethod === 'debito') {
+        payDateSection.classList.add('visible');
+        payFormaLabel.style.display = '';
+      } else {
+        payDateSection.classList.remove('visible');
+        payFormaLabel.style.display = 'none';
+      }
+    }
+
+    function updatePaySalvarState() {
+      var changed = selectedPayMethod !== currentPayMethod;
+      if (selectedPayMethod === 'debito' && !selectedPayDate) {
+        payBtnSalvar.classList.remove('enabled');
+      } else if (changed) {
+        payBtnSalvar.classList.add('enabled');
+      } else {
+        payBtnSalvar.classList.remove('enabled');
+      }
+    }
+
+    pencilPagamento.addEventListener('click', function() {
+      initPaySheet();
+      payOverlay.classList.add('visible');
+    });
+
+    payClose.addEventListener('click', function() {
+      payOverlay.classList.remove('visible');
+    });
+
+    payOverlay.addEventListener('click', function(e) {
+      if (e.target === payOverlay) payOverlay.classList.remove('visible');
+    });
+
+    payRadioRows.forEach(function(row) {
+      row.addEventListener('click', function() {
+        payRadioRows.forEach(function(r) { r.classList.remove('selected'); });
+        row.classList.add('selected');
+        selectedPayMethod = row.dataset.value;
+        if (selectedPayMethod !== 'debito') {
+          selectedPayDate = null;
+          payDateItems.forEach(function(d) { d.classList.remove('selected'); });
+        }
+        updatePayDateVisibility();
+        updatePaySalvarState();
+      });
+    });
+
+    payDateItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        payDateItems.forEach(function(d) { d.classList.remove('selected'); });
+        item.classList.add('selected');
+        selectedPayDate = item.dataset.day;
+        updatePaySalvarState();
+      });
+    });
+
+    payBtnSalvar.addEventListener('click', function() {
+      if (!payBtnSalvar.classList.contains('enabled')) return;
+      currentPayMethod = selectedPayMethod;
+      pagamentoDesc.textContent = payMethodMap[currentPayMethod];
+      payOverlay.classList.remove('visible');
+    });
+
+    // Navigate to password / loading screens
+    document.getElementById('btn-confirmar').addEventListener('click', function() {
+      window.location.href = 'screen-7-1.html';
+    });
+  </script>
+
+</body>
+</html>

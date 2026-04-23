@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Request - Protótipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #F2F2F7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── iPhone 15 Pro Frame ── */
+    .iphone-frame {
+      position: relative;
+      width: 393px;
+      height: 852px;
+      background: #1C1C1E;
+      border-radius: 55px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        0 0 0 2px #2c2c2e,
+        0 0 0 4px #1a1a1c,
+        0 30px 80px rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .iphone-screen {
+      width: 375px;
+      height: 812px;
+      background: #FFFFFF;
+      border-radius: 47px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Screen Container ── */
+    .screen {
+      width: 375px;
+      height: 812px;
+      display: flex;
+      flex-direction: column;
+      background: #FFFFFF;
+      position: relative;
+    }
+
+    .screen.hidden { display: none; }
+
+    /* ── Top Section (grows to fill) ── */
+    .top-section {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* ── Header (Artwork + Title) ── */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 375px;
+      flex-shrink: 0;
+    }
+
+    /* ── Hero Artwork ── */
+    .header-artwork {
+      position: relative;
+      width: 375px;
+      height: 250px;
+      overflow: hidden;
+      background: #EFEFEF;
+      flex-shrink: 0;
+    }
+
+    .header-artwork .hero-img {
+      position: absolute;
+      width: 430px;
+      height: auto;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+    }
+
+    /* ── Overlay on Artwork ── */
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 375px;
+      z-index: 2;
+    }
+
+    /* ── Status Bar ── */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px 10px 32px;
+      width: 375px;
+      height: 48px;
+    }
+
+    .status-bar-time {
+      font-family: -apple-system, 'SF Pro Text', BlinkMacSystemFont, sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+      color: #FFFFFF;
+      letter-spacing: -0.24px;
+    }
+
+    .status-bar-icons {
+      display: flex;
+      align-items: center;
+      gap: 5.5px;
+    }
+
+    /* ── Navigation Bar ── */
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      width: 375px;
+      height: 56px;
+    }
+
+    .close-button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .close-button svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ── Title Section ── */
+    .title-section {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 375px;
+    }
+
+    .title-text {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .subtitle-text {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 130%;
+      letter-spacing: -0.18px;
+      color: rgba(0, 0, 0, 0.64);
+    }
+
+    /* ── List Rows ── */
+    .list-rows {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .list-row {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .list-row-divider {
+      width: 375px;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+    }
+
+    .list-row-content {
+      display: flex;
+      align-items: center;
+      padding: 11px 24px;
+      gap: 16px;
+    }
+
+    .list-row-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .list-row-icon svg {
+      display: block;
+    }
+
+    .list-row-label {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    /* ── Bottom Section ── */
+    .bottom-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 24px;
+      background: #FFFFFF;
+      flex-shrink: 0;
+    }
+
+    .bottom-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 24px 0;
+      gap: 16px;
+      width: 375px;
+    }
+
+    .btn-primary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 327px;
+      height: 48px;
+      background: #714F8F;
+      border-radius: 64px;
+      border: none;
+      cursor: pointer;
+      padding: 12px 24px;
+    }
+
+    .btn-primary span {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: #FFFFFF;
+      text-align: center;
+    }
+
+    .btn-ghost {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 327px;
+      height: 48px;
+      background: transparent;
+      border-radius: 64px;
+      border: none;
+      cursor: pointer;
+      padding: 12px 24px;
+    }
+
+    .btn-ghost span {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: #652590;
+      text-align: center;
+    }
+
+    .scroll-indicator {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid #EFEFEF;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .scroll-indicator svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ── Screen 1.2/1.3 ── */
+    .screen-12 {
+      width: 375px;
+      height: 812px;
+      display: flex;
+      flex-direction: column;
+      background: #FFFFFF;
+      position: relative;
+    }
+    .screen-12.hidden { display: none; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      flex-shrink: 0;
+    }
+    .topbar-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px 10px 32px;
+      width: 375px;
+      height: 48px;
+    }
+    .topbar-time {
+      font-family: -apple-system, 'SF Pro Text', BlinkMacSystemFont, sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+      color: rgba(0,0,0,0.96);
+      letter-spacing: -0.24px;
+    }
+    .topbar-icons {
+      display: flex;
+      align-items: center;
+      gap: 5.5px;
+    }
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      height: 56px;
+    }
+    .close-btn-dark {
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .screen-scroll {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 98px;
+    }
+
+    .list-title-section {
+      padding: 24px 24px 16px;
+    }
+    .list-title-text {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .list-row-12 {
+      display: flex;
+      flex-direction: column;
+      width: 375px;
+      background: #FFFFFF;
+    }
+    .list-row-12-divider {
+      width: 375px;
+      height: 1px;
+      background: #EFEFEF;
+    }
+    .list-row-12-content {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      gap: 16px;
+    }
+    .list-row-12-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .list-row-12-label {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .product-snapshot {
+      display: flex;
+      align-items: flex-start;
+      padding: 32px 16px 32px 24px;
+      gap: 12px;
+      background: white;
+    }
+    .product-snapshot-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .product-snapshot-title {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .product-snapshot-desc {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.64);
+    }
+    .product-snapshot-asset {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+      overflow: visible;
+    }
+    .product-snapshot-asset img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .progress-bar {
+      display: flex;
+      gap: 2px;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0 24px;
+    }
+    .progress-part { flex: 1; height: 8px; }
+    .progress-part-1 { background: #EADBF1; }
+    .progress-part-2 { background: #A087AE; }
+    .progress-part-3 { background: #714F8F; }
+
+    .tiles-row {
+      display: flex;
+      gap: 8px;
+      padding: 12px 24px 0;
+    }
+    .tile-item {
+      flex: 1;
+      border: 2px solid #EFEFEF;
+      border-radius: 16px;
+      padding: 16px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      height: 87px;
+      gap: 2px;
+      overflow: hidden;
+    }
+    .tile-title {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .tile-desc {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 130%;
+      color: rgba(0, 0, 0, 0.64);
+      max-height: 32px;
+      overflow: hidden;
+    }
+
+    .callout-box {
+      margin: 24px 24px 0;
+      padding: 20px;
+      background: #EFEFEF;
+      border-radius: 16px;
+    }
+    .callout-title {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .callout-desc {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.64);
+      margin-top: 4px;
+    }
+
+    .fees-card {
+      border: 1px solid #EFEFEF;
+      border-radius: 16px;
+      margin: 40px 24px 0;
+      padding: 12px 0;
+      background: white;
+    }
+    .fees-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+    }
+    .fees-header-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fees-header-label {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .fee-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+    }
+    .fee-divider {
+      height: 1px;
+      background: #EFEFEF;
+    }
+    .fee-label {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .fee-value {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: #652590;
+      text-align: right;
+    }
+
+    .flags-section { padding: 16px 0 0; }
+    .flags-title {
+      padding: 24px 24px 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .flags-row {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      padding: 8px 23px;
+    }
+    .flag-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bottom-bar-fixed {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 375px;
+      background: white;
+      z-index: 5;
+    }
+    .bottom-bar-divider {
+      height: 2px;
+      background: #EFEFEF;
+    }
+    .bottom-bar-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 24px;
+      gap: 16px;
+    }
+
+    .transition-slide-up {
+      animation: slideUp 0.4s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="iphone-frame">
+    <div class="iphone-screen">
+
+      <!-- ══════ SCREEN 1.1 ══════ -->
+      <div class="screen" id="screen-1-1">
+
+        <!-- Top Section -->
+        <div class="top-section">
+
+          <!-- Header -->
+          <div class="header">
+
+            <!-- Artwork / Hero Image -->
+            <div class="header-artwork">
+              <img class="hero-img" src="assets/hero-image.png" alt="">
+              <!-- Overlay -->
+              <div class="header-overlay">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                  <div class="status-bar-time">11:08</div>
+                  <div class="status-bar-icons">
+                    <!-- Signal -->
+                    <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 6.667C2.552 6.667 3 7.115 3 7.667V9.667C3 10.219 2.552 10.667 2 10.667H1C0.448 10.667 0 10.219 0 9.667V7.667C0 7.115 0.448 6.667 1 6.667H2ZM6.667 4.667C7.219 4.667 7.667 5.115 7.667 5.667V9.667C7.667 10.219 7.219 10.667 6.667 10.667H5.667C5.115 10.667 4.667 10.219 4.667 9.667V5.667C4.667 5.115 5.115 4.667 5.667 4.667H6.667ZM11.333 2.333C11.885 2.333 12.333 2.781 12.333 3.333V9.667C12.333 10.219 11.885 10.667 11.333 10.667H10.333C9.781 10.667 9.333 10.219 9.333 9.667V3.333C9.333 2.781 9.781 2.333 10.333 2.333H11.333ZM16 0C16.552 0 17 0.448 17 1V9.667C17 10.219 16.552 10.667 16 10.667H15C14.448 10.667 14 10.219 14 9.667V1C14 0.448 14.448 0 15 0H16Z" fill="white"/>
+                    </svg>
+                    <!-- Wi-Fi -->
+                    <svg width="15" height="11" viewBox="0 0 15.334 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.949 8.427C7.229 7.344 9.106 7.344 10.386 8.427C10.45 8.485 10.488 8.568 10.489 8.654C10.491 8.741 10.456 8.824 10.395 8.885L8.39 10.907C8.331 10.967 8.251 11 8.167 11C8.083 11 8.003 10.967 7.944 10.907L5.939 8.885C5.877 8.824 5.843 8.741 5.845 8.654C5.847 8.568 5.884 8.485 5.948 8.427ZM3.273 5.73C6.032 3.165 10.304 3.165 13.064 5.73C13.126 5.79 13.161 5.872 13.162 5.959C13.163 6.045 13.129 6.128 13.068 6.19L11.909 7.36C11.79 7.48 11.597 7.482 11.475 7.365C10.569 6.546 9.389 6.092 8.167 6.092C6.946 6.092 5.768 6.546 4.862 7.365C4.74 7.482 4.546 7.48 4.427 7.36L3.269 6.19C3.208 6.128 3.173 6.045 3.174 5.959C3.175 5.872 3.21 5.79 3.273 5.73ZM0.597 3.039C4.829 -1.013 11.504 -1.013 15.736 3.039C15.798 3.099 15.833 3.182 15.833 3.268C15.833 3.353 15.8 3.436 15.739 3.497L14.579 4.667C14.46 4.787 14.265 4.788 14.144 4.67C12.531 3.138 10.392 2.284 8.167 2.284C5.942 2.284 3.802 3.138 2.19 4.67C2.068 4.788 1.874 4.787 1.755 4.667L0.594 3.497C0.533 3.436 0.5 3.353 0.5 3.268C0.501 3.182 0.536 3.099 0.597 3.039Z" fill="white"/>
+                    </svg>
+                    <!-- Battery -->
+                    <svg width="25" height="12" viewBox="0 0 25 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0.5" y="0.833" width="21" height="10.333" rx="3.5" stroke="white" stroke-opacity="0.35"/>
+                      <path opacity="0.4" d="M23 4V8C23.805 7.661 24.328 6.873 24.328 6C24.328 5.127 23.805 4.339 23 4" fill="white"/>
+                      <rect x="2" y="2.333" width="18" height="7.333" rx="2.3" fill="white"/>
+                    </svg>
+                  </div>
+                </div>
+                <!-- Navigation Bar -->
+                <div class="nav-bar">
+                  <button class="close-button">
+                    <!-- Close X icon -->
+                    <svg width="15" height="15" viewBox="0 0 15.414 15.414" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.707 9.121L14 15.414L15.414 14L9.121 7.707L15.414 1.414L14 0L7.707 6.293L1.414 0L0 1.414L6.293 7.707L0 14L1.414 15.414L7.707 9.121Z" fill="white"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <div class="title-section">
+              <div class="title-text">A maquininha com a menor taxa do mercado</div>
+              <div class="subtitle-text">Transparência e economia para o seu negócio faturar mais.</div>
+            </div>
+
+          </div>
+
+          <!-- List Rows -->
+          <div class="list-rows">
+
+            <!-- Row 1: Lending -->
+            <div class="list-row">
+              <div class="list-row-divider"></div>
+              <div class="list-row-content">
+                <div class="list-row-icon">
+                  <svg width="21" height="20" viewBox="0 0 20.621 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.775 9.891C17.922 9.285 18 8.651 18 8C18 3.582 14.418 0 10 0C5.582 0 2 3.582 2 8C2 9.017 2.19 9.989 2.535 10.884C2.165 11.139 1.827 11.446 1.532 11.799L1.159 12.248C0.41 13.146 0 14.279 0 15.448V20H12.843C14.169 20 15.441 19.473 16.379 18.536L19.707 15.207C20.926 13.988 20.926 12.012 19.707 10.793C19.168 10.254 18.48 9.953 17.775 9.891ZM4.378 10.1C4.134 9.447 4 8.739 4 8C4 4.686 6.686 2 10 2C13.314 2 16 4.686 16 8C16 8.993 15.759 9.93 15.331 10.755C15.318 10.768 15.306 10.78 15.293 10.793L13.891 12.195C13.771 11.764 13.558 11.373 13.274 11.043C13.482 10.766 13.632 10.439 13.703 10.081C13.965 8.772 13.103 7.502 11.789 7.264L9.068 6.769C8.855 6.73 8.715 6.524 8.757 6.311C8.793 6.13 8.953 6 9.137 6H13V4H11V3H9V4.004C7.921 4.065 7.01 4.848 6.796 5.919C6.534 7.228 7.397 8.498 8.71 8.736L11.432 9.231C11.645 9.27 11.785 9.476 11.742 9.689C11.706 9.87 11.547 10 11.362 10L5.374 10C5.036 10 4.703 10.034 4.378 10.1ZM16.707 12.207C17.145 11.769 17.855 11.769 18.293 12.207C18.731 12.645 18.731 13.355 18.293 13.793L14.965 17.122C14.402 17.684 13.639 18 12.843 18H2V15.448C2 14.747 2.246 14.067 2.695 13.528L3.069 13.08C3.639 12.396 4.483 12 5.374 12H11C11.552 12 12 12.448 12 13C12 13.479 11.664 13.879 11.215 13.977C11.092 13.992 10.968 14 10.843 14H5.5V16H11C11.187 16 11.37 15.983 11.547 15.95C12.613 15.799 13.609 15.306 14.379 14.536L16.707 12.207Z" fill="rgba(0,0,0,0.96)"/>
+                  </svg>
+                </div>
+                <div class="list-row-label">Taxas transparentes, sem pegadinhas, para proteger sua margem de lucro</div>
+              </div>
+              <div class="list-row-divider"></div>
+            </div>
+
+            <!-- Row 2: Calculator -->
+            <div class="list-row">
+              <div class="list-row-divider"></div>
+              <div class="list-row-content">
+                <div class="list-row-icon">
+                  <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C14.209 0 16 1.791 16 4V16C16 18.209 14.209 20 12 20H4C1.791 20 0 18.209 0 16V4C0 1.791 1.791 0 4 0H12ZM4 2C2.895 2 2 2.895 2 4V16C2 17.105 2.895 18 4 18H12C13.105 18 14 17.105 14 16V4C14 2.895 13.105 2 12 2H4ZM6 16H4V14H6V16ZM9 16H7V14H9V16ZM12 16H10V14H12V16ZM6 13H4V11H6V13ZM9 13H7V11H9V13ZM12 13H10V11H12V13ZM6 10H4V8H6V10ZM9 10H7V8H9V10ZM12 10H10V8H12V10ZM12 6H4V4H12V6Z" fill="rgba(0,0,0,0.96)"/>
+                  </svg>
+                </div>
+                <div class="list-row-label">Venda mais e zere sua mensalidade</div>
+              </div>
+              <div class="list-row-divider"></div>
+            </div>
+
+            <!-- Row 3: Tune -->
+            <div class="list-row">
+              <div class="list-row-divider"></div>
+              <div class="list-row-content">
+                <div class="list-row-icon">
+                  <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6V4H18V2H6V0H4V2H0V4H4V6H6Z" fill="rgba(0,0,0,0.96)"/>
+                    <path d="M14 10H18V12H14V14H12V12H0V10H12V8H14V10Z" fill="rgba(0,0,0,0.96)"/>
+                  </svg>
+                </div>
+                <div class="list-row-label">Da maquininha ao boleto, todas as suas cobranças em um único extrato.</div>
+              </div>
+              <div class="list-row-divider"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="bottom-section">
+          <div class="bottom-bar">
+            <button class="btn-primary" id="btn-pedir-roxinha">
+              <span>Pedir roxinha</span>
+            </button>
+            <button class="btn-ghost" id="btn-conhecer-mais">
+              <span>Conhecer mais</span>
+            </button>
+          </div>
+          <div class="scroll-indicator">
+            <!-- Arrow Down -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 12L5.41 10.59L11 16.17V4H13V16.17L18.59 10.59L20 12L12.707 19.293C12.317 19.683 11.683 19.683 11.293 19.293L4 12Z" fill="#714F8F"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+      <!-- ══════ END SCREEN 1.1 ══════ -->
+
+      <!-- ══════ SCREEN 1.2 / 1.3 ══════ -->
+      <div class="screen-12 hidden" id="screen-1-2">
+
+        <!-- Top Bar -->
+        <div class="topbar">
+          <div class="topbar-status">
+            <div class="topbar-time">11:08</div>
+            <div class="topbar-icons">
+              <!-- Signal (dark) -->
+              <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 6.667C2.552 6.667 3 7.115 3 7.667V9.667C3 10.219 2.552 10.667 2 10.667H1C0.448 10.667 0 10.219 0 9.667V7.667C0 7.115 0.448 6.667 1 6.667H2ZM6.667 4.667C7.219 4.667 7.667 5.115 7.667 5.667V9.667C7.667 10.219 7.219 10.667 6.667 10.667H5.667C5.115 10.667 4.667 10.219 4.667 9.667V5.667C4.667 5.115 5.115 4.667 5.667 4.667H6.667ZM11.333 2.333C11.885 2.333 12.333 2.781 12.333 3.333V9.667C12.333 10.219 11.885 10.667 11.333 10.667H10.333C9.781 10.667 9.333 10.219 9.333 9.667V3.333C9.333 2.781 9.781 2.333 10.333 2.333H11.333ZM16 0C16.552 0 17 0.448 17 1V9.667C17 10.219 16.552 10.667 16 10.667H15C14.448 10.667 14 10.219 14 9.667V1C14 0.448 14.448 0 15 0H16Z" fill="rgba(0,0,0,0.96)"/>
+              </svg>
+              <!-- Wi-Fi (dark) -->
+              <svg width="15" height="11" viewBox="0 0 15.334 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5.949 8.427C7.229 7.344 9.106 7.344 10.386 8.427C10.45 8.485 10.488 8.568 10.489 8.654C10.491 8.741 10.456 8.824 10.395 8.885L8.39 10.907C8.331 10.967 8.251 11 8.167 11C8.083 11 8.003 10.967 7.944 10.907L5.939 8.885C5.877 8.824 5.843 8.741 5.845 8.654C5.847 8.568 5.884 8.485 5.948 8.427ZM3.273 5.73C6.032 3.165 10.304 3.165 13.064 5.73C13.126 5.79 13.161 5.872 13.162 5.959C13.163 6.045 13.129 6.128 13.068 6.19L11.909 7.36C11.79 7.48 11.597 7.482 11.475 7.365C10.569 6.546 9.389 6.092 8.167 6.092C6.946 6.092 5.768 6.546 4.862 7.365C4.74 7.482 4.546 7.48 4.427 7.36L3.269 6.19C3.208 6.128 3.173 6.045 3.174 5.959C3.175 5.872 3.21 5.79 3.273 5.73ZM0.597 3.039C4.829 -1.013 11.504 -1.013 15.736 3.039C15.798 3.099 15.833 3.182 15.833 3.268C15.833 3.353 15.8 3.436 15.739 3.497L14.579 4.667C14.46 4.787 14.265 4.788 14.144 4.67C12.531 3.138 10.392 2.284 8.167 2.284C5.942 2.284 3.802 3.138 2.19 4.67C2.068 4.788 1.874 4.787 1.755 4.667L0.594 3.497C0.533 3.436 0.5 3.353 0.5 3.268C0.501 3.182 0.536 3.099 0.597 3.039Z" fill="rgba(0,0,0,0.96)"/>
+              </svg>
+              <!-- Battery (dark) -->
+              <svg width="25" height="12" viewBox="0 0 25 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.833" width="21" height="10.333" rx="3.5" stroke="rgba(0,0,0,0.96)" stroke-opacity="0.35"/>
+                <path opacity="0.4" d="M23 4V8C23.805 7.661 24.328 6.873 24.328 6C24.328 5.127 23.805 4.339 23 4" fill="rgba(0,0,0,0.96)"/>
+                <rect x="2" y="2.333" width="18" height="7.333" rx="2.3" fill="rgba(0,0,0,0.96)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="topbar-nav">
+            <button class="close-btn-dark" id="btn-close-12">
+              <svg width="15" height="15" viewBox="0 0 15.414 15.414" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.707 9.121L14 15.414L15.414 14L9.121 7.707L15.414 1.414L14 0L7.707 6.293L1.414 0L0 1.414L6.293 7.707L0 14L1.414 15.414L7.707 9.121Z" fill="rgba(0,0,0,0.64)"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="screen-scroll">
+
+          <!-- Title Section -->
+          <div class="list-title-section">
+            <div class="list-title-text">Receba suas vendas na hora com a roxinha</div>
+          </div>
+
+          <!-- List Row 1: Clock -->
+          <div class="list-row-12">
+            <div class="list-row-12-divider"></div>
+            <div class="list-row-12-content">
+              <div class="list-row-12-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 4V9.586L13.707 12.293L12.293 13.707L9 10.414V4H11Z" fill="rgba(0,0,0,0.96)"/>
+                  <path d="M20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0C15.523 0 20 4.477 20 10ZM18 10C18 5.582 14.418 2 10 2C5.582 2 2 5.582 2 10C2 14.418 5.582 18 10 18C14.418 18 18 14.418 18 10Z" fill="rgba(0,0,0,0.96)"/>
+                </svg>
+              </div>
+              <div class="list-row-12-label">Sem taxa de antecipação</div>
+            </div>
+            <div class="list-row-12-divider"></div>
+          </div>
+
+          <!-- List Row 2: Nu_tag -->
+          <div class="list-row-12">
+            <div class="list-row-12-content">
+              <div class="list-row-12-icon">
+                <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 0C19.105 0 20 0.895 20 2V8C20 9.105 19.105 10 18 10H2C0.895 10 0 9.105 0 8V2C0 0.895 0.895 0 2 0H18ZM2 2V8H18V2H2ZM16 4V6H14V4H16Z" fill="rgba(0,0,0,0.96)"/>
+                </svg>
+              </div>
+              <div class="list-row-12-label">Custo zero de manutenção</div>
+            </div>
+            <div class="list-row-12-divider"></div>
+          </div>
+
+          <!-- List Row 3: Smartphone -->
+          <div class="list-row-12">
+            <div class="list-row-12-content">
+              <div class="list-row-12-icon">
+                <svg width="14" height="22" viewBox="0 0 14 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 16H5V18H9V16Z" fill="rgba(0,0,0,0.96)"/>
+                  <path d="M0 4V18C0 20.209 1.791 22 4 22H10C12.209 22 14 20.209 14 18V4C14 1.791 12.209 0 10 0H4C1.791 0 0 1.791 0 4ZM4 2H10C11.105 2 12 2.895 12 4V18C12 19.105 11.105 20 10 20H4C2.895 20 2 19.105 2 18V4C2 2.895 2.895 2 4 2Z" fill="rgba(0,0,0,0.96)"/>
+                </svg>
+              </div>
+              <div class="list-row-12-label">Atendimento 24h e controle total pelo app e plataforma web</div>
+            </div>
+            <div class="list-row-12-divider"></div>
+          </div>
+
+          <!-- Product Snapshot -->
+          <div class="product-snapshot">
+            <div class="product-snapshot-content">
+              <div class="product-snapshot-title">Zere sua mensalidade vendendo mais</div>
+              <div class="product-snapshot-desc">O valor se ajusta às vendas. Sem surpresas no fim do mês.</div>
+            </div>
+            <div class="product-snapshot-asset">
+              <img src="assets/gift-illustration-figma.png" alt="">
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar">
+            <div class="progress-part progress-part-1"></div>
+            <div class="progress-part progress-part-2"></div>
+            <div class="progress-part progress-part-3"></div>
+          </div>
+
+          <!-- Tiles -->
+          <div class="tiles-row">
+            <div class="tile-item">
+              <div class="tile-title">R$ 60</div>
+              <div class="tile-desc">Até R$ 5 mil em vendas</div>
+            </div>
+            <div class="tile-item">
+              <div class="tile-title">R$ 30</div>
+              <div class="tile-desc">A partir de R$ 5 mil</div>
+            </div>
+            <div class="tile-item">
+              <div class="tile-title">Grátis</div>
+              <div class="tile-desc">Venda mais de R$ 10 mil</div>
+            </div>
+          </div>
+
+          <!-- Callout Box -->
+          <div class="callout-box">
+            <div class="callout-title">Transparência total</div>
+            <div class="callout-desc">Acompanhe em tempo real quanto falta para zerar sua mensalidade.</div>
+          </div>
+
+          <!-- Fees Card -->
+          <div class="fees-card">
+            <div class="fees-header">
+              <div class="fees-header-icon">
+                <svg width="19" height="18" viewBox="0 0 18.891 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.891 0L2.691 18H0L16.2 0H18.891Z" fill="rgba(0,0,0,0.96)"/>
+                  <path d="M4.445 8C6.654 8 8.445 6.209 8.445 4C8.445 1.791 6.654 0 4.445 0C2.236 0 0.445 1.791 0.445 4C0.445 6.209 2.236 8 4.445 8ZM4.445 6C3.341 6 2.445 5.105 2.445 4C2.445 2.895 3.341 2 4.445 2C5.55 2 6.445 2.895 6.445 4C6.445 5.105 5.55 6 4.445 6Z" fill="rgba(0,0,0,0.96)"/>
+                  <path d="M18.445 14C18.445 16.209 16.654 18 14.445 18C12.236 18 10.445 16.209 10.445 14C10.445 11.791 12.236 10 14.445 10C16.654 10 18.445 11.791 18.445 14ZM16.445 14C16.445 12.895 15.55 12 14.445 12C13.341 12 12.445 12.895 12.445 14C12.445 15.105 13.341 16 14.445 16C15.55 16 16.445 15.105 16.445 14Z" fill="rgba(0,0,0,0.96)"/>
+                </svg>
+              </div>
+              <div class="fees-header-label">Taxas que não corroem seu lucro</div>
+            </div>
+
+            <div class="fee-row">
+              <div class="fee-label">Pix</div>
+              <div class="fee-value">Gratuito</div>
+            </div>
+            <div class="fee-divider"></div>
+
+            <div class="fee-row">
+              <div class="fee-label">Débito</div>
+              <div class="fee-value">0,89%</div>
+            </div>
+            <div class="fee-divider"></div>
+
+            <div class="fee-row">
+              <div class="fee-label">Crédito</div>
+              <div class="fee-value">0,18%</div>
+            </div>
+            <div class="fee-divider"></div>
+
+            <div class="fee-row">
+              <div class="fee-label">Crédito em 12x</div>
+              <div class="fee-value">0,83%</div>
+            </div>
+          </div>
+
+          <!-- Bandeiras aceitas -->
+          <div class="flags-section">
+            <div class="flags-title">Bandeiras aceitas</div>
+            <div class="flags-row">
+              <div class="flag-icon"><img src="assets/flag-mastercard.png" alt="Mastercard" style="height: 26px; width: auto;"></div>
+              <div class="flag-icon"><img src="assets/flag-visa.png" alt="Visa" style="height: 26px; width: auto;"></div>
+              <div class="flag-icon"><img src="assets/flag-elo.png" alt="Elo" style="height: 26px; width: auto;"></div>
+              <div class="flag-icon"><img src="assets/flag-hipercard-new.png" alt="Hipercard" style="height: 58px; width: auto;"></div>
+              <div class="flag-icon"><img src="assets/flag-amex-new.png" alt="Amex" style="height: 27px; width: auto;"></div>
+            </div>
+          </div>
+
+          <div style="height: 40px;"></div>
+        </div>
+
+        <!-- Bottom Bar (fixed) -->
+        <div class="bottom-bar-fixed">
+          <div class="bottom-bar-divider"></div>
+          <div class="bottom-bar-actions">
+            <button class="btn-primary" id="btn-pedir-roxinha-12">
+              <span>Pedir roxinha</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <!-- ══════ END SCREEN 1.2 / 1.3 ══════ -->
+
+    </div>
+  </div>
+
+  <script>
+    const screen11 = document.getElementById('screen-1-1');
+    const screen12 = document.getElementById('screen-1-2');
+
+    function openScreen12() {
+      screen11.classList.add('hidden');
+      screen12.classList.remove('hidden');
+      screen12.classList.add('transition-slide-up');
+      screen12.querySelector('.screen-scroll').scrollTop = 0;
+    }
+
+    document.getElementById('btn-conhecer-mais').addEventListener('click', openScreen12);
+    document.querySelector('.scroll-indicator').addEventListener('click', openScreen12);
+
+    document.getElementById('btn-close-12').addEventListener('click', function() {
+      screen12.classList.add('hidden');
+      screen12.classList.remove('transition-slide-up');
+      screen11.classList.remove('hidden');
+    });
+
+    document.getElementById('btn-pedir-roxinha').addEventListener('click', function() {
+      window.location.href = 'screen-2-1.html';
+    });
+
+    document.getElementById('btn-pedir-roxinha-12').addEventListener('click', function() {
+      window.location.href = 'screen-2-1.html';
+    });
+  </script>
+
+</body>
+</html>

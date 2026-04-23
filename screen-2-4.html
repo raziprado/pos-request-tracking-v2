@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela 2.4 - Endereço</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #F2F2F7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .iphone-frame {
+      position: relative;
+      width: 393px;
+      height: 852px;
+      background: #1C1C1E;
+      border-radius: 55px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        0 0 0 2px #2c2c2e,
+        0 0 0 4px #1a1a1c,
+        0 30px 80px rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .iphone-screen {
+      width: 375px;
+      height: 812px;
+      background: #FFFFFF;
+      border-radius: 47px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen {
+      width: 375px;
+      height: 812px;
+      background: #FFFFFF;
+      position: relative;
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 18px 24px 10px 32px;
+      width: 375px;
+      height: 48px;
+    }
+    .status-bar-time {
+      font-family: -apple-system, 'SF Pro Text', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 20px;
+      color: rgba(0, 0, 0, 0.96);
+      letter-spacing: -0.24px;
+    }
+    .status-bar-icons {
+      display: flex;
+      align-items: center;
+      gap: 5.5px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 375px;
+      height: 56px;
+    }
+    .back-button {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .title-section {
+      padding: 8px 24px 24px;
+      width: 375px;
+    }
+    .title-text {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+      width: 327px;
+    }
+
+    .form-area {
+      position: absolute;
+      left: 24px;
+      top: 186px;
+      width: 327px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 327px;
+    }
+    .input-label {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.64);
+    }
+    .input-value {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 120%;
+      letter-spacing: -0.4px;
+      color: rgba(0, 0, 0, 0.96);
+      border: none;
+      outline: none;
+      width: 327px;
+      height: 24px;
+      background: transparent;
+      caret-color: #652590;
+    }
+    .input-value::placeholder {
+      color: rgba(0, 0, 0, 0.32);
+    }
+    .input-value.prefilled {
+      color: rgba(0, 0, 0, 0.32);
+    }
+    .input-divider {
+      width: 327px;
+      height: 2px;
+      background: #EFEFEF;
+    }
+
+    .next-action {
+      position: absolute;
+      right: 24px;
+      bottom: 16px;
+    }
+    .next-btn {
+      width: 48px;
+      height: 48px;
+      background: #EFEFEF;
+      border-radius: 64px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .next-btn.enabled {
+      background: #652590;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="iphone-frame">
+    <div class="iphone-screen">
+      <div class="screen">
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+          <div class="status-bar-time">11:08</div>
+          <div class="status-bar-icons">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><path d="M2 6.667C2.552 6.667 3 7.115 3 7.667V9.667C3 10.219 2.552 10.667 2 10.667H1C0.448 10.667 0 10.219 0 9.667V7.667C0 7.115 0.448 6.667 1 6.667H2ZM6.667 4.667C7.219 4.667 7.667 5.115 7.667 5.667V9.667C7.667 10.219 7.219 10.667 6.667 10.667H5.667C5.115 10.667 4.667 10.219 4.667 9.667V5.667C4.667 5.115 5.115 4.667 5.667 4.667H6.667ZM11.333 2.333C11.885 2.333 12.333 2.781 12.333 3.333V9.667C12.333 10.219 11.885 10.667 11.333 10.667H10.333C9.781 10.667 9.333 10.219 9.333 9.667V3.333C9.333 2.781 9.781 2.333 10.333 2.333H11.333ZM16 0C16.552 0 17 0.448 17 1V9.667C17 10.219 16.552 10.667 16 10.667H15C14.448 10.667 14 10.219 14 9.667V1C14 0.448 14.448 0 15 0H16Z" fill="rgba(0,0,0,0.96)"/></svg>
+            <svg width="15" height="11" viewBox="0 0 15.334 11" fill="none"><path d="M5.949 8.427C7.229 7.344 9.106 7.344 10.386 8.427C10.45 8.485 10.488 8.568 10.489 8.654C10.491 8.741 10.456 8.824 10.395 8.885L8.39 10.907C8.331 10.967 8.251 11 8.167 11C8.083 11 8.003 10.967 7.944 10.907L5.939 8.885C5.877 8.824 5.843 8.741 5.845 8.654C5.847 8.568 5.884 8.485 5.948 8.427ZM3.273 5.73C6.032 3.165 10.304 3.165 13.064 5.73C13.126 5.79 13.161 5.872 13.162 5.959C13.163 6.045 13.129 6.128 13.068 6.19L11.909 7.36C11.79 7.48 11.597 7.482 11.475 7.365C10.569 6.546 9.389 6.092 8.167 6.092C6.946 6.092 5.768 6.546 4.862 7.365C4.74 7.482 4.546 7.48 4.427 7.36L3.269 6.19C3.208 6.128 3.173 6.045 3.174 5.959C3.175 5.872 3.21 5.79 3.273 5.73ZM0.597 3.039C4.829 -1.013 11.504 -1.013 15.736 3.039C15.798 3.099 15.833 3.182 15.833 3.268C15.833 3.353 15.8 3.436 15.739 3.497L14.579 4.667C14.46 4.787 14.265 4.788 14.144 4.67C12.531 3.138 10.392 2.284 8.167 2.284C5.942 2.284 3.802 3.138 2.19 4.67C2.068 4.788 1.874 4.787 1.755 4.667L0.594 3.497C0.533 3.436 0.5 3.353 0.5 3.268C0.501 3.182 0.536 3.099 0.597 3.039Z" fill="rgba(0,0,0,0.96)"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.833" width="21" height="10.333" rx="3.5" stroke="rgba(0,0,0,0.96)" stroke-opacity="0.35"/><path opacity="0.4" d="M23 4V8C23.805 7.661 24.328 6.873 24.328 6C24.328 5.127 23.805 4.339 23 4" fill="rgba(0,0,0,0.96)"/><rect x="2" y="2.333" width="18" height="7.333" rx="2.3" fill="rgba(0,0,0,0.96)"/></svg>
+          </div>
+        </div>
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+          <button class="back-button" id="btn-back-24">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="rgba(0,0,0,0.64)"/></svg>
+          </button>
+        </div>
+
+        <!-- Title -->
+        <div class="title-section">
+          <div class="title-text">Complete o endereço</div>
+        </div>
+
+        <!-- Form Fields -->
+        <div class="form-area">
+          <!-- Endereço (pre-filled) -->
+          <div class="input-field">
+            <div class="input-label">Endereço</div>
+            <input type="text" class="input-value prefilled" value="Rua Ipiranga" readonly>
+            <div class="input-divider"></div>
+          </div>
+
+          <!-- Número -->
+          <div class="input-field">
+            <div class="input-label">Número</div>
+            <input type="text" class="input-value" placeholder="Digite o número">
+            <div class="input-divider"></div>
+          </div>
+
+          <!-- Complemento -->
+          <div class="input-field">
+            <div class="input-label">Complemento</div>
+            <input type="text" class="input-value" placeholder="Apartamento, Bloco, etc">
+            <div class="input-divider"></div>
+          </div>
+
+          <!-- Ponto de referência -->
+          <div class="input-field">
+            <div class="input-label">Ponto de referência</div>
+            <input type="text" class="input-value" placeholder="Ex: em frente à mercearia">
+            <div class="input-divider"></div>
+          </div>
+        </div>
+
+        <!-- Next Action Button -->
+        <div class="next-action">
+          <button class="next-btn" id="next-btn-24">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z" fill="rgba(0,0,0,0.32)"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var nextBtn = document.getElementById('next-btn-24');
+    var arrowPath = nextBtn.querySelector('svg path');
+    var numeroInput = document.querySelector('.form-area .input-field:nth-child(2) input');
+
+    function updateButtonState() {
+      var hasAnyInput = Array.from(document.querySelectorAll('.input-value:not(.prefilled)')).some(function(input) {
+        return input.value.trim().length > 0;
+      });
+      if (hasAnyInput) {
+        nextBtn.classList.add('enabled');
+        arrowPath.setAttribute('fill', '#FFFFFF');
+      } else {
+        nextBtn.classList.remove('enabled');
+        arrowPath.setAttribute('fill', 'rgba(0,0,0,0.32)');
+      }
+    }
+
+    document.querySelectorAll('.input-value:not(.prefilled)').forEach(function(input) {
+      input.addEventListener('input', updateButtonState);
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (nextBtn.classList.contains('enabled')) {
+        window.location.href = 'screen-2-6.html';
+      }
+    });
+
+    document.getElementById('btn-back-24').addEventListener('click', function() {
+      window.location.href = 'screen-2-2.html';
+    });
+  </script>
+
+</body>
+</html>

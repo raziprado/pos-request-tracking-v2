@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sucesso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f0f0f0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .iphone-frame {
+      width: 393px;
+      height: 852px;
+      background: #000;
+      border-radius: 47px;
+      padding: 9px;
+      position: relative;
+    }
+    .iphone-screen {
+      width: 375px;
+      height: 834px;
+      background: #fff;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+    .screen {
+      width: 375px;
+      height: 812px;
+      position: relative;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 18px 24px 10px 32px;
+      height: 48px;
+    }
+    .status-time {
+      font-family: 'SF Pro Text', -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+      letter-spacing: -0.24px;
+      color: rgba(0,0,0,0.96);
+    }
+    .status-icons { display: flex; gap: 5px; align-items: center; }
+
+    .top-bar {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+    }
+    .close-btn {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .artwork {
+      padding: 8px 24px;
+      height: 166px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .illustration {
+      width: 150px;
+      height: 150px;
+    }
+    .illustration img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+    }
+
+    .title-section {
+      padding: 12px 24px 24px;
+    }
+    .title-text {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0,0,0,0.96);
+      margin-bottom: 8px;
+    }
+    .subtitle-text {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 130%;
+      letter-spacing: -0.18px;
+      color: rgba(0,0,0,0.64);
+    }
+
+    .card-section {
+      position: absolute;
+      top: 505px;
+      left: 0;
+      width: 375px;
+      padding: 0 24px;
+    }
+    .card {
+      border: 1px solid #EFEFEF;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .card-row-main {
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      height: 86px;
+      gap: 16px;
+    }
+    .card-row-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-label {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 130%;
+      color: rgba(0,0,0,0.64);
+    }
+    .card-value {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0,0,0,0.96);
+    }
+    .card-share {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+    .card-divider {
+      display: none;
+    }
+    .card-row-info {
+      padding: 0 24px 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+    }
+    .card-info-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0,0,0,0.96);
+    }
+
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 375px;
+      height: 80px;
+      background: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 24px;
+    }
+    .btn-primary {
+      width: 327px;
+      height: 48px;
+      background: #714F8F;
+      border-radius: 64px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary-label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: #FFFFFF;
+    }
+
+    /* Share Modal (7.6) */
+    .share-overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 50;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0 11px 20px;
+    }
+    .share-overlay.visible { display: flex; }
+    .share-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 353px;
+    }
+    .share-main {
+      background: rgba(250,250,250,0.93);
+      backdrop-filter: blur(40px);
+      border-radius: 13px;
+      overflow: hidden;
+    }
+    .share-header {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      gap: 8px;
+      position: relative;
+    }
+    .share-app-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+    .share-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .share-header-title {
+      font-family: 'SF Pro Text', -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+      letter-spacing: -0.24px;
+      color: #000;
+    }
+    .share-header-url {
+      font-family: 'SF Pro Text', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      letter-spacing: -0.078px;
+      color: rgba(60,60,67,0.6);
+    }
+    .share-close {
+      position: absolute;
+      right: 16px;
+      top: 21px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(116,116,128,0.08);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .share-divider {
+      height: 0.5px;
+      background: rgba(60,60,67,0.36);
+      opacity: 0.5;
+    }
+    .share-apps {
+      display: flex;
+      gap: 28px;
+      padding: 16px;
+    }
+    .share-app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      width: 60px;
+      flex-shrink: 0;
+    }
+    .share-app-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 13px;
+      box-shadow: 0px 0px 6px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .share-app-name {
+      font-family: 'SF Pro Text', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 13px;
+      letter-spacing: 0.066px;
+      color: #000;
+      text-align: center;
+      margin-top: 4px;
+    }
+    .share-cancel {
+      background: rgba(250,250,250,0.93);
+      backdrop-filter: blur(40px);
+      border-radius: 13px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+    }
+    .share-cancel-text {
+      font-family: 'SF Pro Display', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.38px;
+      color: #3E62D0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="iphone-frame">
+    <div class="iphone-screen">
+      <div class="screen">
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+          <div class="status-time">11:08</div>
+          <div class="status-icons">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><path d="M2 6.667C2.552 6.667 3 7.115 3 7.667V9.667C3 10.219 2.552 10.667 2 10.667H1C0.448 10.667 0 10.219 0 9.667V7.667C0 7.115 0.448 6.667 1 6.667H2ZM6.667 4.667C7.219 4.667 7.667 5.115 7.667 5.667V9.667C7.667 10.219 7.219 10.667 6.667 10.667H5.667C5.115 10.667 4.667 10.219 4.667 9.667V5.667C4.667 5.115 5.115 4.667 5.667 4.667H6.667ZM11.333 2.333C11.885 2.333 12.333 2.781 12.333 3.333V9.667C12.333 10.219 11.885 10.667 11.333 10.667H10.333C9.781 10.667 9.333 10.219 9.333 9.667V3.333C9.333 2.781 9.781 2.333 10.333 2.333H11.333ZM16 0C16.552 0 17 0.448 17 1V9.667C17 10.219 16.552 10.667 16 10.667H15C14.448 10.667 14 10.219 14 9.667V1C14 0.448 14.448 0 15 0H16Z" fill="rgba(0,0,0,0.96)"/></svg>
+            <svg width="15" height="11" viewBox="0 0 15.334 11" fill="none"><path d="M5.949 8.427C7.229 7.344 9.106 7.344 10.386 8.427C10.45 8.485 10.488 8.568 10.489 8.654C10.491 8.741 10.456 8.824 10.395 8.885L8.39 10.907C8.331 10.967 8.251 11 8.167 11C8.083 11 8.003 10.967 7.944 10.907L5.939 8.885C5.877 8.824 5.843 8.741 5.845 8.654C5.847 8.568 5.884 8.485 5.948 8.427ZM3.273 5.73C6.032 3.165 10.304 3.165 13.064 5.73C13.126 5.79 13.161 5.872 13.162 5.959C13.163 6.045 13.129 6.128 13.068 6.19L11.909 7.36C11.79 7.48 11.597 7.482 11.475 7.365C10.569 6.546 9.389 6.092 8.167 6.092C6.946 6.092 5.768 6.546 4.862 7.365C4.74 7.482 4.546 7.48 4.427 7.36L3.269 6.19C3.208 6.128 3.173 6.045 3.174 5.959C3.175 5.872 3.21 5.79 3.273 5.73ZM0.597 3.039C4.829 -1.013 11.504 -1.013 15.736 3.039C15.798 3.099 15.833 3.182 15.833 3.268C15.833 3.353 15.8 3.436 15.739 3.497L14.579 4.667C14.46 4.787 14.265 4.788 14.144 4.67C12.531 3.138 10.392 2.284 8.167 2.284C5.942 2.284 3.802 3.138 2.19 4.67C2.068 4.788 1.874 4.787 1.755 4.667L0.594 3.497C0.533 3.436 0.5 3.353 0.5 3.268C0.501 3.182 0.536 3.099 0.597 3.039Z" fill="rgba(0,0,0,0.96)"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.833" width="21" height="10.333" rx="3.5" stroke="rgba(0,0,0,0.96)" stroke-opacity="0.35"/><path opacity="0.4" d="M23 4V8C23.805 7.661 24.328 6.873 24.328 6C24.328 5.127 23.805 4.339 23 4" fill="rgba(0,0,0,0.96)"/><rect x="2" y="2.333" width="18" height="7.333" rx="2.3" fill="rgba(0,0,0,0.96)"/></svg>
+          </div>
+        </div>
+
+        <!-- Top Bar with Close -->
+        <div class="top-bar">
+          <button class="close-btn" id="close-btn">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+              <g transform="translate(3.577, 3.577)">
+                <path d="M6.42259 7.6011L11.6667 12.8452L12.8452 11.6667L7.6011 6.42259L12.8452 1.17851L11.6667 0L6.42259 5.24408L1.17851 0L0 1.17851L5.24408 6.42259L0 11.6667L1.17851 12.8452L6.42259 7.6011Z" fill="rgba(0,0,0,0.64)"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Artwork / Illustration -->
+        <div class="artwork">
+          <div class="illustration">
+            <img src="assets/pos-terminal-confirm.png" alt="">
+          </div>
+        </div>
+
+        <!-- Title + Subtitle -->
+        <div class="title-section">
+          <div class="title-text">Confirmado, {{account_owner}}, mais um passo juntos</div>
+          <div class="subtitle-text">Junto com a roxinha, enviamos uma surpresa para celebrar nossa nova parceria.</div>
+        </div>
+
+        <!-- Card: Código de entrega -->
+        <div class="card-section">
+          <div class="card">
+            <div class="card-row-main">
+              <div class="card-row-content">
+                <div class="card-label">Código de entrega</div>
+                <div class="card-value">9827</div>
+              </div>
+              <div class="card-share">
+                <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                  <g transform="translate(1.667, 1.667)">
+                    <path d="M16.6667 3.33333C16.6667 5.17428 15.1743 6.66667 13.3333 6.66667C12.3301 6.66667 11.4304 6.22348 10.8193 5.52222L6.59343 7.63517C6.64142 7.86031 6.66667 8.09387 6.66667 8.33333C6.66667 8.57293 6.64139 8.80662 6.59335 9.03189L10.8191 11.1447C11.4302 10.4433 12.33 10 13.3333 10C15.1743 10 16.6667 11.4924 16.6667 13.3333C16.6667 15.1743 15.1743 16.6667 13.3333 16.6667C11.4924 16.6667 10 15.1743 10 13.3333C10 13.0939 10.0252 12.8603 10.0732 12.6352L5.8473 10.5223C5.23622 11.2235 4.33653 11.6667 3.33333 11.6667C1.49238 11.6667 0 10.1743 0 8.33333C0 6.49238 1.49238 5 3.33333 5C4.33667 5 5.23647 5.44329 5.84757 6.14471L10.0733 4.03184C10.0253 3.80659 10 3.57291 10 3.33333C10 1.49238 11.4924 0 13.3333 0C15.1743 0 16.6667 1.49238 16.6667 3.33333ZM15 3.33333C15 2.41286 14.2538 1.66667 13.3333 1.66667C12.4129 1.66667 11.6667 2.41286 11.6667 3.33333C11.6667 4.25381 12.4129 5 13.3333 5C14.2538 5 15 4.25381 15 3.33333ZM5 8.33333C5 7.41286 4.25381 6.66667 3.33333 6.66667C2.41286 6.66667 1.66667 7.41286 1.66667 8.33333C1.66667 9.25381 2.41286 10 3.33333 10C4.25381 10 5 9.25381 5 8.33333ZM13.3333 15C14.2538 15 15 14.2538 15 13.3333C15 12.4129 14.2538 11.6667 13.3333 11.6667C12.4129 11.6667 11.6667 12.4129 11.6667 13.3333C11.6667 14.2538 12.4129 15 13.3333 15Z" fill="#652590"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-row-info">
+              <div class="card-info-text">Informe o código na entrega ou compartilhe com quem for receber.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="bottom-bar">
+          <button class="btn-primary" id="btn-acompanhar">
+            <span class="btn-primary-label">Acompanhar entrega</span>
+          </button>
+        </div>
+
+        <!-- Share Modal (7.6) -->
+        <div class="share-overlay" id="share-overlay">
+          <div class="share-container">
+            <div class="share-main">
+              <div class="share-header">
+                <div class="share-app-icon">
+                  <img src="assets/icon-nu-app.png" width="40" height="40" style="border-radius:8px;" alt="">
+                </div>
+                <div class="share-header-text">
+                  <div class="share-header-title">Nu Empresas</div>
+                  <div class="share-header-url">nubank.com</div>
+                </div>
+                <button class="share-close" id="share-close">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M1 1L11 11M1 11L11 1" stroke="rgba(60,60,67,0.6)" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="share-divider"></div>
+              <div class="share-apps">
+                <div class="share-app">
+                  <div class="share-app-img"><img src="assets/icon-whatsapp.png" width="60" height="60" style="border-radius:13px;" alt=""></div>
+                  <div class="share-app-name">Whatsapp</div>
+                </div>
+                <div class="share-app">
+                  <div class="share-app-img"><img src="assets/icon-gmail.png" width="60" height="60" style="border-radius:13px;" alt=""></div>
+                  <div class="share-app-name">Gmail</div>
+                </div>
+                <div class="share-app">
+                  <div class="share-app-img"><img src="assets/icon-instagram.png" width="60" height="60" style="border-radius:13px;" alt=""></div>
+                  <div class="share-app-name">Instagram</div>
+                </div>
+                <div class="share-app">
+                  <div class="share-app-img"><img src="assets/icon-messenger.png" width="60" height="60" style="border-radius:13px;" alt=""></div>
+                  <div class="share-app-name">Messenger</div>
+                </div>
+              </div>
+            </div>
+            <button class="share-cancel" id="share-cancel">
+              <span class="share-cancel-text">Cancelar</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('close-btn').addEventListener('click', function() {
+      window.location.href = 'index.html';
+    });
+
+    document.getElementById('btn-acompanhar').addEventListener('click', function() {
+      window.location.href = 'index.html';
+    });
+
+    var shareOverlay = document.getElementById('share-overlay');
+    document.querySelector('.card-share').addEventListener('click', function() {
+      shareOverlay.classList.add('visible');
+    });
+    document.getElementById('share-close').addEventListener('click', function() {
+      shareOverlay.classList.remove('visible');
+    });
+    document.getElementById('share-cancel').addEventListener('click', function() {
+      shareOverlay.classList.remove('visible');
+    });
+    shareOverlay.addEventListener('click', function(e) {
+      if (e.target === shareOverlay) shareOverlay.classList.remove('visible');
+    });
+  </script>
+
+</body>
+</html>

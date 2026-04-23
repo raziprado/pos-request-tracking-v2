@@ -1,0 +1,10 @@
+<svg width="100" height="100" viewBox="0 0 91 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="trailGrad" gradientTransform="rotate(90)">
+    <stop offset="0%" stop-color="#C3B2CA" stop-opacity="0.35"/>
+    <stop offset="50%" stop-color="#C3B2CA" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#C3B2CA" stop-opacity="0.35"/>
+  </linearGradient>
+</defs>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M45.34 13.33C27.66 13.33 13.33 27.66 13.33 45.34C13.33 63.02 27.66 77.35 45.34 77.35C63.02 77.35 77.35 63.02 77.35 45.34C77.35 27.66 63.02 13.33 45.34 13.33ZM0 45.34C0 20.3 20.3 0 45.34 0C70.38 0 90.68 20.3 90.68 45.34C90.68 70.38 70.38 90.68 45.34 90.68C20.3 90.68 0 70.38 0 45.34Z" fill="url(#trailGrad)"/>
+</svg>
