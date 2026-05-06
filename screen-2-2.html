@@ -4,11 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tela 2.2 / 2.3 - CEP</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    button, input, select, textarea { font-family: inherit; }
 
     body {
       display: flex;
@@ -16,7 +56,7 @@
       align-items: center;
       min-height: 100vh;
       background: #F2F2F7;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Graphik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -103,7 +143,7 @@
       width: 375px;
     }
     .title-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 28px;
       line-height: 120%;
@@ -129,7 +169,7 @@
       flex-direction: column;
     }
     .cep-input {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 28px;
       line-height: 120%;
@@ -161,7 +201,7 @@
       display: flex;
     }
     .address-label {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 14px;
       line-height: 130%;
@@ -190,7 +230,7 @@
       justify-content: center;
     }
     .delivery-label {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 400;
       font-size: 14px;
       line-height: 130%;
@@ -276,7 +316,8 @@
     }
     .key-action {
       width: 89px;
-      background: #DADADA;
+      background: transparent;
+      box-shadow: none;
     }
   </style>
 </head>
@@ -359,7 +400,7 @@
               <div class="key key-action" style="visibility: hidden;"></div>
               <div class="key" data-val="0"><span class="key-number">0</span></div>
               <div class="key key-action" id="key-backspace">
-                <svg width="23" height="17" viewBox="0 0 23 17" fill="none"><path d="M8.4 1.2C8.7 0.5 9.4 0 10.2 0H20.8C21.9 0 22.8 0.9 22.8 2V15C22.8 16.1 21.9 17 20.8 17H10.2C9.4 17 8.7 16.5 8.4 15.8L0 8.5L8.4 1.2Z" fill="#DADADA"/><path d="M17.3 5.3L15.9 3.9L13.4 6.4L10.9 3.9L9.5 5.3L12 7.8L9.5 10.3L10.9 11.7L13.4 9.2L15.9 11.7L17.3 10.3L14.8 7.8L17.3 5.3Z" fill="#030303"/></svg>
+                <svg width="23" height="17" viewBox="0 0 23 17" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.2745 7.52989e-06C21.3307 0.00276203 22.9973 1.66936 23.0001 3.72559V13.2754C22.9973 15.3316 21.3307 16.9982 19.2745 17.001H9.69439C8.53076 17.0045 7.4137 16.5416 6.59381 15.7158L0.438533 9.56055C-0.146173 8.97493 -0.146183 8.02606 0.438533 7.44044L6.59869 1.28516C7.41737 0.460664 8.53249 -0.00215291 9.69439 7.52989e-06H19.2745ZM9.69439 1.50001C8.92927 1.49949 8.19506 1.8034 7.65435 2.34473L1.49908 8.50098L7.65924 14.6563C8.19872 15.1964 8.93097 15.5002 9.69439 15.501H19.2745C20.5034 15.501 21.5001 14.5043 21.5001 13.2754V3.72559C21.5001 3.13546 21.266 2.56867 20.8487 2.15137C20.4314 1.73413 19.8646 1.50001 19.2745 1.50001H9.69439ZM10.6905 4.72071C10.9215 4.66659 11.1632 4.74794 11.3145 4.93067L13.9991 7.62012L16.6846 4.93067C16.9283 4.68916 17.3209 4.68916 17.5645 4.93067C17.682 5.04793 17.7481 5.20705 17.7481 5.37305C17.748 5.539 17.682 5.69824 17.5645 5.81544L14.8799 8.50001L17.5645 11.1856C17.7702 11.434 17.7535 11.7983 17.5254 12.0264C17.2974 12.2544 16.933 12.2711 16.6846 12.0654L13.9991 9.38087L11.3145 12.0654C11.1632 12.2482 10.9215 12.3295 10.6905 12.2754C10.4594 12.2212 10.2789 12.0406 10.2247 11.8096C10.1705 11.5786 10.2519 11.3369 10.4346 11.1856L13.1192 8.50001L10.4346 5.81055C10.2519 5.65928 10.1706 5.41746 10.2247 5.18653C10.2789 4.95549 10.4594 4.77494 10.6905 4.72071Z" fill="#030303"/></svg>
               </div>
             </div>
           </div>

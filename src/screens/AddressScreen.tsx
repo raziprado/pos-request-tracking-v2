@@ -5,6 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SvgScreen, Hotspot, Mask } from '../components/SvgScreen';
 import { RootStackParamList } from '../navigation/PosRequestNavigator';
 import { useScreenWidth } from '../context/ScreenWidthContext';
+import { useFlow } from '../context/FlowContext';
 
 import Svg2_1 from '../../assets/screens/Screen2_1.svg';
 
@@ -16,7 +17,8 @@ const RADIO_2 = { cx: 36, cy: 399.5, r: 6 };
 
 export function AddressScreen() {
   const nav = useNavigation<Nav>();
-  const [selected, setSelected] = useState(0);
+  const { selectedAddress, setSelectedAddress } = useFlow();
+  const [selected, setSelected] = useState(selectedAddress);
   const deviceWidth = useScreenWidth();
   const scale = deviceWidth / DESIGN_WIDTH;
 
@@ -26,8 +28,8 @@ export function AddressScreen() {
 
   const hotspots: Hotspot[] = [
     { x: 12, y: 52, width: 48, height: 48, onPress: () => nav.goBack() },
-    { x: 24, y: 204, width: 300, height: 93, onPress: () => setSelected(0) },
-    { x: 24, y: 353, width: 300, height: 93, onPress: () => setSelected(1) },
+    { x: 24, y: 204, width: 300, height: 93, onPress: () => { setSelected(0); setSelectedAddress(0); } },
+    { x: 24, y: 353, width: 300, height: 93, onPress: () => { setSelected(1); setSelectedAddress(1); } },
     { x: 320, y: 225, width: 48, height: 48, onPress: () => nav.navigate('NewAddress_2_5') },
     { x: 320, y: 375, width: 48, height: 48, onPress: () => nav.navigate('NewAddress_2_5') },
     { x: 24, y: 510, width: 250, height: 40, onPress: () => nav.navigate('NewAddress_2_2') },

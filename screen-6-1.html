@@ -4,11 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tela 6.1 - Revise seu pedido</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    button, input, select, textarea { font-family: inherit; }
 
     body {
       display: flex;
@@ -16,7 +56,7 @@
       align-items: center;
       min-height: 100vh;
       background: #F2F2F7;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Graphik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -304,7 +344,7 @@
       width: 327px;
     }
     .footnote a {
-      color: #820AD1;
+      color: #652590;
       text-decoration: none;
     }
 
@@ -376,7 +416,7 @@
       color: rgba(0, 0, 0, 0.64);
     }
     .edit-field-input {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 16px;
       line-height: 150%;
@@ -873,33 +913,16 @@
               <div class="row-divider"></div>
             </div>
 
-            <!-- Row 5: Código de entrega (75px) with toggle -->
+            <!-- Row 5: Código de entrega with toggle -->
             <div class="list-row">
               <div class="list-row-content-standard">
                 <div class="row-content">
                   <div class="row-primary-label">Código de entrega</div>
-                  <div class="row-description-dim" id="codigo-desc">Sem código</div>
+                  <div class="row-description" id="codigo-desc" style="display:none;"></div>
                 </div>
                 <div class="toggle" id="toggle-code">
                   <div class="toggle-bg" id="toggle-bg"></div>
                   <div class="toggle-knob" id="toggle-knob"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Row 6: Qualquer pessoa pode receber (compact) -->
-            <div class="list-row" id="row-receber">
-              <div class="list-row-content-compact">
-                <div class="row-leading-icon" id="lock-icon">
-                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
-                    <g transform="translate(3.333, 1.667)">
-                      <path d="M5.83333 12.5L5.83333 10.8333H7.5V12.5H5.83333Z" fill="rgba(0,0,0,0.96)"/>
-                      <path d="M4.16667 4.16667V6.66667H13.3333V13.3333C13.3333 15.1743 11.8409 16.6667 10 16.6667H3.33333C1.49238 16.6667 0 15.1743 0 13.3333V6.66667H2.5V4.16667C2.5 1.90439 4.36006 0 6.66667 0C8.97327 0 10.8333 1.90439 10.8333 4.16667H9.16667C9.16667 2.81399 8.04196 1.66667 6.66667 1.66667C5.29138 1.66667 4.16667 2.81399 4.16667 4.16667ZM10 15C10.9205 15 11.6667 14.2538 11.6667 13.3333V8.33333H1.66667V13.3333C1.66667 14.2538 2.41286 15 3.33333 15H10Z" fill="rgba(0,0,0,0.96)"/>
-                    </g>
-                  </svg>
-                </div>
-                <div class="row-content">
-                  <div class="row-primary-label" id="receber-label">Qualquer pessoa pode receber</div>
                 </div>
               </div>
             </div>
@@ -1108,36 +1131,44 @@
   </div>
 
   <script>
+    (function loadSavedAddress() {
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem('pos-selected-address')); } catch(e) {}
+      if (saved && saved.label) {
+        var street = saved.label;
+        var neighborhood = saved.desc || '';
+        neighborhood = neighborhood.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]*>/g, '').trim();
+        var full = street + (neighborhood ? ' ' + neighborhood : '');
+        document.getElementById('endereco-desc').textContent = full;
+
+        var streetParts = street.match(/^(.+?),?\s*(\d+\S*)?\s*$/);
+        var streetName = streetParts ? streetParts[1] : street;
+        var numero = streetParts && streetParts[2] ? streetParts[2] : '';
+
+        document.getElementById('edit-endereco').value = streetName;
+        document.getElementById('edit-numero').value = numero;
+        document.getElementById('edit-complemento').value = '';
+      }
+    })();
+
     document.getElementById('btn-back').addEventListener('click', function() {
       window.location.href = 'screen-5-1.html';
     });
 
-    // Toggle: Código de entrega (6.1 <-> 6.2)
     var toggleCode = document.getElementById('toggle-code');
     var codigoDesc = document.getElementById('codigo-desc');
-    var lockIcon = document.getElementById('lock-icon');
-    var receberLabel = document.getElementById('receber-label');
     var toggleOn = false;
-
-    var lockOpenSvg = '<svg width="24" height="24" viewBox="0 0 20 20" fill="none"><g transform="translate(3.333, 1.667)"><path d="M5.83333 12.5L5.83333 10.8333H7.5V12.5H5.83333Z" fill="rgba(0,0,0,0.96)"/><path d="M4.16667 4.16667V6.66667H13.3333V13.3333C13.3333 15.1743 11.8409 16.6667 10 16.6667H3.33333C1.49238 16.6667 0 15.1743 0 13.3333V6.66667H2.5V4.16667C2.5 1.90439 4.36006 0 6.66667 0C8.97327 0 10.8333 1.90439 10.8333 4.16667H9.16667C9.16667 2.81399 8.04196 1.66667 6.66667 1.66667C5.29138 1.66667 4.16667 2.81399 4.16667 4.16667ZM10 15C10.9205 15 11.6667 14.2538 11.6667 13.3333V8.33333H1.66667V13.3333C1.66667 14.2538 2.41286 15 3.33333 15H10Z" fill="rgba(0,0,0,0.96)"/></g></svg>';
-    var lockClosedSvg = '<svg width="24" height="24" viewBox="0 0 20 20" fill="none"><g transform="translate(3.333, 1.667)"><path d="M5.83333 12.5L5.83333 10.8333H7.5V12.5H5.83333Z" fill="rgba(0,0,0,0.96)"/><path d="M10.8333 6.66667H13.3333V13.3333C13.3333 15.1743 11.8409 16.6667 10 16.6667H3.33333C1.49238 16.6667 0 15.1743 0 13.3333V6.66667H2.5V4.16667C2.5 1.90439 4.36006 0 6.66667 0C8.97327 0 10.8333 1.90439 10.8333 4.16667V6.66667ZM4.16667 4.16667V6.66667H9.16667V4.16667C9.16667 2.81399 8.04196 1.66667 6.66667 1.66667C5.29138 1.66667 4.16667 2.81399 4.16667 4.16667ZM10 15C10.9205 15 11.6667 14.2538 11.6667 13.3333V8.33333H1.66667V13.3333C1.66667 14.2538 2.41286 15 3.33333 15H10Z" fill="rgba(0,0,0,0.96)"/></g></svg>';
 
     toggleCode.addEventListener('click', function() {
       toggleOn = !toggleOn;
       if (toggleOn) {
         toggleCode.classList.add('on');
-        codigoDesc.textContent = 'Exigir código na entrega';
-        codigoDesc.style.fontWeight = '500';
-        codigoDesc.style.color = 'rgba(0, 0, 0, 0.96)';
-        lockIcon.innerHTML = lockClosedSvg;
-        receberLabel.textContent = 'Quem tiver o código pode receber. Ele é gerado ao confirmar o pedido.';
+        codigoDesc.textContent = 'Código gerado ao confirmar o pedido';
+        codigoDesc.style.display = '';
       } else {
         toggleCode.classList.remove('on');
-        codigoDesc.textContent = 'Sem código';
-        codigoDesc.style.fontWeight = '';
-        codigoDesc.style.color = '';
-        lockIcon.innerHTML = lockOpenSvg;
-        receberLabel.textContent = 'Qualquer pessoa pode receber';
+        codigoDesc.textContent = '';
+        codigoDesc.style.display = 'none';
       }
     });
 
@@ -1202,10 +1233,14 @@
 
     editBtnSalvar.addEventListener('click', function() {
       if (!editBtnSalvar.classList.contains('enabled')) return;
-      var addr = 'Rua Capote Valente';
+      var streetName = document.getElementById('edit-endereco').value;
+      var addr = streetName;
       if (editNumero.value) addr += ', ' + editNumero.value;
       if (editComplemento.value) addr += ' ' + editComplemento.value;
-      addr += ' Pinheiros, São Paulo - SP';
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem('pos-selected-address')); } catch(e) {}
+      var neighborhood = (saved && saved.desc) ? saved.desc.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]*>/g, '').trim() : 'Pinheiros, São Paulo - SP';
+      addr += ' ' + neighborhood;
       enderecoDesc.textContent = addr;
       originalNumero = editNumero.value;
       originalComplemento = editComplemento.value;
@@ -1371,8 +1406,13 @@
       payOverlay.classList.remove('visible');
     });
 
-    // Navigate to password / loading screens
     document.getElementById('btn-confirmar').addEventListener('click', function() {
+      localStorage.setItem('deliveryCode', toggleOn ? 'on' : 'off');
+      var fullAddr = enderecoDesc.textContent.trim();
+      var parts = fullAddr.match(/^(.+?)\s+(Pinheiros.*)$/);
+      var label = parts ? parts[1] : fullAddr;
+      var desc = parts ? parts[2] : '';
+      localStorage.setItem('pos-selected-address', JSON.stringify({ label: label, desc: desc }));
       window.location.href = 'screen-7-1.html';
     });
   </script>

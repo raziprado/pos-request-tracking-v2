@@ -4,11 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tela 2.1 - Onde receber a roxinha</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    button, input, select, textarea { font-family: inherit; }
 
     body {
       display: flex;
@@ -16,7 +56,7 @@
       align-items: center;
       min-height: 100vh;
       background: #F2F2F7;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Graphik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -135,7 +175,7 @@
       width: 375px;
     }
     .title-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 28px;
       line-height: 120%;
@@ -210,7 +250,7 @@
       flex: 1;
     }
     .primary-label {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 16px;
       line-height: 130%;
@@ -218,7 +258,7 @@
       color: rgba(0, 0, 0, 0.96);
     }
     .description-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 400;
       font-size: 14px;
       line-height: 150%;
@@ -255,7 +295,7 @@
       justify-content: center;
     }
     .delivery-label {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 400;
       font-size: 14px;
       line-height: 130%;
@@ -275,7 +315,7 @@
       cursor: pointer;
     }
     .btn-ghost span {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 16px;
       line-height: 130%;
@@ -307,7 +347,7 @@
       padding: 12px 24px;
     }
     .btn-primary span {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 16px;
       line-height: 130%;
@@ -430,6 +470,17 @@
         b.classList.remove('selected');
       });
       block.classList.add('selected');
+
+      var label = block.querySelector('.primary-label').textContent;
+      var desc = block.querySelector('.description-text').innerHTML;
+      localStorage.setItem('pos-selected-address', JSON.stringify({ label: label, desc: desc }));
+    }
+
+    var defaultBlock = document.querySelector('.address-block.selected');
+    if (defaultBlock) {
+      var label = defaultBlock.querySelector('.primary-label').textContent;
+      var desc = defaultBlock.querySelector('.description-text').innerHTML;
+      localStorage.setItem('pos-selected-address', JSON.stringify({ label: label, desc: desc }));
     }
 
     document.querySelector('.back-button').addEventListener('click', function() {

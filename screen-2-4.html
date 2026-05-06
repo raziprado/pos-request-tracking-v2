@@ -4,11 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tela 2.4 - Endereço</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    button, input, select, textarea { font-family: inherit; }
 
     body {
       display: flex;
@@ -16,7 +56,7 @@
       align-items: center;
       min-height: 100vh;
       background: #F2F2F7;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Graphik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -103,7 +143,7 @@
       width: 375px;
     }
     .title-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 28px;
       line-height: 120%;
@@ -129,7 +169,7 @@
       width: 327px;
     }
     .input-label {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 14px;
       line-height: 130%;
@@ -137,7 +177,7 @@
       color: rgba(0, 0, 0, 0.64);
     }
     .input-value {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 20px;
       line-height: 120%;
@@ -180,7 +220,7 @@
       transition: background 0.2s;
     }
     .next-btn.enabled {
-      background: #652590;
+      background: #714F8F;
     }
   </style>
 </head>

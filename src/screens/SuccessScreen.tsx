@@ -36,7 +36,7 @@ export function SuccessScreen() {
 
   const hotspots: Hotspot[] = [
     { x: 296, y: 530, width: 36, height: 36, onPress: () => setShareVisible(true) },
-    { x: 24, y: 748, width: 327, height: 48, onPress: () => nav.popToTop() },
+    { x: 24, y: 748, width: 327, height: 48, onPress: () => nav.navigate('Tracking') },
   ];
 
   const shareMasks: Mask[] = ICONS.map((ic) => ({

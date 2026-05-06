@@ -4,11 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tela 4.1 - Quantidade de máquinas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    button, input, select, textarea { font-family: inherit; }
 
     body {
       display: flex;
@@ -16,7 +56,7 @@
       align-items: center;
       min-height: 100vh;
       background: #F2F2F7;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Graphik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -110,7 +150,7 @@
       width: 375px;
     }
     .title-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 28px;
       line-height: 120%;
@@ -119,7 +159,7 @@
       width: 327px;
     }
     .subtitle-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 400;
       font-size: 18px;
       line-height: 130%;
@@ -183,7 +223,7 @@
       align-items: center;
     }
     .qty-value {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 28px;
       line-height: 120%;
@@ -210,7 +250,7 @@
       display: block;
     }
     .list-title-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 14px;
       line-height: 130%;
@@ -250,7 +290,7 @@
       height: 55px;
     }
     .tile-title {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 16px;
       line-height: 130%;
@@ -262,7 +302,7 @@
       color: #652590;
     }
     .tile-desc {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 400;
       font-size: 12px;
       line-height: 130%;
@@ -278,7 +318,7 @@
       margin: 24px auto 0;
     }
     .callout-title {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 16px;
       line-height: 130%;
@@ -286,7 +326,7 @@
       color: rgba(0, 0, 0, 0.96);
     }
     .callout-desc {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 400;
       font-size: 14px;
       line-height: 150%;
@@ -302,7 +342,7 @@
       cursor: pointer;
     }
     .callout-link-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 14px;
       line-height: 130%;
@@ -338,7 +378,7 @@
       border-radius: 8px;
     }
     .tooltip-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 14px;
       line-height: 130%;
@@ -365,13 +405,150 @@
       background: #714F8F;
       border-radius: 64px;
       border: none;
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 16px;
       line-height: 130%;
       letter-spacing: -0.16px;
       color: #FFFFFF;
       cursor: pointer;
+    }
+
+    .bs-overlay {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 375px;
+      height: 812px;
+      background: rgba(0, 0, 0, 0.64);
+      z-index: 100;
+    }
+    .bs-overlay.visible { display: block; }
+    .bs-tray {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 545px;
+      background: #FFFFFF;
+      border-radius: 16px 16px 0 0;
+      overflow-y: auto;
+    }
+    .bs-header {
+      display: flex;
+      align-items: center;
+      padding: 24px 24px 0;
+      height: 56px;
+    }
+    .bs-close {
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bs-snapshot {
+      padding: 32px 24px 0;
+    }
+    .bs-snapshot-title {
+      font-family: 'Graphik', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .bs-snapshot-desc {
+      font-family: 'Graphik', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.96);
+      margin-top: 8px;
+    }
+    .bs-bar-chart {
+      display: flex;
+      width: 327px;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 16px;
+      margin-bottom: 12px;
+      gap: 2px;
+    }
+    .bs-bar-segment { flex: 1; height: 8px; }
+    .bs-tiles-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 375px;
+      height: 87px;
+      padding: 0 24px;
+    }
+    .bs-tile {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 16px 12px;
+      height: 87px;
+      background: #FFFFFF;
+      border: 2px solid #EFEFEF;
+      border-radius: 16px;
+      flex: 1;
+      min-width: 0;
+    }
+    .bs-tile-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      width: 100%;
+      height: 55px;
+    }
+    .bs-tile-title {
+      font-family: 'Graphik', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+      height: 21px;
+    }
+    .bs-tile-desc {
+      font-family: 'Graphik', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 130%;
+      color: rgba(0, 0, 0, 0.64);
+      height: 32px;
+    }
+    .bs-section {
+      padding: 0 24px;
+    }
+    .bs-section-title {
+      font-family: 'Graphik', -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.96);
+      margin-top: 16px;
+    }
+    .bs-section-text {
+      font-family: 'Graphik', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.4px;
+      color: rgba(0, 0, 0, 0.64);
+      margin-top: 4px;
     }
   </style>
 </head>
@@ -464,6 +641,54 @@
           <button class="btn-primary" id="btn-continuar">Continuar</button>
         </div>
 
+        <div class="bs-overlay" id="bs-overlay">
+          <div class="bs-tray">
+            <div class="bs-header">
+              <button class="bs-close" id="bs-close">
+                <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                  <g transform="translate(3.577, 3.577)">
+                    <path d="M6.42259 7.6011L11.6667 12.8452L12.8452 11.6667L7.6011 6.42259L12.8452 1.17851L11.6667 0L6.42259 5.24408L1.17851 0L0 1.17851L5.24408 6.42259L0 11.6667L1.17851 12.8452L6.42259 7.6011Z" fill="rgba(0,0,0,0.64)"/>
+                  </g>
+                </svg>
+              </button>
+            </div>
+            <div class="bs-snapshot">
+              <div class="bs-snapshot-title">Venda mais, pague menos</div>
+              <div class="bs-snapshot-desc">Sua mensalidade se ajusta ao quanto você vende todo mês.</div>
+              <div class="bs-bar-chart">
+                <div class="bs-bar-segment" style="background: #EADBF1;"></div>
+                <div class="bs-bar-segment" style="background: #A087AE;"></div>
+                <div class="bs-bar-segment" style="background: #714F8F;"></div>
+              </div>
+            </div>
+            <div class="bs-tiles-row">
+              <div class="bs-tile">
+                <div class="bs-tile-content">
+                  <div class="bs-tile-title">R$60</div>
+                  <div class="bs-tile-desc">Até R$ 5 mil em vendas</div>
+                </div>
+              </div>
+              <div class="bs-tile">
+                <div class="bs-tile-content">
+                  <div class="bs-tile-title">R$30</div>
+                  <div class="bs-tile-desc">De R$ 5 mil a R$ 10 mil</div>
+                </div>
+              </div>
+              <div class="bs-tile">
+                <div class="bs-tile-content">
+                  <div class="bs-tile-title">Grátis</div>
+                  <div class="bs-tile-desc">A partir de R$ 10 mil</div>
+                </div>
+              </div>
+            </div>
+            <div class="bs-section">
+              <div class="bs-section-title">Vencimento e cobrança</div>
+              <div class="bs-section-text">A primeira mensalidade vence 30 dias depois de ativar a roxinha. Ou seja, você tem esse tempo todo para vender, bater os R$ {{10 mil}} e pagar R$ 0. Sem pegadinhas. Bateu a meta? É mensalidade grátis.</div>
+              <div class="bs-section-text" style="margin-top: 16px;">As próximas cobranças acontecem de acordo com a forma de pagamento escolhida e também levam em consideração o seu volume de vendas mensal.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -553,6 +778,20 @@
 
     document.getElementById('btn-back').addEventListener('click', function() {
       window.location.href = 'screen-3-2.html';
+    });
+
+    document.querySelector('.callout-link').addEventListener('click', function() {
+      document.getElementById('bs-overlay').classList.add('visible');
+    });
+
+    document.getElementById('bs-close').addEventListener('click', function() {
+      document.getElementById('bs-overlay').classList.remove('visible');
+    });
+
+    document.getElementById('bs-overlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('visible');
+      }
     });
   </script>
 

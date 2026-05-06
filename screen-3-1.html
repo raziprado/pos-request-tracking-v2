@@ -4,11 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tela 3.1 - Dia da entrega</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Graphik';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GraphikText';
+      src: url('assets/fonts/Graphik-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    button, input, select, textarea { font-family: inherit; }
 
     body {
       display: flex;
@@ -16,7 +56,7 @@
       align-items: center;
       min-height: 100vh;
       background: #F2F2F7;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Graphik', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -105,12 +145,19 @@
       border-radius: 64px;
     }
 
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      width: 375px;
+    }
     .title-section {
-      padding: 8px 24px 24px;
+      padding: 8px 24px 0;
       width: 375px;
     }
     .title-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 28px;
       line-height: 120%;
@@ -119,7 +166,7 @@
       width: 327px;
     }
     .subtitle-text {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 400;
       font-size: 18px;
       line-height: 130%;
@@ -129,97 +176,93 @@
       margin-top: 8px;
     }
 
-    .content-area {
+    .list-row {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 24px;
+      align-items: flex-start;
       width: 375px;
-    }
-
-    .tiles-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: 375px;
-      padding: 0 24px;
-    }
-    .tiles-row {
-      display: flex;
-      gap: 8px;
-      width: 327px;
-    }
-    .tile {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 16px;
-      width: 159.5px;
-      height: 108px;
       background: #FFFFFF;
-      border: 2px solid #EFEFEF;
-      border-radius: 16px;
-      cursor: pointer;
-      flex: 1;
-      transition: border-color 0.15s;
     }
-    .tile.selected {
-      border-color: #714F8F;
-      background: #F8F6F9;
+    .list-row-divider {
+      width: 375px;
+      height: 1px;
+      background: #EFEFEF;
     }
-    .tile.selected .tile-icon img {
-      filter: url(#purple-icon-filter);
+    .list-row-content {
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 16px;
+      width: 375px;
+      height: 56px;
     }
-    .tile.selected .tile-title {
-      color: #652590;
-    }
-    .tile.selected .tile-desc {
-      color: #652590;
-    }
-    .tile-icon {
+    .checkbox {
       width: 24px;
       height: 24px;
+      border: 2px solid #6A6A6A;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s, border-color 0.15s;
     }
-    .tile-bottom {}
-    .tile-title {
-      font-family: 'Inter', -apple-system, sans-serif;
+    .checkbox.checked {
+      background: #714F8F;
+      border-color: #714F8F;
+    }
+    .checkbox.checked svg {
+      display: block;
+    }
+    .checkbox svg {
+      display: none;
+    }
+    .list-row-label {
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 130%;
-      letter-spacing: -0.14px;
+      letter-spacing: -0.16px;
       color: rgba(0, 0, 0, 0.96);
     }
-    .tile-desc {
-      font-family: 'Inter', -apple-system, sans-serif;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 130%;
-      color: rgba(0, 0, 0, 0.64);
-      margin-top: 2px;
-    }
 
-    .callout-box {
-      width: 327px;
-      background: #EFEFEF;
-      border-radius: 16px;
-      padding: 20px;
+    .data-select {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      width: 375px;
+      height: 48px;
     }
-    .callout-title {
-      font-family: 'Inter', -apple-system, sans-serif;
+    .day-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 64px;
+      border: 2px solid rgba(0, 0, 0, 0.08);
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .day-item.selected {
+      background: #F8F6F9;
+      border-color: #714F8F;
+    }
+    .day-item-label {
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
-      font-size: 14px;
-      line-height: 150%;
-      letter-spacing: -0.14px;
-      color: rgba(0, 0, 0, 0.64);
+      font-size: 20px;
+      line-height: 120%;
+      letter-spacing: -0.4px;
+      color: rgba(0, 0, 0, 0.96);
+      text-align: center;
+      transition: color 0.15s;
     }
-    .callout-desc {
-      font-family: 'Inter', -apple-system, sans-serif;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 150%;
-      letter-spacing: -0.14px;
-      color: rgba(0, 0, 0, 0.64);
-      margin-top: 4px;
+    .day-item.selected .day-item-label {
+      color: #652590;
     }
 
     .bottom-bar {
@@ -227,61 +270,52 @@
       left: 0;
       right: 0;
       bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
       height: 80px;
+    }
+    .btn-primary {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 16px 24px;
-      background: #FFFFFF;
-    }
-    .btn-primary {
       width: 327px;
       height: 48px;
-      background: #EFEFEF;
+      background: #714F8F;
       border-radius: 64px;
       border: none;
-      font-family: 'Inter', -apple-system, sans-serif;
+      cursor: pointer;
+    }
+    .btn-primary-label {
+      font-family: 'Graphik', -apple-system, sans-serif;
       font-weight: 500;
       font-size: 16px;
       line-height: 130%;
       letter-spacing: -0.16px;
-      color: rgba(0, 0, 0, 0.32);
-      cursor: default;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-primary.enabled {
-      background: #714F8F;
       color: #FFFFFF;
-      cursor: pointer;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <svg style="position:absolute;width:0;height:0;">
-    <defs>
-      <filter id="purple-icon-filter" color-interpolation-filters="sRGB">
-        <feComponentTransfer>
-          <feFuncA type="linear" slope="2.5" intercept="0"/>
-        </feComponentTransfer>
-        <feColorMatrix type="matrix" values="0 0 0 0 0.396  0 0 0 0 0.145  0 0 0 0 0.565  0 0 0 1 0"/>
-      </filter>
-    </defs>
-  </svg>
-
   <div class="iphone-frame">
     <div class="iphone-screen">
       <div class="screen">
 
+        <!-- Status Bar -->
         <div class="status-bar">
           <div class="status-bar-time">11:08</div>
           <div class="status-bar-icons">
             <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><path d="M2 6.667C2.552 6.667 3 7.115 3 7.667V9.667C3 10.219 2.552 10.667 2 10.667H1C0.448 10.667 0 10.219 0 9.667V7.667C0 7.115 0.448 6.667 1 6.667H2ZM6.667 4.667C7.219 4.667 7.667 5.115 7.667 5.667V9.667C7.667 10.219 7.219 10.667 6.667 10.667H5.667C5.115 10.667 4.667 10.219 4.667 9.667V5.667C4.667 5.115 5.115 4.667 5.667 4.667H6.667ZM11.333 2.333C11.885 2.333 12.333 2.781 12.333 3.333V9.667C12.333 10.219 11.885 10.667 11.333 10.667H10.333C9.781 10.667 9.333 10.219 9.333 9.667V3.333C9.333 2.781 9.781 2.333 10.333 2.333H11.333ZM16 0C16.552 0 17 0.448 17 1V9.667C17 10.219 16.552 10.667 16 10.667H15C14.448 10.667 14 10.219 14 9.667V1C14 0.448 14.448 0 15 0H16Z" fill="rgba(0,0,0,0.96)"/></svg>
-            <svg width="15" height="11" viewBox="0 0 15.334 11" fill="none"><path d="M5.949 8.427C7.229 7.344 9.106 7.344 10.386 8.427C10.45 8.485 10.488 8.568 10.489 8.654C10.491 8.741 10.456 8.824 10.395 8.885L8.39 10.907C8.331 10.967 8.251 11 8.167 11C8.083 11 8.003 10.967 7.944 10.907L5.939 8.885C5.877 8.824 5.843 8.741 5.845 8.654C5.847 8.568 5.884 8.485 5.948 8.427ZM3.273 5.73C6.032 3.165 10.304 3.165 13.064 5.73C13.126 5.79 13.161 5.872 13.162 5.959C13.163 6.045 13.129 6.128 13.068 6.19L11.909 7.36C11.79 7.48 11.597 7.482 11.475 7.365C10.569 6.546 9.389 6.092 8.167 6.092C6.946 6.092 5.768 6.546 4.862 7.365C4.74 7.482 4.546 7.48 4.427 7.36L3.269 6.19C3.208 6.128 3.173 6.045 3.174 5.959C3.175 5.872 3.21 5.79 3.273 5.73ZM0.597 3.039C4.829 -1.013 11.504 -1.013 15.736 3.039C15.798 3.099 15.833 3.182 15.833 3.268C15.833 3.353 15.8 3.436 15.739 3.497L14.579 4.667C14.46 4.787 14.265 4.788 14.144 4.67C12.531 3.138 10.392 2.284 8.167 2.284C5.942 2.284 3.802 3.138 2.19 4.67C2.068 4.788 1.874 4.787 1.755 4.667L0.594 3.497C0.533 3.436 0.5 3.353 0.5 3.268C0.501 3.182 0.536 3.099 0.597 3.039Z" fill="rgba(0,0,0,0.96)"/></svg>
+            <svg width="15" height="11" viewBox="0 0 15.334 11" fill="none"><path d="M5.949 8.427C7.229 7.344 9.106 7.344 10.386 8.427C10.45 8.485 10.488 8.568 10.489 8.654C10.491 8.741 10.456 8.824 10.395 8.885L8.39 10.907C8.331 10.967 8.251 11 8.167 11C8.083 11 8.003 10.967 7.944 10.907L5.939 8.885C5.877 8.824 5.843 8.741 5.845 8.654C5.847 8.568 5.884 8.485 5.948 8.427ZM3.273 5.73C6.032 3.165 10.304 3.165 13.064 5.73C13.126 5.79 13.161 5.872 13.162 5.959C13.163 6.045 13.129 6.128 13.068 6.19L11.909 7.36C11.79 7.48 11.597 7.482 11.475 7.365C10.569 6.546 9.389 6.092 8.167 6.092C6.946 6.092 5.768 6.546 4.862 7.365C4.74 7.482 4.546 7.48 4.427 7.36L3.269 6.19C3.208 6.128 3.173 6.045 3.174 5.959C3.175 5.872 3.21 5.79 3.273 5.73ZM0.597 3.039C4.829 -1.013 11.504 -1.013 15.736 3.039C15.798 3.099 15.833 3.182 15.833 3.268C15.833 3.353 15.8 3.436 15.739 3.497L14.579 4.667C14.46 4.787 14.265 4.788 14.144 4.67C12.531 3.138 10.392 2.284 8.167 2.284C5.942 2.284 3.802 3.138 2.19 4.67C2.068 4.788 1.874 4.787 1.755 4.667L0.594 3.497C0.533 3.436 0.5 3.353 0.5 3.268C0.5 3.182 0.535 3.099 0.597 3.039Z" fill="rgba(0,0,0,0.96)"/></svg>
             <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.833" width="21" height="10.333" rx="3.5" stroke="rgba(0,0,0,0.96)" stroke-opacity="0.35"/><path opacity="0.4" d="M23 4V8C23.805 7.661 24.328 6.873 24.328 6C24.328 5.127 23.805 4.339 23 4" fill="rgba(0,0,0,0.96)"/><rect x="2" y="2.333" width="18" height="7.333" rx="2.3" fill="rgba(0,0,0,0.96)"/></svg>
           </div>
         </div>
 
+        <!-- Top Bar -->
         <div class="top-bar">
           <button class="back-button" id="btn-back">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="rgba(0,0,0,0.64)"/></svg>
@@ -291,67 +325,54 @@
           </div>
         </div>
 
-        <div class="title-section">
-          <div class="title-text">Quais são os dias que podemos entregar?</div>
-          <div class="subtitle-text">Entregamos de segunda a sábado, em horário comercial.</div>
-        </div>
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
 
-        <div class="content-area">
-          <div class="tiles-grid">
-            <div class="tiles-row">
-              <!-- Manhã -->
-              <div class="tile" data-tile="manha">
-                <div class="tile-icon">
-                  <img src="assets/icon-coffee.png" alt="Manhã" width="24" height="24">
-                </div>
-                <div class="tile-bottom">
-                  <div class="tile-title">Manhã</div>
-                  <div class="tile-desc">9h - 12h</div>
-                </div>
-              </div>
-              <!-- Tarde -->
-              <div class="tile" data-tile="tarde">
-                <div class="tile-icon">
-                  <img src="assets/icon-sun.png" alt="Tarde" width="24" height="24">
-                </div>
-                <div class="tile-bottom">
-                  <div class="tile-title">Tarde</div>
-                  <div class="tile-desc">12h - 15h</div>
-                </div>
-              </div>
+          <!-- Title Section -->
+          <div class="title-section">
+            <div class="title-text">Quais são os dias que podemos entregar?</div>
+            <div class="subtitle-text">Selecione os dias da semana que uma pessoa estará presente para receber.</div>
+          </div>
+
+          <!-- Data Select - Days -->
+          <div class="data-select">
+            <div class="day-item" data-day="seg">
+              <span class="day-item-label">Seg</span>
             </div>
-            <div class="tiles-row">
-              <!-- Final da tarde -->
-              <div class="tile" data-tile="finaltarde">
-                <div class="tile-icon">
-                  <img src="assets/icon-sunset.png" alt="Final da tarde" width="24" height="24">
-                </div>
-                <div class="tile-bottom">
-                  <div class="tile-title">Final da tarde</div>
-                  <div class="tile-desc">15h - 18h</div>
-                </div>
-              </div>
-              <!-- Dia todo -->
-              <div class="tile" data-tile="diatodo">
-                <div class="tile-icon">
-                  <img src="assets/icon-history.png" alt="Dia todo" width="24" height="24">
-                </div>
-                <div class="tile-bottom">
-                  <div class="tile-title">Dia todo</div>
-                  <div class="tile-desc">9h - 18h</div>
-                </div>
-              </div>
+            <div class="day-item selected" data-day="ter">
+              <span class="day-item-label">Ter</span>
+            </div>
+            <div class="day-item selected" data-day="qua">
+              <span class="day-item-label">Qua</span>
+            </div>
+            <div class="day-item selected" data-day="qui">
+              <span class="day-item-label">Qui</span>
+            </div>
+            <div class="day-item selected" data-day="sex">
+              <span class="day-item-label">Sex</span>
+            </div>
+            <div class="day-item" data-day="sab">
+              <span class="day-item-label">Sáb</span>
             </div>
           </div>
 
-          <div class="callout-box">
-            <div class="callout-title">Código de entrega opcional</div>
-            <div class="callout-desc">Nas próximas etapas você escolhe se quer usar um código para confirmar o recebimento.</div>
+          <!-- List Row - Selecionar todos -->
+          <div class="list-row">
+            <div class="list-row-content">
+              <div class="checkbox" id="checkbox-all">
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="list-row-label">Selecionar todos</span>
+            </div>
           </div>
-        </div>
 
+        </div><!-- end content-wrapper -->
+
+        <!-- Bottom Bar -->
         <div class="bottom-bar">
-          <button class="btn-primary" id="btn-selecionar">Selecione um horário</button>
+          <button class="btn-primary" id="btn-continuar">
+            <span class="btn-primary-label">Continuar</span>
+          </button>
         </div>
 
       </div>
@@ -359,27 +380,48 @@
   </div>
 
   <script>
-    var selectedTile = null;
-    var btn = document.getElementById('btn-selecionar');
+    var days = document.querySelectorAll('.day-item');
+    var checkboxAll = document.getElementById('checkbox-all');
 
-    document.querySelectorAll('.tile').forEach(function(tile) {
-      tile.addEventListener('click', function() {
-        document.querySelectorAll('.tile').forEach(function(t) { t.classList.remove('selected'); });
-        tile.classList.add('selected');
-        selectedTile = tile.getAttribute('data-tile');
-        btn.classList.add('enabled');
-        btn.textContent = 'Continuar';
+    function updateCheckboxState() {
+      var allSelected = Array.from(days).every(function(d) {
+        return d.classList.contains('selected');
+      });
+      if (allSelected) {
+        checkboxAll.classList.add('checked');
+      } else {
+        checkboxAll.classList.remove('checked');
+      }
+    }
+
+    days.forEach(function(day) {
+      day.addEventListener('click', function() {
+        day.classList.toggle('selected');
+        updateCheckboxState();
       });
     });
 
-    btn.addEventListener('click', function() {
-      if (btn.classList.contains('enabled')) {
-        window.location.href = 'screen-3-2.html';
+    checkboxAll.addEventListener('click', function() {
+      var allSelected = Array.from(days).every(function(d) {
+        return d.classList.contains('selected');
+      });
+      if (allSelected) {
+        days.forEach(function(d) { d.classList.remove('selected'); });
+        checkboxAll.classList.remove('checked');
+      } else {
+        days.forEach(function(d) { d.classList.add('selected'); });
+        checkboxAll.classList.add('checked');
       }
     });
 
+    updateCheckboxState();
+
     document.getElementById('btn-back').addEventListener('click', function() {
       window.location.href = 'screen-2-6.html';
+    });
+
+    document.getElementById('btn-continuar').addEventListener('click', function() {
+      window.location.href = 'screen-3-2.html';
     });
   </script>
 

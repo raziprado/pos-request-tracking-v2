@@ -20,18 +20,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - run: npm ci
-
-      - run: npx expo export --platform web
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp screen-*.html _site/
+          cp -r tracking _site/
+          cp -r assets _site/ 2>/dev/null || true
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: _site
 
   deploy:
     needs: build

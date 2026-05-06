@@ -25,6 +25,7 @@ import { EditPayment3Screen } from '../screens/EditPayment3Screen';
 import { PinCodeScreen } from '../screens/PinCodeScreen';
 import { LoadingScreen } from '../screens/LoadingScreen';
 import { SuccessScreen } from '../screens/SuccessScreen';
+import { TrackingScreen } from '../screens/TrackingScreen';
 
 export type RootStackParamList = {
   Marketing: undefined;
@@ -51,6 +52,7 @@ export type RootStackParamList = {
   PinCode_7_1: undefined;
   Loading: undefined;
   Success_7_5: undefined;
+  Tracking: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -82,6 +84,7 @@ export function PosRequestNavigator() {
       <Stack.Screen name="PinCode_7_1" component={PinCodeScreen} />
       <Stack.Screen name="Loading" component={LoadingScreen} options={{ animation: 'fade' }} />
       <Stack.Screen name="Success_7_5" component={SuccessScreen} options={{ animation: 'fade' }} />
+      <Stack.Screen name="Tracking" component={TrackingScreen} options={{ animation: 'slide_from_right' }} />
     </Stack.Navigator>
   );
 }
