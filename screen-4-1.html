@@ -242,12 +242,9 @@
     }
 
     .list-title {
-      display: none;
+      display: block;
       width: 375px;
       padding: 30px 24px 0;
-    }
-    .list-title.visible {
-      display: block;
     }
     .list-title-text {
       font-family: 'Graphik', -apple-system, sans-serif;
@@ -266,7 +263,7 @@
       width: 375px;
       height: 87px;
       padding: 0 24px;
-      margin-top: 32px;
+      margin-top: 16px;
     }
     .tile {
       box-sizing: border-box;
@@ -701,8 +698,6 @@
     var btnPlus = document.getElementById('btn-plus');
     var minusSvg = btnMinus.querySelector('svg path');
     var plusSvg = btnPlus.querySelector('svg path');
-    var listTitle = document.getElementById('list-title');
-    var calloutBox = document.querySelector('.callout-box');
     var tooltip = document.getElementById('tooltip');
     var tileTitle1 = document.getElementById('tile-title-1');
     var tileTitle2 = document.getElementById('tile-title-2');
@@ -735,16 +730,12 @@
       }
 
       if (qty <= 1) {
-        listTitle.classList.remove('visible');
-        calloutBox.style.display = '';
-        tilesRow.style.marginTop = '32px';
+        tilesRow.style.marginTop = '16px';
         tileTitle1.textContent = 'R$ 60';
         tileTitle2.textContent = 'R$ 30';
         tileTitle3.textContent = 'Grátis';
         tileDesc3.textContent = 'A partir de R$ 10 mil';
       } else {
-        listTitle.classList.add('visible');
-        calloutBox.style.display = 'none';
         tilesRow.style.marginTop = '16px';
         tileTitle1.textContent = 'R$ ' + (60 * qty);
         tileTitle2.textContent = 'R$ ' + (30 * qty);
