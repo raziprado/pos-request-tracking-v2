@@ -410,8 +410,19 @@
       });
     });
 
+    var periodMap = {
+      'manha': 'Manhã • 9h às 12h',
+      'tarde': 'Tarde • 12h às 15h',
+      'finaltarde': 'Final da tarde • 15h às 18h',
+      'diatodo': 'Dia todo • 9h às 18h'
+    };
+
     btn.addEventListener('click', function() {
       if (btn.classList.contains('enabled')) {
+        localStorage.setItem('pos-selected-period', JSON.stringify({
+          key: selectedTile,
+          label: periodMap[selectedTile]
+        }));
         window.location.href = 'screen-4-1.html';
       }
     });

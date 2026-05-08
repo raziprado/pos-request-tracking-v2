@@ -1340,6 +1340,17 @@
       }
     })();
 
+    (function loadSavedPeriod() {
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem('pos-selected-period')); } catch(e) {}
+      if (saved && saved.key && saved.label) {
+        var keyMap = { 'manha': 'manha', 'tarde': 'tarde', 'finaltarde': 'final-tarde', 'diatodo': 'dia-todo' };
+        var periodKey = keyMap[saved.key] || saved.key;
+        document.getElementById('periodo-desc').textContent = saved.label;
+        window._initialPeriod = periodKey;
+      }
+    })();
+
     document.getElementById('btn-back').addEventListener('click', function() {
       window.location.href = 'screen-5-1.html';
     });
@@ -1548,8 +1559,8 @@
     var periodoDesc = document.getElementById('periodo-desc');
     var periodTiles = document.querySelectorAll('.period-tile');
 
-    var currentPeriod = 'dia-todo';
-    var selectedPeriod = 'dia-todo';
+    var currentPeriod = window._initialPeriod || 'dia-todo';
+    var selectedPeriod = currentPeriod;
 
     function initPeriodSheet() {
       periodTiles.forEach(function(t) {
