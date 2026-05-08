@@ -600,91 +600,10 @@
           </div>
         </div>
 
-        <div class="list-title" id="list-title">
-          <div class="list-title-text">Como vai ficar a sua mensalidade:</div>
-        </div>
-
-        <div class="tiles-row">
-          <div class="tile">
-            <div class="tile-content">
-              <div class="tile-title" id="tile-title-1">R$ 60</div>
-              <div class="tile-desc" id="tile-desc-1">Até R$ 5 mil em vendas</div>
-            </div>
-          </div>
-          <div class="tile">
-            <div class="tile-content">
-              <div class="tile-title" id="tile-title-2">R$ 30</div>
-              <div class="tile-desc" id="tile-desc-2">De R$ 5 mil a R$ 10 mil</div>
-            </div>
-          </div>
-          <div class="tile">
-            <div class="tile-content">
-              <div class="tile-title purple" id="tile-title-3">Grátis</div>
-              <div class="tile-desc" id="tile-desc-3">A partir de R$ 10 mil</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="callout-box">
-          <div class="callout-title">A mensalidade pode zerar</div>
-          <div class="callout-desc">Se o total de vendas nas suas maquininhas ultrapassar R$ 10 mil no mês, as mensalidades ficam por nossa conta.</div>
-          <div class="callout-link">
-            <span class="callout-link-text">Saiba mais</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.33 8H12.67" stroke="#652590" stroke-width="1.33" stroke-linecap="round"/><path d="M9.33 4.67L12.67 8L9.33 11.33" stroke="#652590" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-
         <div class="bottom-bar">
           <button class="btn-primary" id="btn-continuar">Continuar</button>
         </div>
 
-        <div class="bs-overlay" id="bs-overlay">
-          <div class="bs-tray">
-            <div class="bs-header">
-              <button class="bs-close" id="bs-close">
-                <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
-                  <g transform="translate(3.577, 3.577)">
-                    <path d="M6.42259 7.6011L11.6667 12.8452L12.8452 11.6667L7.6011 6.42259L12.8452 1.17851L11.6667 0L6.42259 5.24408L1.17851 0L0 1.17851L5.24408 6.42259L0 11.6667L1.17851 12.8452L6.42259 7.6011Z" fill="rgba(0,0,0,0.64)"/>
-                  </g>
-                </svg>
-              </button>
-            </div>
-            <div class="bs-snapshot">
-              <div class="bs-snapshot-title">Venda mais, pague menos</div>
-              <div class="bs-snapshot-desc">Sua mensalidade se ajusta ao quanto você vende todo mês.</div>
-              <div class="bs-bar-chart">
-                <div class="bs-bar-segment" style="background: #EADBF1;"></div>
-                <div class="bs-bar-segment" style="background: #A087AE;"></div>
-                <div class="bs-bar-segment" style="background: #714F8F;"></div>
-              </div>
-            </div>
-            <div class="bs-tiles-row">
-              <div class="bs-tile">
-                <div class="bs-tile-content">
-                  <div class="bs-tile-title">R$60</div>
-                  <div class="bs-tile-desc">Até R$ 5 mil em vendas</div>
-                </div>
-              </div>
-              <div class="bs-tile">
-                <div class="bs-tile-content">
-                  <div class="bs-tile-title">R$30</div>
-                  <div class="bs-tile-desc">De R$ 5 mil a R$ 10 mil</div>
-                </div>
-              </div>
-              <div class="bs-tile">
-                <div class="bs-tile-content">
-                  <div class="bs-tile-title">Grátis</div>
-                  <div class="bs-tile-desc">A partir de R$ 10 mil</div>
-                </div>
-              </div>
-            </div>
-            <div class="bs-section">
-              <div class="bs-section-title">Vencimento e cobrança</div>
-              <div class="bs-section-text">A primeira mensalidade vence 30 dias depois de ativar a roxinha. Ou seja, você tem esse tempo todo para vender, bater os R$ {{10 mil}} e pagar R$ 0. Sem pegadinhas. Bateu a meta? É mensalidade grátis.</div>
-              <div class="bs-section-text" style="margin-top: 16px;">As próximas cobranças acontecem de acordo com a forma de pagamento escolhida e também levam em consideração o seu volume de vendas mensal.</div>
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -699,11 +618,6 @@
     var minusSvg = btnMinus.querySelector('svg path');
     var plusSvg = btnPlus.querySelector('svg path');
     var tooltip = document.getElementById('tooltip');
-    var tileTitle1 = document.getElementById('tile-title-1');
-    var tileTitle2 = document.getElementById('tile-title-2');
-    var tileTitle3 = document.getElementById('tile-title-3');
-    var tileDesc3 = document.getElementById('tile-desc-3');
-    var tilesRow = document.querySelector('.tiles-row');
     var atMax = false;
 
     function updateQty() {
@@ -727,20 +641,6 @@
         btnPlus.classList.remove('disabled');
         plusSvg.setAttribute('fill', '#FFFFFF');
         tooltip.classList.remove('visible');
-      }
-
-      if (qty <= 1) {
-        tilesRow.style.marginTop = '16px';
-        tileTitle1.textContent = 'R$ 60';
-        tileTitle2.textContent = 'R$ 30';
-        tileTitle3.textContent = 'Grátis';
-        tileDesc3.textContent = 'A partir de R$ 10 mil';
-      } else {
-        tilesRow.style.marginTop = '16px';
-        tileTitle1.textContent = 'R$ ' + (60 * qty);
-        tileTitle2.textContent = 'R$ ' + (30 * qty);
-        tileTitle3.textContent = 'Grátis';
-        tileDesc3.textContent = 'Venda mais de R$ 10 mil';
       }
     }
 
@@ -769,20 +669,6 @@
 
     document.getElementById('btn-back').addEventListener('click', function() {
       window.location.href = 'screen-3-2.html';
-    });
-
-    document.querySelector('.callout-link').addEventListener('click', function() {
-      document.getElementById('bs-overlay').classList.add('visible');
-    });
-
-    document.getElementById('bs-close').addEventListener('click', function() {
-      document.getElementById('bs-overlay').classList.remove('visible');
-    });
-
-    document.getElementById('bs-overlay').addEventListener('click', function(e) {
-      if (e.target === this) {
-        this.classList.remove('visible');
-      }
     });
   </script>
 
