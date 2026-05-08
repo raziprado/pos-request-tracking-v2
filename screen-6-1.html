@@ -628,6 +628,134 @@
       color: #FFFFFF;
     }
 
+    .days-overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 375px;
+      height: 812px;
+      background: rgba(0, 0, 0, 0.64);
+      z-index: 100;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    .days-overlay.visible { display: flex; }
+
+    .days-sheet {
+      width: 375px;
+      background: #FFFFFF;
+      border-radius: 16px 16px 0 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .days-header {
+      padding: 24px 24px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .days-title-section {
+      padding: 8px 24px 24px;
+    }
+    .days-title {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      letter-spacing: -0.84px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .days-select-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 48px;
+    }
+    .day-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 120%;
+      letter-spacing: -0.4px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+    .day-item.selected {
+      background: #F8F6F9;
+      border-color: #714F8F;
+      color: #652590;
+    }
+
+    .days-checkbox-row {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      gap: 16px;
+      cursor: pointer;
+    }
+    .days-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      border: 2px solid rgba(0, 0, 0, 0.32);
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #FFFFFF;
+    }
+    .days-checkbox.checked {
+      background: #714F8F;
+      border-color: #714F8F;
+    }
+    .days-checkbox-label {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      color: rgba(0, 0, 0, 0.96);
+    }
+
+    .days-bottom {
+      padding: 16px 24px;
+    }
+    .days-btn-salvar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 48px;
+      background: #EFEFEF;
+      border-radius: 64px;
+      border: none;
+      cursor: default;
+    }
+    .days-btn-salvar.enabled {
+      background: #714F8F;
+      cursor: pointer;
+    }
+    .days-btn-salvar-label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.16px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+    .days-btn-salvar.enabled .days-btn-salvar-label {
+      color: #FFFFFF;
+    }
+
     .pay-overlay {
       display: none;
       position: absolute;
@@ -1142,6 +1270,49 @@
         </div>
       </div>
 
+      <!-- Days Edit Bottom Sheet (6.9 / 6.10) -->
+      <div class="days-overlay" id="days-overlay">
+        <div class="days-sheet">
+
+          <div class="days-header">
+            <button class="edit-close" id="days-close">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18.3642 7.05025L13.4144 12L18.3642 16.9497L16.9499 18.364L12.0002 13.4142L7.05044 18.364L5.63623 16.9497L10.586 12L5.63623 7.05025L7.05044 5.63604L12.0002 10.5858L16.9499 5.63604L18.3642 7.05025Z" fill="rgba(0,0,0,0.64)"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="days-title-section">
+            <div class="days-title">Alterar dias de entrega</div>
+          </div>
+
+          <div class="days-select-row" id="days-select-row">
+            <div class="day-item" data-day="seg" data-label="Segunda-feira">Seg</div>
+            <div class="day-item selected" data-day="ter" data-label="Terça-feira">Ter</div>
+            <div class="day-item selected" data-day="qua" data-label="Quarta-feira">Qua</div>
+            <div class="day-item selected" data-day="qui" data-label="Quinta-feira">Qui</div>
+            <div class="day-item selected" data-day="sex" data-label="Sexta-feira">Sex</div>
+            <div class="day-item" data-day="sab" data-label="Sábado">Sáb</div>
+          </div>
+
+          <div class="days-checkbox-row" id="days-select-all">
+            <div class="days-checkbox" id="days-checkbox-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="display:none;" id="days-check-svg">
+                <path d="M6 11.2L2.8 8L1.86667 8.93333L6 13.0667L14.6667 4.4L13.7333 3.46667L6 11.2Z" fill="#FFFFFF"/>
+              </svg>
+            </div>
+            <span class="days-checkbox-label">Selecionar todos</span>
+          </div>
+
+          <div class="days-bottom">
+            <button class="days-btn-salvar" id="days-btn-salvar">
+              <span class="days-btn-salvar-label">Salvar</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
       <!-- Period Edit Bottom Sheet (6.5) -->
       <svg width="0" height="0" style="position:absolute;">
         <defs>
@@ -1435,6 +1606,109 @@
       originalComplemento = editComplemento.value;
       originalReferencia = editReferencia.value;
       closeEditSheet();
+    });
+
+    // Days Edit (6.9 / 6.10)
+    var daysOverlay = document.getElementById('days-overlay');
+    var daysClose = document.getElementById('days-close');
+    var pencilDias = document.getElementById('pencil-dias');
+    var daysBtnSalvar = document.getElementById('days-btn-salvar');
+    var diasDesc = document.getElementById('dias-desc');
+    var dayItems = document.querySelectorAll('.day-item');
+    var daysSelectAll = document.getElementById('days-select-all');
+    var daysCheckboxIcon = document.getElementById('days-checkbox-icon');
+    var daysCheckSvg = document.getElementById('days-check-svg');
+
+    var dayNames = { seg: 'Segunda-feira', ter: 'Terça-feira', qua: 'Quarta-feira', qui: 'Quinta-feira', sex: 'Sexta-feira', sab: 'Sábado' };
+    var dayOrder = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+    var currentDays = ['ter', 'qua', 'qui', 'sex'];
+    var selectedDays = [];
+
+    function arraysEqual(a, b) {
+      if (a.length !== b.length) return false;
+      var sa = a.slice().sort();
+      var sb = b.slice().sort();
+      for (var i = 0; i < sa.length; i++) { if (sa[i] !== sb[i]) return false; }
+      return true;
+    }
+
+    function buildDaysLabel(days) {
+      if (days.length === 0) return '';
+      if (days.length === 6) return 'Todos os dias';
+      var sorted = dayOrder.filter(function(d) { return days.indexOf(d) !== -1; });
+      if (sorted.length === 1) return dayNames[sorted[0]];
+      return dayNames[sorted[0]] + ' a ' + dayNames[sorted[sorted.length - 1]];
+    }
+
+    function updateDaysUI() {
+      dayItems.forEach(function(item) {
+        if (selectedDays.indexOf(item.dataset.day) !== -1) {
+          item.classList.add('selected');
+        } else {
+          item.classList.remove('selected');
+        }
+      });
+      var allSelected = selectedDays.length === 6;
+      if (allSelected) {
+        daysCheckboxIcon.classList.add('checked');
+        daysCheckSvg.style.display = '';
+      } else {
+        daysCheckboxIcon.classList.remove('checked');
+        daysCheckSvg.style.display = 'none';
+      }
+      if (!arraysEqual(selectedDays, currentDays) && selectedDays.length > 0) {
+        daysBtnSalvar.classList.add('enabled');
+      } else {
+        daysBtnSalvar.classList.remove('enabled');
+      }
+    }
+
+    function initDaysSheet() {
+      selectedDays = currentDays.slice();
+      updateDaysUI();
+    }
+
+    pencilDias.addEventListener('click', function(e) {
+      e.stopPropagation();
+      initDaysSheet();
+      daysOverlay.classList.add('visible');
+    });
+
+    daysClose.addEventListener('click', function() {
+      daysOverlay.classList.remove('visible');
+    });
+
+    daysOverlay.addEventListener('click', function(e) {
+      if (e.target === daysOverlay) daysOverlay.classList.remove('visible');
+    });
+
+    dayItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        var day = item.dataset.day;
+        var idx = selectedDays.indexOf(day);
+        if (idx !== -1) {
+          selectedDays.splice(idx, 1);
+        } else {
+          selectedDays.push(day);
+        }
+        updateDaysUI();
+      });
+    });
+
+    daysSelectAll.addEventListener('click', function() {
+      if (selectedDays.length === 6) {
+        selectedDays = [];
+      } else {
+        selectedDays = dayOrder.slice();
+      }
+      updateDaysUI();
+    });
+
+    daysBtnSalvar.addEventListener('click', function() {
+      if (!daysBtnSalvar.classList.contains('enabled')) return;
+      currentDays = selectedDays.slice();
+      diasDesc.textContent = buildDaysLabel(currentDays);
+      daysOverlay.classList.remove('visible');
     });
 
     // Period Edit (6.5)
