@@ -62,11 +62,12 @@
 
     .iphone-frame {
       position: relative;
-      width: 393px;
-      height: 852px;
-      background: #1C1C1E;
-      border-radius: 55px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 0 0 2px #2c2c2e, 0 0 0 4px #1a1a1c, 0 30px 80px rgba(0,0,0,0.4);
+      width: 100%;
+      max-width: 430px;
+      height: 100vh;
+      background: none;
+      border-radius: 0;
+      box-shadow: none;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -74,17 +75,17 @@
     }
 
     .iphone-screen {
-      width: 375px;
-      height: 812px;
+      width: 100%;
+      height: 100%;
       background: #FFFFFF;
-      border-radius: 47px;
+      border-radius: 0;
       overflow: hidden;
       position: relative;
     }
 
     .screen {
-      width: 375px;
-      height: 812px;
+      width: 100%;
+      height: 100%;
       background: #FFFFFF;
       position: relative;
       display: flex;
@@ -96,7 +97,7 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 18px 24px 10px 32px;
-      width: 375px;
+      width: 100%;
       height: 48px;
       flex-shrink: 0;
     }
@@ -114,7 +115,7 @@
       display: flex;
       align-items: center;
       position: relative;
-      width: 375px;
+      width: 100%;
       height: 56px;
       flex-shrink: 0;
     }
@@ -152,7 +153,7 @@
     .content-area {
       flex: 1;
       overflow-y: auto;
-      width: 375px;
+      width: 100%;
     }
 
     .product-snapshot {
@@ -160,7 +161,7 @@
       align-items: center;
       padding: 0 16px 12px 24px;
       gap: 12px;
-      width: 375px;
+      width: 100%;
       min-height: 117px;
     }
     .snapshot-content {
@@ -193,11 +194,11 @@
     .list-rows {
       display: flex;
       flex-direction: column;
-      width: 375px;
+      width: 100%;
     }
 
     .row-divider {
-      width: 375px;
+      width: 100%;
       height: 1px;
       background: #EFEFEF;
     }
@@ -205,21 +206,21 @@
     .list-row {
       display: flex;
       flex-direction: column;
-      width: 375px;
+      width: 100%;
     }
     .list-row-content-standard {
       display: flex;
       align-items: center;
       padding: 16px 24px;
       gap: 16px;
-      width: 375px;
+      width: 100%;
     }
     .list-row-content-compact {
       display: flex;
       align-items: center;
       padding: 8px 24px;
       gap: 16px;
-      width: 375px;
+      width: 100%;
     }
 
     .row-leading-icon {
@@ -312,7 +313,7 @@
       align-items: center;
       padding: 16px 24px;
       gap: 16px;
-      width: 375px;
+      width: 100%;
       flex-shrink: 0;
       background: #FFFFFF;
     }
@@ -352,8 +353,8 @@
       display: none;
       position: absolute;
       top: 0; left: 0;
-      width: 375px;
-      height: 812px;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.64);
       z-index: 100;
       justify-content: flex-end;
@@ -362,7 +363,7 @@
     .edit-overlay.visible { display: flex; }
 
     .edit-sheet {
-      width: 375px;
+      width: 100%;
       background: #FFFFFF;
       border-radius: 16px 16px 0 0;
       display: flex;
@@ -499,8 +500,8 @@
       display: none;
       position: absolute;
       top: 0; left: 0;
-      width: 375px;
-      height: 812px;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.64);
       z-index: 100;
       justify-content: flex-end;
@@ -509,7 +510,7 @@
     .period-overlay.visible { display: flex; }
 
     .period-sheet {
-      width: 375px;
+      width: 100%;
       height: 468px;
       background: #FFFFFF;
       border-radius: 16px 16px 0 0;
@@ -632,8 +633,8 @@
       display: none;
       position: absolute;
       top: 0; left: 0;
-      width: 375px;
-      height: 812px;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.64);
       z-index: 100;
       justify-content: flex-end;
@@ -642,7 +643,7 @@
     .days-overlay.visible { display: flex; }
 
     .days-sheet {
-      width: 375px;
+      width: 100%;
       background: #FFFFFF;
       border-radius: 16px 16px 0 0;
       display: flex;
@@ -760,8 +761,8 @@
       display: none;
       position: absolute;
       top: 0; left: 0;
-      width: 375px;
-      height: 812px;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.64);
       z-index: 100;
       justify-content: flex-end;
@@ -770,7 +771,7 @@
     .pay-overlay.visible { display: flex; }
 
     .pay-sheet {
-      width: 375px;
+      width: 100%;
       background: #FFFFFF;
       border-radius: 16px 16px 0 0;
       display: flex;

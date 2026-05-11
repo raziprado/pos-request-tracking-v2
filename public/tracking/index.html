@@ -69,19 +69,20 @@
   }
 
   .iphone-frame {
-    width: 393px;
-    height: 852px;
-    background: #000;
-    border-radius: 55px;
-    padding: 9px;
+    width: 100%;
+    max-width: 430px;
+    height: 100vh;
+    background: none;
+    border-radius: 0;
+    padding: 0;
     position: relative;
-    box-shadow: 0 0 0 2px #333, 0 20px 60px rgba(0,0,0,0.5);
+    box-shadow: none;
   }
 
   .iphone-screen {
-    width: 375px;
+    width: 100%;
     height: 100%;
-    border-radius: 47px;
+    border-radius: 0;
     overflow: hidden;
     position: relative;
     background: #EFEFEF;
@@ -101,7 +102,7 @@
 
   .screen {
     display: none;
-    width: 375px;
+    width: 100%;
     height: 100%;
     overflow-y: auto;
     position: relative;
@@ -126,19 +127,19 @@
     <div class="screen active" id="screen-1-1" style="gap:24px;">
 
       <!-- Frame 1422568761: Header + progress + list row (375x405) -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;flex-shrink:0;">
 
         <!-- Header (375x340, white bg) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
 
           <!-- Content wrapper -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <!-- Time -->
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
@@ -155,7 +156,7 @@
               </div>
 
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: arrow_back -->
                 <div style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -183,12 +184,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x166) — click to go to Screen 2.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;height:166px;position:relative;cursor:pointer;" onclick="showScreen('screen-2-1')">
-              <img src="assets/ordering-artwork.gif" style="width:375px;height:166px;object-fit:cover;display:block;" alt="">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;height:166px;position:relative;cursor:pointer;" onclick="showScreen('screen-2-1')">
+              <img src="assets/ordering-artwork.gif" style="width:100%;height:166px;object-fit:cover;display:block;" alt="">
             </div>
 
             <!-- Title section (375x70) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Pedido recebido</span>
             </div>
 
@@ -196,18 +197,18 @@
         </div><!-- /Header -->
 
         <!-- Progress bar (375x9) -->
-        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:375px;height:9px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:100%;height:9px;background:#FFFFFF;">
           <div style="display:flex;align-items:center;width:327px;height:4px;min-height:4px;max-height:4px;background:#EFEFEF;border-radius:64px;overflow:hidden;">
             <div style="width:63px;height:4px;background:#714F8F;border-radius:64px;flex-shrink:0;"></div>
           </div>
         </div>
 
         <!-- List Row: Chega até 12 de março (375x56) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:375px;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-1-2')">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:100%;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-1-2')">
           <!-- Top divider (transparent) -->
-          <div style="width:375px;height:1px;"></div>
+          <div style="width:100%;height:1px;"></div>
           <!-- Content area -->
-          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:375px;height:24px;">
+          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:100%;height:24px;">
             <!-- Content -->
             <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.96);">Chega até 12 de março</span>
@@ -222,7 +223,7 @@
             </div>
           </div>
           <!-- Bottom divider -->
-          <div style="width:375px;height:1px;background:#EFEFEF;"></div>
+          <div style="width:100%;height:1px;background:#EFEFEF;"></div>
         </div>
 
       </div><!-- /Frame 1422568761 -->
@@ -390,19 +391,19 @@
     <div class="screen" id="screen-2-1" style="gap:24px;">
 
       <!-- Frame 1422568761: Header + progress + list row (375x405) -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;flex-shrink:0;">
 
         <!-- Header (375x340, white bg) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
 
           <!-- Content wrapper -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                 </div>
@@ -414,7 +415,7 @@
               </div>
 
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: arrow_back -->
                 <div onclick="showScreen('screen-1-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -442,12 +443,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x166) — clickable to go to screen 3.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-3-1')">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-3-1')">
               <img src="assets/preparando-pedido-artwork.png" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
             </div>
 
             <!-- Title section (375x70) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Preparando sua roxinha</span>
             </div>
 
@@ -455,16 +456,16 @@
         </div><!-- /Header -->
 
         <!-- Progress bar (375x9) -->
-        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:375px;height:9px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:100%;height:9px;background:#FFFFFF;">
           <div style="display:flex;align-items:center;width:327px;height:4px;min-height:4px;max-height:4px;background:#EFEFEF;border-radius:64px;overflow:hidden;">
             <div style="width:137px;height:4px;background:#714F8F;border-radius:64px;flex-shrink:0;"></div>
           </div>
         </div>
 
         <!-- List Row: Chega até 12 de março (375x56) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:375px;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-2-2')">
-          <div style="width:375px;height:1px;"></div>
-          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:375px;height:24px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:100%;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-2-2')">
+          <div style="width:100%;height:1px;"></div>
+          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:100%;height:24px;">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.96);">Chega até 12 de março</span>
             </div>
@@ -476,7 +477,7 @@
               </svg>
             </div>
           </div>
-          <div style="width:375px;height:1px;background:#EFEFEF;"></div>
+          <div style="width:100%;height:1px;background:#EFEFEF;"></div>
         </div>
 
       </div><!-- /Frame 1422568761 -->
@@ -596,19 +597,19 @@
     <div class="screen" id="screen-3-1" style="gap:24px;">
 
       <!-- Frame: Header + progress + list row -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;flex-shrink:0;">
 
         <!-- Header (375x340, white bg) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
 
           <!-- Content wrapper -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                 </div>
@@ -620,7 +621,7 @@
               </div>
 
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: arrow_back -->
                 <div onclick="showScreen('screen-2-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -648,12 +649,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x166) — clickable to go to screen 4.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-4-1')">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-4-1')">
               <img src="assets/em-separacao-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
             </div>
 
             <!-- Title section (375x70) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Sua roxinha chega hoje</span>
             </div>
 
@@ -661,16 +662,16 @@
         </div><!-- /Header -->
 
         <!-- Progress bar (375x9) -->
-        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:375px;height:9px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:100%;height:9px;background:#FFFFFF;">
           <div style="display:flex;align-items:center;width:327px;height:4px;min-height:4px;max-height:4px;background:#EFEFEF;border-radius:64px;overflow:hidden;">
             <div style="width:205px;height:4px;background:#714F8F;border-radius:64px;flex-shrink:0;"></div>
           </div>
         </div>
 
         <!-- List Row: Você vai receber entre 12h e 18h (375x56) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:375px;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-3-2')">
-          <div style="width:375px;height:1px;"></div>
-          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:375px;height:24px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:100%;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-3-2')">
+          <div style="width:100%;height:1px;"></div>
+          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:100%;height:24px;">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.96);">Você vai receber entre 12h e 18h</span>
             </div>
@@ -682,7 +683,7 @@
               </svg>
             </div>
           </div>
-          <div style="width:375px;height:1px;background:#EFEFEF;"></div>
+          <div style="width:100%;height:1px;background:#EFEFEF;"></div>
         </div>
 
       </div><!-- /Frame Header+Progress+ListRow -->
@@ -781,19 +782,19 @@
     <div class="screen" id="screen-4-1" style="gap:24px;">
 
       <!-- Frame: Header + progress + list row -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;flex-shrink:0;">
 
         <!-- Header (375x340, white bg) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
 
           <!-- Content wrapper -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                 </div>
@@ -805,7 +806,7 @@
               </div>
 
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: arrow_back -->
                 <div onclick="showScreen('screen-3-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -833,12 +834,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x166) — clickable to go to screen 5.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-5-1')">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-5-1')">
               <img src="assets/indo-ate-voce-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
             </div>
 
             <!-- Title section (375x70) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Indo até você</span>
             </div>
 
@@ -846,16 +847,16 @@
         </div><!-- /Header -->
 
         <!-- Progress bar (375x9) -->
-        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:375px;height:9px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:100%;height:9px;background:#FFFFFF;">
           <div style="display:flex;align-items:center;width:327px;height:4px;min-height:4px;max-height:4px;background:#EFEFEF;border-radius:64px;overflow:hidden;">
             <div style="width:276px;height:4px;background:#714F8F;border-radius:64px;flex-shrink:0;"></div>
           </div>
         </div>
 
         <!-- List Row: Sua roxinha chega em 35 minutos (375x56) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:375px;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-4-2')">
-          <div style="width:375px;height:1px;"></div>
-          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:375px;height:24px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:100%;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-4-2')">
+          <div style="width:100%;height:1px;"></div>
+          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:100%;height:24px;">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.96);">Sua roxinha chega em 35 minutos</span>
             </div>
@@ -867,7 +868,7 @@
               </svg>
             </div>
           </div>
-          <div style="width:375px;height:1px;background:#EFEFEF;"></div>
+          <div style="width:100%;height:1px;background:#EFEFEF;"></div>
         </div>
 
       </div><!-- /Frame Header+Progress+ListRow -->
@@ -966,19 +967,19 @@
     <div class="screen" id="screen-5-1" style="gap:24px;">
 
       <!-- Frame: Header + progress + list row -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;flex-shrink:0;">
 
         <!-- Header (375x340, white bg) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
 
           <!-- Content wrapper -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                 </div>
@@ -990,7 +991,7 @@
               </div>
 
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: arrow_back -->
                 <div onclick="showScreen('screen-4-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -1018,12 +1019,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x166) — clickable to go to screen 6.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-6-1')">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-6-1')">
               <img src="assets/chegou-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
             </div>
 
             <!-- Title section (375x70) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Sua roxinha chegou</span>
             </div>
 
@@ -1031,21 +1032,21 @@
         </div><!-- /Header -->
 
         <!-- Progress bar (375x9) -->
-        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:375px;height:9px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:100%;height:9px;background:#FFFFFF;">
           <div style="display:flex;align-items:center;width:327px;height:4px;min-height:4px;max-height:4px;background:#EFEFEF;border-radius:64px;overflow:hidden;">
             <div style="width:326px;height:4px;background:#714F8F;border-radius:64px;flex-shrink:0;"></div>
           </div>
         </div>
 
         <!-- List Row: {{nome-entregador}} está esperando você (375x53, no chevron) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:375px;height:53px;background:#FFFFFF;">
-          <div style="width:375px;height:1px;"></div>
-          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:375px;height:21px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:100%;height:53px;background:#FFFFFF;">
+          <div style="width:100%;height:1px;"></div>
+          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:100%;height:21px;">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.96);">{{nome-entregador}} está esperando você</span>
             </div>
           </div>
-          <div style="width:375px;height:1px;background:#EFEFEF;"></div>
+          <div style="width:100%;height:1px;background:#EFEFEF;"></div>
         </div>
 
       </div><!-- /Frame Header+Progress+ListRow -->
@@ -1108,19 +1109,19 @@
     <div class="screen" id="screen-6-1" style="gap:27px;">
 
       <!-- Frame: Header + progress + list row -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;flex-shrink:0;">
 
         <!-- Header (375x374, white bg — taller due to 2-line title) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
 
           <!-- Content wrapper -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                 </div>
@@ -1132,7 +1133,7 @@
               </div>
 
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: arrow_back -->
                 <div onclick="showScreen('screen-5-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -1160,12 +1161,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x166) — clickable to go to screen 7.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-7-1')">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-7-1')">
               <img src="assets/delivery-error-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
             </div>
 
             <!-- Title section (375x104, 2-line title) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Sua previsão de entrega foi atualizada</span>
             </div>
 
@@ -1173,16 +1174,16 @@
         </div><!-- /Header -->
 
         <!-- Progress bar (375x9) -->
-        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:375px;height:9px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:100%;height:9px;background:#FFFFFF;">
           <div style="display:flex;align-items:center;width:327px;height:4px;min-height:4px;max-height:4px;background:#EFEFEF;border-radius:64px;overflow:hidden;">
             <div style="width:14px;height:4px;background:#714F8F;border-radius:64px;flex-shrink:0;"></div>
           </div>
         </div>
 
         <!-- List Row: Nova data de entrega: até 12 de março (375x56) with expand_more icon — clickable to open bottom sheet 6.2 -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:375px;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-6-2')">
-          <div style="width:375px;height:1px;"></div>
-          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:375px;height:24px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:100%;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-6-2')">
+          <div style="width:100%;height:1px;"></div>
+          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:100%;height:24px;">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.96);">Nova data de entrega: até 12 de março</span>
             </div>
@@ -1195,7 +1196,7 @@
               </svg>
             </div>
           </div>
-          <div style="width:375px;height:1px;background:#EFEFEF;"></div>
+          <div style="width:100%;height:1px;background:#EFEFEF;"></div>
         </div>
 
       </div><!-- /Frame Header+Progress+ListRow -->
@@ -1315,20 +1316,20 @@
     <div class="screen" id="screen-7-1" style="background:#FFFFFF;">
 
       <!-- Main content (gap 27px) -->
-      <div style="display:flex;flex-direction:column;align-items:center;padding:0;gap:27px;width:375px;">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:0;gap:27px;width:100%;">
 
         <!-- Header block (375x428) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;">
 
           <!-- Artwork Header (375x428, white bg) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
               <!-- Top Bar (375x104) -->
-              <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+              <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
                 <!-- Status Bar (375x48) -->
-                <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+                <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                   <div style="display:flex;align-items:center;width:39px;height:20px;">
                     <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                   </div>
@@ -1340,7 +1341,7 @@
                 </div>
 
                 <!-- Top Bar row (375x56) — Close icon (X) on left -->
-                <div style="width:375px;height:56px;position:relative;">
+                <div style="width:100%;height:56px;position:relative;">
                   <!-- Leading: close (X) -->
                   <div onclick="showScreen('screen-6-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                     <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -1368,12 +1369,12 @@
               </div><!-- /Top Bar -->
 
               <!-- Artwork (375x166) — clickable to go to screen 7.2 -->
-              <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-7-2')">
+              <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-7-2')">
                 <img src="assets/delivery-error-address-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
               </div>
 
               <!-- Title section (375x158, with subtitle) -->
-              <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:375px;">
+              <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:100%;">
                 <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Não conseguimos localizar o endereço</span>
                 <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:18px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.64);width:327px;">Adicione mais informações sobre o endereço para tentarmos de novo.</span>
               </div>
@@ -1409,7 +1410,7 @@
       </div><!-- /Main content -->
 
       <!-- Bottom Bar (fixed at bottom, 144px) -->
-      <div style="position:absolute;left:0;right:0;bottom:0;width:375px;height:144px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;gap:16px;background:#FFFFFF;">
+      <div style="position:absolute;left:0;right:0;bottom:0;width:100%;height:144px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;gap:16px;background:#FFFFFF;">
         <!-- Primary Button: Atualizar endereço de entrega — navigates to 7.2 -->
         <div onclick="showScreen('screen-7-2')" style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:12px 24px;gap:8px;width:327px;height:48px;min-height:48px;max-height:48px;background:#714F8F;border-radius:64px;cursor:pointer;">
           <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:#FFFFFF;text-align:center;">Atualizar endereço de entrega</span>
@@ -1433,13 +1434,13 @@
     <div class="screen" id="screen-7-2" style="background:#FFFFFF;">
 
       <!-- Header (375x170) -->
-      <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:170px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:170px;flex-shrink:0;">
 
         <!-- Top Bar (375x104) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
           <!-- Status Bar (375x48) -->
-          <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+          <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
             <div style="display:flex;align-items:center;width:39px;height:20px;">
               <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
             </div>
@@ -1451,7 +1452,7 @@
           </div>
 
           <!-- Top Bar row (375x56) — arrow_back, no title, no trailing -->
-          <div style="width:375px;height:56px;position:relative;">
+          <div style="width:100%;height:56px;position:relative;">
             <div onclick="showScreen('screen-7-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
               <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
                 <g transform="translate(5.955, 2.744)">
@@ -1464,14 +1465,14 @@
         </div><!-- /Top Bar -->
 
         <!-- Title section (375x66) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;gap:8px;width:375px;height:66px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;gap:8px;width:100%;height:66px;">
           <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Atualizar endereço</span>
         </div>
 
       </div><!-- /Header -->
 
       <!-- Form fields (left:24px, top:186px, gap:24px) -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px;gap:24px;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px;gap:24px;width:100%;flex-shrink:0;">
 
         <!-- Input 1: Endereço -->
         <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;width:327px;">
@@ -1504,7 +1505,7 @@
       </div><!-- /Form fields -->
 
       <!-- Bottom Bar (fixed at bottom, 144px) -->
-      <div style="position:absolute;left:0;right:0;bottom:0;width:375px;height:144px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;gap:16px;background:#FFFFFF;">
+      <div style="position:absolute;left:0;right:0;bottom:0;width:100%;height:144px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;gap:16px;background:#FFFFFF;">
         <!-- Primary Button: Atualizar -->
         <div id="btn-atualizar" onclick="submitForm()" style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:12px 24px;gap:8px;width:327px;height:48px;min-height:48px;max-height:48px;background:#EFEFEF;border-radius:64px;transition:background 0.2s, cursor 0.2s;">
           <span id="btn-atualizar-label" style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.32);text-align:center;transition:color 0.2s;">Atualizar</span>
@@ -1522,19 +1523,19 @@
     <div class="screen" id="screen-7-4" style="gap:24px;">
 
       <!-- Frame: Header + progress + list row -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;flex-shrink:0;">
 
         <!-- Header (375x374, white bg — 2-line title) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
 
           <!-- Content wrapper -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                 </div>
@@ -1546,7 +1547,7 @@
               </div>
 
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: arrow_back -->
                 <div onclick="showScreen('screen-6-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -1574,12 +1575,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x166) — clickable to go to screen 8.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-8-1')">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-8-1')">
               <img src="assets/casa-data-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
             </div>
 
             <!-- Title section (375x104, 2-line title) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Sua previsão de entrega foi atualizada</span>
             </div>
 
@@ -1587,16 +1588,16 @@
         </div><!-- /Header -->
 
         <!-- Progress bar (375x9) -->
-        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:375px;height:9px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:100%;height:9px;background:#FFFFFF;">
           <div style="display:flex;align-items:center;width:327px;height:4px;min-height:4px;max-height:4px;background:#EFEFEF;border-radius:64px;overflow:hidden;">
             <div style="width:10px;height:4px;background:#714F8F;border-radius:64px;flex-shrink:0;"></div>
           </div>
         </div>
 
         <!-- List Row: Nova data de entrega: até 12 de março (375x56) with expand_more icon — opens bottomsheet 7.5 -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:375px;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-7-5')">
-          <div style="width:375px;height:1px;"></div>
-          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:375px;height:24px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:100%;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-7-5')">
+          <div style="width:100%;height:1px;"></div>
+          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:100%;height:24px;">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.96);">Nova data de entrega: até 12 de março</span>
             </div>
@@ -1609,7 +1610,7 @@
               </svg>
             </div>
           </div>
-          <div style="width:375px;height:1px;background:#EFEFEF;"></div>
+          <div style="width:100%;height:1px;background:#EFEFEF;"></div>
         </div>
 
       </div><!-- /Frame Header+Progress+ListRow -->
@@ -1729,14 +1730,14 @@
     <div class="screen" id="screen-8-1" style="background:#FFFFFF;">
 
       <!-- Header (375x451, white bg) -->
-      <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
           <!-- Top Bar (375x104) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
 
             <!-- Status Bar (375x48) -->
-            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
               <div style="display:flex;align-items:center;width:39px;height:20px;">
                 <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
               </div>
@@ -1748,7 +1749,7 @@
             </div>
 
             <!-- Top Bar row (375x56) — Close icon (X) on left -->
-            <div style="width:375px;height:56px;position:relative;">
+            <div style="width:100%;height:56px;position:relative;">
               <!-- Leading: close (X) -->
               <div onclick="showScreen('screen-7-4')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                 <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -1776,12 +1777,12 @@
           </div><!-- /Top Bar -->
 
           <!-- Artwork (375x166) — clickable to go to screen 8.2 -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-8-2')">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-8-2')">
             <img src="assets/casa-atencao-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
           </div>
 
           <!-- Title section (375x181, with subtitle) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:375px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:100%;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">O estabelecimento estava fechado</span>
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:18px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.64);width:327px;">Não conseguimos entregar sua roxinha. Atualize o horário de entrega para tentarmos de novo.</span>
           </div>
@@ -1790,7 +1791,7 @@
       </div><!-- /Header -->
 
       <!-- Bottom Bar (fixed at bottom, 144px) -->
-      <div style="position:absolute;left:0;right:0;bottom:0;width:375px;height:144px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;gap:16px;background:#FFFFFF;">
+      <div style="position:absolute;left:0;right:0;bottom:0;width:100%;height:144px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;gap:16px;background:#FFFFFF;">
         <!-- Primary Button: Atualizar horário de entrega → screen 8.2 -->
         <div onclick="showScreen('screen-8-2')" style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:12px 24px;gap:8px;width:327px;height:48px;min-height:48px;max-height:48px;background:#714F8F;border-radius:64px;cursor:pointer;">
           <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:#FFFFFF;text-align:center;">Atualizar horário de entrega</span>
@@ -1814,15 +1815,15 @@
     <div class="screen" id="screen-8-2" style="background:#FFFFFF;">
 
       <!-- Top content block (header + tiles + callout) -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;width:375px;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;">
 
         <!-- Header (258px) -->
-        <div style="display:flex;flex-direction:column;align-items:center;width:375px;height:258px;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:100%;height:258px;">
 
           <!-- Top Bar (104px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;width:375px;height:104px;background:#FFFFFF;">
+          <div style="display:flex;flex-direction:column;align-items:center;width:100%;height:104px;background:#FFFFFF;">
             <!-- Status Bar (48px) -->
-            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;">
+            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;">
               <span style="font-family:'SF Pro Text',-apple-system,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);">11:08</span>
               <div style="display:flex;gap:5.5px;align-items:center;">
                 <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="0.5" fill="black"/><rect x="4" y="5" width="3" height="6" rx="0.5" fill="black"/><rect x="8" y="2.67" width="3" height="8.33" rx="0.5" fill="black"/><rect x="12" y="0" width="3" height="11" rx="0.5" fill="black"/></svg>
@@ -1831,7 +1832,7 @@
               </div>
             </div>
             <!-- Top Bar row (56px) — arrow_back only -->
-            <div style="position:relative;width:375px;height:56px;">
+            <div style="position:relative;width:100%;height:56px;">
               <div onclick="showScreen('screen-8-1')" style="position:absolute;left:12px;top:calc(50% - 24px);width:48px;height:48px;display:flex;justify-content:center;align-items:center;cursor:pointer;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="rgba(0,0,0,0.64)"/></svg>
               </div>
@@ -1839,7 +1840,7 @@
           </div><!-- /Top Bar -->
 
           <!-- Title section (154px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;gap:8px;width:375px;height:154px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;gap:8px;width:100%;height:154px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Qual é o melhor horário de entrega?</span>
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:18px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.64);width:327px;">Entregamos de segunda a sábado, em horário comercial.</span>
           </div>
@@ -1847,13 +1848,13 @@
         </div><!-- /Header -->
 
         <!-- Tiles + Callout (gap 24px) -->
-        <div style="display:flex;flex-direction:column;align-items:center;width:375px;gap:24px;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:100%;gap:24px;">
 
           <!-- Tiles (2 rows, gap 8px) -->
-          <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px;width:375px;">
+          <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px;width:100%;">
 
             <!-- Row 1 -->
-            <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:8px;width:375px;height:108px;">
+            <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:8px;width:100%;height:108px;">
               <!-- Tile 1: Manhã -->
               <div class="tile-8-2" onclick="selectTile82(this)" style="box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;padding:16px;width:159.5px;height:108px;background:#FFFFFF;border:2px solid #EFEFEF;border-radius:16px;cursor:pointer;flex:1;">
                 <div style="padding-bottom:16px;">
@@ -1877,7 +1878,7 @@
             </div>
 
             <!-- Row 2 -->
-            <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:8px;width:375px;height:108px;">
+            <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:8px;width:100%;height:108px;">
               <!-- Tile 3: Final da tarde -->
               <div class="tile-8-2" onclick="selectTile82(this)" style="box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;padding:16px;width:159.5px;height:108px;background:#FFFFFF;border:2px solid #EFEFEF;border-radius:16px;cursor:pointer;flex:1;">
                 <div style="padding-bottom:16px;">
@@ -1915,7 +1916,7 @@
       </div><!-- /Top content block -->
 
       <!-- Bottom Bar (80px, fixed at bottom) -->
-      <div style="position:absolute;left:0;right:0;bottom:0;width:375px;height:80px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;">
+      <div style="position:absolute;left:0;right:0;bottom:0;width:100%;height:80px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;">
         <!-- Primary Button: Atualizar (disabled until tile selected) -->
         <div id="btn-atualizar-8-2" style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:12px 24px;gap:8px;width:327px;height:48px;min-height:48px;max-height:48px;background:#EFEFEF;border-radius:64px;cursor:default;">
           <span id="btn-atualizar-8-2-label" style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.32);text-align:center;">Atualizar</span>
@@ -1929,15 +1930,15 @@
     <div class="screen" id="screen-8-4" style="background:#FFFFFF;border-radius:16px;">
 
       <!-- Top content block (header + card) -->
-      <div style="display:flex;flex-direction:column;align-items:center;width:375px;">
+      <div style="display:flex;flex-direction:column;align-items:center;width:100%;">
 
         <!-- Artwork Header (417px) -->
-        <div style="display:flex;flex-direction:column;align-items:center;width:375px;height:417px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:100%;height:417px;background:#FFFFFF;">
 
           <!-- Top Bar (104px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;width:375px;height:104px;background:#FFFFFF;">
+          <div style="display:flex;flex-direction:column;align-items:center;width:100%;height:104px;background:#FFFFFF;">
             <!-- Status Bar (48px) -->
-            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;">
+            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;">
               <span style="font-family:'SF Pro Text',-apple-system,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);">11:08</span>
               <div style="display:flex;gap:5.5px;align-items:center;">
                 <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="0.5" fill="black"/><rect x="4" y="5" width="3" height="6" rx="0.5" fill="black"/><rect x="8" y="2.67" width="3" height="8.33" rx="0.5" fill="black"/><rect x="12" y="0" width="3" height="11" rx="0.5" fill="black"/></svg>
@@ -1946,7 +1947,7 @@
               </div>
             </div>
             <!-- Top Bar row (56px) — close icon -->
-            <div style="position:relative;width:375px;height:56px;">
+            <div style="position:relative;width:100%;height:56px;">
               <div onclick="showScreen('screen-8-2')" style="position:absolute;left:12px;top:calc(50% - 24px);width:48px;height:48px;display:flex;justify-content:center;align-items:center;cursor:pointer;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="rgba(0,0,0,0.64)"/></svg>
               </div>
@@ -1954,12 +1955,12 @@
           </div><!-- /Top Bar -->
 
           <!-- Artwork (375x166) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;">
             <img src="assets/casa-hora-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
           </div>
 
           <!-- Title section (147px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:375px;height:147px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:100%;height:147px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Horário atualizado</span>
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:18px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.64);width:327px;">A partir de amanhã sua roxinha entra novamente em rota de entrega. Avisaremos a cada atualização.</span>
           </div>
@@ -1998,7 +1999,7 @@
       </div><!-- /Top content block -->
 
       <!-- Bottom Bar (80px, fixed at bottom) -->
-      <div style="position:absolute;left:0;right:0;bottom:0;width:375px;height:80px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;">
+      <div style="position:absolute;left:0;right:0;bottom:0;width:100%;height:80px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;">
         <!-- Primary Button: Acompanhar entrega → screen 8.5 -->
         <div onclick="showScreen('screen-8-5')" style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:12px 24px;gap:8px;width:327px;height:48px;min-height:48px;max-height:48px;background:#714F8F;border-radius:64px;cursor:pointer;">
           <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:#FFFFFF;text-align:center;">Acompanhar entrega</span>
@@ -2012,16 +2013,16 @@
     <div class="screen" id="screen-8-5" style="gap:24px;">
 
       <!-- Frame: Header + progress + list row -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;flex-shrink:0;">
 
         <!-- Header (375x374, white bg — 2-line title) -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                 </div>
@@ -2032,7 +2033,7 @@
                 </div>
               </div>
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: arrow_back → screen-8-4 -->
                 <div onclick="showScreen('screen-8-4')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -2059,12 +2060,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x166) — clickable to go to screen 9.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:166px;cursor:pointer;" onclick="showScreen('screen-9-1')">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-9-1')">
               <img src="assets/casa-data-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
             </div>
 
             <!-- Title section (375x104, 2-line title) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Sua previsão de entrega foi atualizada</span>
             </div>
 
@@ -2072,16 +2073,16 @@
         </div><!-- /Header -->
 
         <!-- Progress bar (375x9) -->
-        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:375px;height:9px;background:#FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:0 24px;width:100%;height:9px;background:#FFFFFF;">
           <div style="display:flex;align-items:center;width:327px;height:4px;min-height:4px;max-height:4px;background:#EFEFEF;border-radius:64px;overflow:hidden;">
             <div style="width:14px;height:4px;background:#714F8F;border-radius:64px;flex-shrink:0;"></div>
           </div>
         </div>
 
         <!-- List Row: Nova data de entrega: até 12 de março (375x56) with expand_more — opens bottomsheet-8-6 -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:375px;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-8-6')">
-          <div style="width:375px;height:1px;"></div>
-          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:375px;height:24px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;gap:15px;width:100%;height:56px;background:#FFFFFF;cursor:pointer;" onclick="openBottomSheet('bottomsheet-8-6')">
+          <div style="width:100%;height:1px;"></div>
+          <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:0 24px;gap:16px;width:100%;height:24px;">
             <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.96);">Nova data de entrega: até 12 de março</span>
             </div>
@@ -2093,7 +2094,7 @@
               </svg>
             </div>
           </div>
-          <div style="width:375px;height:1px;background:#EFEFEF;"></div>
+          <div style="width:100%;height:1px;background:#EFEFEF;"></div>
         </div>
 
       </div><!-- /Frame Header+Progress+ListRow -->
@@ -2203,16 +2204,16 @@
     <div class="screen" id="screen-9-1" style="background:#FFFFFF;">
 
       <!-- Frame: Header (Artwork Header) -->
-      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:375px;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0;width:100%;">
 
         <!-- Artwork Header -->
-        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;background:#FFFFFF;">
-          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;background:#FFFFFF;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;">
 
             <!-- Top Bar (375x104) -->
-            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:375px;height:104px;background:#FFFFFF;">
+            <div style="display:flex;flex-direction:column;align-items:center;padding:0;width:100%;height:104px;background:#FFFFFF;">
               <!-- Status Bar (375x48) -->
-              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:375px;height:48px;position:relative;">
+              <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;padding:18px 24px 10px 32px;width:100%;height:48px;position:relative;">
                 <div style="display:flex;align-items:center;width:39px;height:20px;">
                   <span style="font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-size:15px;line-height:20px;letter-spacing:-0.24px;color:rgba(0,0,0,0.96);text-align:center;width:39px;">11:08</span>
                 </div>
@@ -2223,7 +2224,7 @@
                 </div>
               </div>
               <!-- Top Bar row (375x56) -->
-              <div style="width:375px;height:56px;position:relative;">
+              <div style="width:100%;height:56px;position:relative;">
                 <!-- Leading: close (X) → screen-8-5 -->
                 <div onclick="showScreen('screen-8-5')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                   <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
@@ -2236,12 +2237,12 @@
             </div><!-- /Top Bar -->
 
             <!-- Artwork (375x222) -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:375px;height:222px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:222px;">
               <img src="assets/ative-roxinha-artwork.png" style="width:150px;height:206px;object-fit:contain;display:block;" alt="">
             </div>
 
             <!-- Title section (375x181) — title + subtitle -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:375px;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:12px 24px 24px;gap:8px;width:100%;">
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:28px;line-height:120%;letter-spacing:-0.03em;color:rgba(0,0,0,0.96);width:327px;">Ative sua maquininha e comece a vender</span>
               <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:400;font-size:18px;line-height:130%;letter-spacing:-0.01em;color:rgba(0,0,0,0.64);width:327px;">Na caixa enviamos o passo a passo, junto com uma surpresa que preparamos para você.</span>
             </div>
@@ -2252,8 +2253,8 @@
       </div><!-- /Frame Header -->
 
       <!-- Bottom Bar (375x144) — fixed at bottom -->
-      <div style="position:absolute;left:0;right:0;bottom:0;width:375px;height:144px;">
-        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;gap:16px;width:375px;height:144px;">
+      <div style="position:absolute;left:0;right:0;bottom:0;width:100%;height:144px;">
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px;gap:16px;width:100%;height:144px;">
           <!-- Primary Button: Saiba como ativar -->
           <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding:12px 24px;gap:8px;width:327px;height:48px;min-height:48px;max-height:48px;background:#714F8F;border-radius:64px;cursor:pointer;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:16px;line-height:130%;letter-spacing:-0.01em;color:#FFFFFF;text-align:center;">Saiba como ativar</span>
@@ -2278,7 +2279,7 @@
         <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 0;position:absolute;left:0;right:0;top:8px;height:128px;">
 
           <!-- Navigation Bar (56px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:375px;height:56px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:100%;height:56px;">
             <div style="width:327px;height:24px;position:relative;">
               <!-- Close icon (left) -->
               <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="closeBottomSheet(event)">
@@ -2292,17 +2293,17 @@
           </div>
 
           <!-- Title section (64px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:375px;height:64px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:100%;height:64px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:24px;line-height:132%;letter-spacing:-0.02em;color:rgba(0,0,0,0.96);width:327px;">Acompanhe sua roxinha</span>
           </div>
 
         </div><!-- /Header -->
 
         <!-- Timeline (top 136px) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:375px;top:144px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:100%;top:144px;">
 
           <!-- Timeline / Reward: Pedido recebido (active) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:375px;background:#FFFFFF;border-radius:12px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:100%;background:#FFFFFF;border-radius:12px;">
             <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:100%;height:157px;">
               <!-- Bullet / Reward column (2px wide, overflow visible) -->
               <div style="width:2px;height:157px;position:relative;flex-shrink:0;overflow:visible;">
@@ -2407,7 +2408,7 @@
         <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 0;position:absolute;left:0;right:0;top:8px;height:128px;">
 
           <!-- Navigation Bar (56px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:375px;height:56px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:100%;height:56px;">
             <div style="width:327px;height:24px;position:relative;">
               <!-- Close icon (left) -->
               <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="closeBottomSheet(event)">
@@ -2421,14 +2422,14 @@
           </div>
 
           <!-- Title section (64px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:375px;height:64px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:100%;height:64px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:24px;line-height:132%;letter-spacing:-0.02em;color:rgba(0,0,0,0.96);width:327px;">Acompanhe sua roxinha</span>
           </div>
 
         </div><!-- /Header -->
 
         <!-- Timeline (top 136px) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:375px;top:144px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:100%;top:144px;">
 
           <!-- Timeline / Checkpoint: Pedido recebido (completed, first — no top track) -->
           <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:365px;height:62px;background:#FFFFFF;border-radius:12px;">
@@ -2442,7 +2443,7 @@
           </div>
 
           <!-- Timeline / Reward: Preparando sua roxinha (active) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:375px;background:#FFFFFF;border-radius:12px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:100%;background:#FFFFFF;border-radius:12px;">
             <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:100%;height:157px;">
               <!-- Bullet / Reward column -->
               <div style="width:2px;height:157px;position:relative;flex-shrink:0;overflow:visible;">
@@ -2517,7 +2518,7 @@
         <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 0;position:absolute;left:0;right:0;top:8px;height:128px;">
 
           <!-- Navigation Bar (56px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:375px;height:56px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:100%;height:56px;">
             <div style="width:327px;height:24px;position:relative;">
               <!-- Close icon (left) -->
               <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="closeBottomSheet(event)">
@@ -2531,14 +2532,14 @@
           </div>
 
           <!-- Title section (64px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:375px;height:64px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:100%;height:64px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:24px;line-height:132%;letter-spacing:-0.02em;color:rgba(0,0,0,0.96);width:327px;">Acompanhe sua roxinha</span>
           </div>
 
         </div><!-- /Header -->
 
         <!-- Timeline (top 136px) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:375px;top:136px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:100%;top:136px;">
 
           <!-- 1. Checkpoint: Pedido recebido (gray bullet, bottom track only) -->
           <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:365px;height:62px;background:#FFFFFF;border-radius:12px;">
@@ -2564,7 +2565,7 @@
           </div>
 
           <!-- 3. Reward: A caminho (active, circular indicator + truck icon) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:375px;background:#FFFFFF;border-radius:12px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:100%;background:#FFFFFF;border-radius:12px;">
             <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:100%;height:157px;">
               <div style="width:2px;height:157px;position:relative;flex-shrink:0;overflow:visible;">
                 <div style="position:absolute;height:12px;left:0;right:0;top:0;background:#EFEFEF;"></div>
@@ -2624,7 +2625,7 @@
         <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 0;position:absolute;left:0;right:0;top:13px;height:128px;">
 
           <!-- Navigation Bar (56px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:375px;height:56px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:100%;height:56px;">
             <div style="width:327px;height:24px;position:relative;">
               <!-- Close icon (left) -->
               <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="closeBottomSheet(event)">
@@ -2638,14 +2639,14 @@
           </div>
 
           <!-- Title section (64px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:375px;height:64px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:100%;height:64px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:24px;line-height:132%;letter-spacing:-0.02em;color:rgba(0,0,0,0.96);width:327px;">Acompanhe sua roxinha</span>
           </div>
 
         </div><!-- /Header -->
 
         <!-- Timeline (top 141px) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:375px;top:141px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:100%;top:141px;">
 
           <!-- 1. Checkpoint: Pedido recebido (gray bullet, bottom track only) -->
           <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:365px;height:62px;background:#FFFFFF;border-radius:12px;">
@@ -2683,7 +2684,7 @@
           </div>
 
           <!-- 4. Reward: Indo até você (active, circular indicator + location icon, no bottom track) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:375px;background:#FFFFFF;border-radius:12px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:100%;background:#FFFFFF;border-radius:12px;">
             <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:100%;height:157px;">
               <div style="width:2px;height:157px;position:relative;flex-shrink:0;overflow:visible;">
                 <div style="position:absolute;height:12px;left:0;right:0;top:0;background:#EFEFEF;"></div>
@@ -2732,7 +2733,7 @@
         <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 0;position:absolute;left:0;right:0;top:8px;height:128px;">
 
           <!-- Navigation Bar (56px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:375px;height:56px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:100%;height:56px;">
             <div style="width:327px;height:24px;position:relative;">
               <!-- Close icon (left) -->
               <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="closeBottomSheet(event)">
@@ -2746,14 +2747,14 @@
           </div>
 
           <!-- Title section (64px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:375px;height:64px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:100%;height:64px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:24px;line-height:132%;letter-spacing:-0.02em;color:rgba(0,0,0,0.96);width:327px;">Acompanhe sua roxinha</span>
           </div>
 
         </div><!-- /Header -->
 
         <!-- Timeline (top 136px) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:375px;top:136px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:100%;top:136px;">
 
           <!-- 1. Checkpoint: Pedido recebido (gray bullet, bottom track only) -->
           <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:365px;height:62px;background:#FFFFFF;border-radius:12px;">
@@ -2803,7 +2804,7 @@
           </div>
 
           <!-- 5. Reward: Entrega não realizada (critical, truck + red warning badge) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:375px;background:#FFFFFF;border-radius:12px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:100%;background:#FFFFFF;border-radius:12px;">
             <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:100%;height:178px;">
               <div style="width:2px;height:178px;position:relative;flex-shrink:0;overflow:visible;">
                 <!-- Top track -->
@@ -2851,7 +2852,7 @@
         <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 0;position:absolute;left:0;right:0;top:8px;height:128px;">
 
           <!-- Navigation Bar (56px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:375px;height:56px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:100%;height:56px;">
             <div style="width:327px;height:24px;position:relative;">
               <!-- Close icon (left) -->
               <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="closeBottomSheet(event)">
@@ -2865,14 +2866,14 @@
           </div>
 
           <!-- Title section (64px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:375px;height:64px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:100%;height:64px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:24px;line-height:132%;letter-spacing:-0.02em;color:rgba(0,0,0,0.96);width:327px;">Acompanhe sua roxinha</span>
           </div>
 
         </div><!-- /Header -->
 
         <!-- Timeline (top 136px) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:375px;top:136px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:100%;top:136px;">
 
           <!-- 1. Checkpoint: Pedido recebido -->
           <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:365px;height:62px;background:#FFFFFF;border-radius:12px;">
@@ -2922,7 +2923,7 @@
           </div>
 
           <!-- 5. Reward: Entrega não realizada (critical, truck + red warning badge) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:375px;background:#FFFFFF;border-radius:12px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:100%;background:#FFFFFF;border-radius:12px;">
             <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:100%;height:157px;">
               <div style="width:2px;height:157px;position:relative;flex-shrink:0;overflow:visible;">
                 <!-- Top track -->
@@ -2967,7 +2968,7 @@
         <!-- Header (128px, starts 8px from top of sheet) -->
         <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 0;position:absolute;left:0;right:0;top:8px;height:128px;">
           <!-- Navigation Bar (56px) -->
-          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:375px;height:56px;">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 24px;width:100%;height:56px;">
             <div style="width:327px;height:24px;position:relative;">
               <!-- Close icon (left) -->
               <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="closeBottomSheet(event)">
@@ -2980,13 +2981,13 @@
             </div>
           </div>
           <!-- Title section (64px) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:375px;height:64px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px 24px;width:100%;height:64px;">
             <span style="font-family:'Graphik',-apple-system,sans-serif;font-weight:500;font-size:24px;line-height:132%;letter-spacing:-0.02em;color:rgba(0,0,0,0.96);width:327px;">Acompanhe sua roxinha</span>
           </div>
         </div><!-- /Header -->
 
         <!-- Timeline (top 136px) -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:375px;top:136px;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:0;width:100%;top:136px;">
 
           <!-- 1. Checkpoint: Pedido recebido -->
           <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:365px;height:62px;background:#FFFFFF;border-radius:12px;">
@@ -3036,7 +3037,7 @@
           </div>
 
           <!-- 5. Reward: Entrega não realizada (critical, truck + red warning badge) -->
-          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:375px;background:#FFFFFF;border-radius:12px;">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;padding:0 24px 0 0;width:100%;background:#FFFFFF;border-radius:12px;">
             <div style="display:flex;flex-direction:row;align-items:flex-start;padding:0 0 0 32px;gap:32px;width:100%;height:178px;">
               <div style="width:2px;height:178px;position:relative;flex-shrink:0;overflow:visible;">
                 <div style="position:absolute;height:12px;left:0;right:0;top:0;background:#EFEFEF;"></div>
