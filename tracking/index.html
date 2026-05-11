@@ -119,6 +119,11 @@
   .ios-keyboard.visible {
     display:flex;
   }
+  @media (pointer: coarse) {
+    .ios-keyboard, .ios-keyboard.visible {
+      display: none !important;
+    }
+  }
   .kb-row {
     display:flex;justify-content:center;gap:6px;height:42px;
   }
