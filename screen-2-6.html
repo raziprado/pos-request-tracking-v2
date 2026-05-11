@@ -321,7 +321,7 @@
       height: 56px;
       left: 50%;
       transform: translateX(-50%);
-      top: 676px;
+      bottom: 96px;
       background: #111111;
       border-radius: 12px;
       display: flex;
@@ -482,6 +482,24 @@
 
     document.getElementById('btn-continuar').addEventListener('click', function() {
       window.location.href = 'screen-3-1.html';
+    });
+
+    // Swipe horizontal navigation
+    var touchStartX = 0;
+    var touchEndX = 0;
+    document.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    document.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 60) {
+        if (diff > 0) {
+          window.location.href = 'screen-3-1.html';
+        } else {
+          window.location.href = 'screen-2-4.html';
+        }
+      }
     });
   </script>
 
