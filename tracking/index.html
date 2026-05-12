@@ -1291,8 +1291,8 @@
 
             </div><!-- /Top Bar -->
 
-            <!-- Artwork (375x166) — clickable to go to screen 6.1 -->
-            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-6-1')">
+            <!-- Artwork (375x166) — clickable to go to screen 7.1 -->
+            <div style="display:flex;flex-direction:column;align-items:flex-start;padding:8px 24px;width:100%;height:166px;cursor:pointer;" onclick="showScreen('screen-7-1')">
               <img src="assets/chegou-artwork.gif" style="width:150px;height:150px;object-fit:contain;display:block;" alt="">
             </div>
 
@@ -1616,7 +1616,7 @@
                 <!-- Top Bar row (375x56) — Close icon (X) on left -->
                 <div style="width:100%;height:56px;position:relative;">
                   <!-- Leading: close (X) -->
-                  <div onclick="showScreen('screen-6-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <div onclick="showScreen('screen-5-1')" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
                     <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
                       <g transform="translate(3.577, 3.577)">
                         <path d="M6.42259 7.6011L11.6667 12.8452L12.8452 11.6667L7.6011 6.42259L12.8452 1.17851L11.6667 0L6.42259 5.24408L1.17851 0L0 1.17851L5.24408 6.42259L0 11.6667L1.17851 12.8452L6.42259 7.6011Z" fill="rgba(0,0,0,0.64)"/>
@@ -3481,8 +3481,8 @@
 </div>
 
 <script>
-  var screenOrder = ['screen-1-1', 'screen-2-1', 'screen-3-1', 'screen-4-1', 'screen-5-1', 'screen-6-1', 'screen-7-1', 'screen-7-2', 'screen-7-4', 'screen-8-1', 'screen-8-2', 'screen-8-4', 'screen-8-5', 'screen-9-1'];
-  var screenOrderNoCode = ['screen-1-2', 'screen-2-1', 'screen-3-1', 'screen-4-1', 'screen-5-1', 'screen-6-1', 'screen-7-1', 'screen-7-2', 'screen-7-4', 'screen-8-1', 'screen-8-2', 'screen-8-4', 'screen-8-5', 'screen-9-1'];
+  var screenOrder = ['screen-1-1', 'screen-2-1', 'screen-3-1', 'screen-4-1', 'screen-5-1', 'screen-7-1', 'screen-7-2', 'screen-7-4', 'screen-8-1', 'screen-8-2', 'screen-8-4', 'screen-8-5', 'screen-9-1'];
+  var screenOrderNoCode = ['screen-1-2', 'screen-2-1', 'screen-3-1', 'screen-4-1', 'screen-5-1', 'screen-7-1', 'screen-7-2', 'screen-7-4', 'screen-8-1', 'screen-8-2', 'screen-8-4', 'screen-8-5', 'screen-9-1'];
 
   var _urlParams = new URLSearchParams(window.location.search);
   var _noCode = _urlParams.get('nocode') === '1';
