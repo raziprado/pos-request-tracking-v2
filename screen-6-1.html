@@ -351,153 +351,6 @@
       text-decoration: none;
     }
 
-    .edit-overlay {
-      display: none;
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.64);
-      z-index: 100;
-      justify-content: flex-end;
-      align-items: flex-end;
-    }
-    .edit-overlay.visible { display: flex; }
-
-    .edit-sheet {
-      width: 100%;
-      background: #FFFFFF;
-      border-radius: 16px 16px 0 0;
-      display: flex;
-      flex-direction: column;
-      max-height: 652px;
-      overflow-y: auto;
-    }
-
-    .edit-header {
-      padding: 24px 24px 0;
-      display: flex;
-      align-items: center;
-    }
-    .edit-close {
-      width: 24px; height: 24px;
-      background: none; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    .edit-title-section {
-      padding: 8px 24px 24px;
-    }
-    .edit-title {
-      font-weight: 500;
-      font-size: 28px;
-      line-height: 120%;
-      letter-spacing: -0.84px;
-      color: rgba(0, 0, 0, 0.96);
-    }
-
-    .edit-fields {
-      padding: 0 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      flex: 1;
-    }
-    .edit-field {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .edit-field-label {
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 130%;
-      letter-spacing: -0.14px;
-      color: rgba(0, 0, 0, 0.32);
-    }
-    .edit-field-label.active {
-      color: rgba(0, 0, 0, 0.64);
-    }
-    .edit-field-input {
-      font-family: 'Graphik', -apple-system, sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 150%;
-      letter-spacing: -0.16px;
-      color: rgba(0, 0, 0, 0.96);
-      border: none;
-      outline: none;
-      padding: 0;
-      width: 100%;
-      background: transparent;
-      caret-color: #652590;
-    }
-    .edit-field-input::placeholder {
-      color: rgba(0, 0, 0, 0.32);
-    }
-    .edit-field-input.disabled {
-      color: rgba(0, 0, 0, 0.32);
-      pointer-events: none;
-    }
-    .edit-field-divider {
-      width: 100%;
-      height: 2px;
-      background: #EFEFEF;
-    }
-    .edit-field-input:focus + .edit-field-divider {
-      background: #652590;
-    }
-
-    .edit-buttons {
-      padding: 16px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .edit-btn-salvar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 327px;
-      height: 48px;
-      background: #EFEFEF;
-      border-radius: 64px;
-      border: none;
-      cursor: default;
-    }
-    .edit-btn-salvar.enabled {
-      background: #714F8F;
-      cursor: pointer;
-    }
-    .edit-btn-salvar-label {
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 130%;
-      letter-spacing: -0.16px;
-      color: rgba(0, 0, 0, 0.32);
-    }
-    .edit-btn-salvar.enabled .edit-btn-salvar-label {
-      color: #FFFFFF;
-    }
-    .edit-btn-secondary {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 327px;
-      height: 48px;
-      background: #EFEFEF;
-      border-radius: 64px;
-      border: none;
-      cursor: pointer;
-    }
-    .edit-btn-secondary-label {
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 130%;
-      letter-spacing: -0.16px;
-      color: rgba(0, 0, 0, 0.96);
-    }
-
   </style>
 </head>
 <body>
@@ -657,62 +510,6 @@
 
       </div>
 
-      <!-- Edit Address Bottom Sheet (6.3 / 6.4) -->
-      <div class="edit-overlay" id="edit-overlay">
-        <div class="edit-sheet">
-
-          <div class="edit-header">
-            <button class="edit-close" id="edit-close">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M18.3642 7.05025L13.4144 12L18.3642 16.9497L16.9499 18.364L12.0002 13.4142L7.05044 18.364L5.63623 16.9497L10.586 12L5.63623 7.05025L7.05044 5.63604L12.0002 10.5858L16.9499 5.63604L18.3642 7.05025Z" fill="rgba(0,0,0,0.64)"/>
-              </svg>
-            </button>
-          </div>
-
-          <div class="edit-title-section">
-            <div class="edit-title">Editar número e complemento</div>
-          </div>
-
-          <div class="edit-fields">
-
-            <div class="edit-field">
-              <div class="edit-field-label">Endereço</div>
-              <input type="text" class="edit-field-input disabled" id="edit-endereco" value="Rua Capote Valente" readonly tabindex="-1">
-              <div class="edit-field-divider"></div>
-            </div>
-
-            <div class="edit-field">
-              <div class="edit-field-label active">Número</div>
-              <input type="text" class="edit-field-input" id="edit-numero" value="39" inputmode="numeric">
-              <div class="edit-field-divider"></div>
-            </div>
-
-            <div class="edit-field">
-              <div class="edit-field-label active">Complemento</div>
-              <input type="text" class="edit-field-input" id="edit-complemento" value="Apto. 902, Bloco B">
-              <div class="edit-field-divider"></div>
-            </div>
-
-            <div class="edit-field">
-              <div class="edit-field-label active">Ponto de referência</div>
-              <input type="text" class="edit-field-input" id="edit-referencia" value="" placeholder="Ex: em frente à mercearia">
-              <div class="edit-field-divider"></div>
-            </div>
-
-          </div>
-
-          <div class="edit-buttons">
-            <button class="edit-btn-salvar" id="edit-btn-salvar">
-              <span class="edit-btn-salvar-label">Salvar</span>
-            </button>
-            <button class="edit-btn-secondary" id="edit-btn-outro">
-              <span class="edit-btn-secondary-label">Escolher outro endereço</span>
-            </button>
-          </div>
-
-        </div>
-      </div>
-
 
     </div>
   </div>
@@ -727,14 +524,6 @@
         neighborhood = neighborhood.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]*>/g, '').trim();
         var full = street + (neighborhood ? ' ' + neighborhood : '');
         document.getElementById('endereco-desc').textContent = full;
-
-        var streetParts = street.match(/^(.+?),?\s*(\d+\S*)?\s*$/);
-        var streetName = streetParts ? streetParts[1] : street;
-        var numero = streetParts && streetParts[2] ? streetParts[2] : '';
-
-        document.getElementById('edit-endereco').value = streetName;
-        document.getElementById('edit-numero').value = numero;
-        document.getElementById('edit-complemento').value = '';
       }
     })();
 
@@ -770,80 +559,11 @@
       }
     });
 
-    var editOverlay = document.getElementById('edit-overlay');
-    var editClose = document.getElementById('edit-close');
+    // Address Edit -> navigate to full screen
     var pencilEndereco = document.getElementById('pencil-endereco');
-    var rowEndereco = document.getElementById('row-endereco');
-    var editNumero = document.getElementById('edit-numero');
-    var editComplemento = document.getElementById('edit-complemento');
-    var editReferencia = document.getElementById('edit-referencia');
-    var editBtnSalvar = document.getElementById('edit-btn-salvar');
-    var enderecoDesc = document.getElementById('endereco-desc');
-
-    var originalNumero = editNumero.value;
-    var originalComplemento = editComplemento.value;
-    var originalReferencia = editReferencia.value;
-
-    function openEditSheet() {
-      editOverlay.classList.add('visible');
-      checkSalvarState();
-    }
-
-    function closeEditSheet() {
-      editOverlay.classList.remove('visible');
-    }
-
-    function checkSalvarState() {
-      var numChanged = editNumero.value !== originalNumero;
-      var compChanged = editComplemento.value !== originalComplemento;
-      var refChanged = editReferencia.value !== originalReferencia;
-      if (numChanged || compChanged || refChanged) {
-        editBtnSalvar.classList.add('enabled');
-      } else {
-        editBtnSalvar.classList.remove('enabled');
-      }
-    }
-
     pencilEndereco.addEventListener('click', function(e) {
       e.stopPropagation();
-      openEditSheet();
-    });
-
-    editClose.addEventListener('click', function() {
-      editNumero.value = originalNumero;
-      editComplemento.value = originalComplemento;
-      editReferencia.value = originalReferencia;
-      closeEditSheet();
-    });
-
-    editOverlay.addEventListener('click', function(e) {
-      if (e.target === editOverlay) {
-        editNumero.value = originalNumero;
-        editComplemento.value = originalComplemento;
-        editReferencia.value = originalReferencia;
-        closeEditSheet();
-      }
-    });
-
-    editNumero.addEventListener('input', checkSalvarState);
-    editComplemento.addEventListener('input', checkSalvarState);
-    editReferencia.addEventListener('input', checkSalvarState);
-
-    editBtnSalvar.addEventListener('click', function() {
-      if (!editBtnSalvar.classList.contains('enabled')) return;
-      var streetName = document.getElementById('edit-endereco').value;
-      var addr = streetName;
-      if (editNumero.value) addr += ', ' + editNumero.value;
-      if (editComplemento.value) addr += ' ' + editComplemento.value;
-      var saved = null;
-      try { saved = JSON.parse(localStorage.getItem('pos-selected-address')); } catch(e) {}
-      var neighborhood = (saved && saved.desc) ? saved.desc.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]*>/g, '').trim() : 'Pinheiros, São Paulo - SP';
-      addr += ' ' + neighborhood;
-      enderecoDesc.textContent = addr;
-      originalNumero = editNumero.value;
-      originalComplemento = editComplemento.value;
-      originalReferencia = editReferencia.value;
-      closeEditSheet();
+      window.location.href = 'screen-2-1.html?from=review';
     });
 
     // Days Edit -> navigate to full screen
@@ -868,7 +588,7 @@
 
     document.getElementById('btn-confirmar').addEventListener('click', function() {
       localStorage.setItem('deliveryCode', toggleOn ? 'on' : 'off');
-      var fullAddr = enderecoDesc.textContent.trim();
+      var fullAddr = document.getElementById('endereco-desc').textContent.trim();
       var parts = fullAddr.match(/^(.+?)\s+(Pinheiros.*)$/);
       var label = parts ? parts[1] : fullAddr;
       var desc = parts ? parts[2] : '';

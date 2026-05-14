@@ -483,7 +483,12 @@
     }
 
     document.querySelector('.back-button').addEventListener('click', function() {
-      window.location.href = 'index.html';
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('from') === 'review') {
+        window.location.href = 'screen-6-1.html';
+      } else {
+        window.location.href = 'index.html';
+      }
     });
 
     document.querySelector('.btn-ghost').addEventListener('click', function() {
