@@ -424,6 +424,22 @@
     });
 
     document.getElementById('btn-continuar').addEventListener('click', function() {
+      var selected = [];
+      var dayNames = { seg: 'Segunda-feira', ter: 'Terça-feira', qua: 'Quarta-feira', qui: 'Quinta-feira', sex: 'Sexta-feira', sab: 'Sábado' };
+      days.forEach(function(d) {
+        if (d.classList.contains('selected')) selected.push(d.dataset.day);
+      });
+      if (selected.length > 0) {
+        var label;
+        if (selected.length === 6) {
+          label = 'Todos os dias';
+        } else if (selected.length === 1) {
+          label = dayNames[selected[0]];
+        } else {
+          label = dayNames[selected[0]] + ' a ' + dayNames[selected[selected.length - 1]];
+        }
+        localStorage.setItem('pos-selected-days', JSON.stringify({ days: selected, label: label }));
+      }
       window.location.href = 'screen-6-1.html';
     });
   </script>

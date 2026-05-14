@@ -538,6 +538,22 @@
       }
     })();
 
+    (function loadSavedDays() {
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem('pos-selected-days')); } catch(e) {}
+      if (saved && saved.label) {
+        document.getElementById('dias-desc').textContent = saved.label;
+      }
+    })();
+
+    (function loadSavedPayment() {
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem('pos-selected-payment')); } catch(e) {}
+      if (saved && saved.label) {
+        document.getElementById('pagamento-desc').textContent = saved.label;
+      }
+    })();
+
     document.getElementById('btn-back').addEventListener('click', function() {
       window.location.href = 'screen-2-1.html';
     });

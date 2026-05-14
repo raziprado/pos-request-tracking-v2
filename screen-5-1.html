@@ -262,7 +262,7 @@
         </div>
 
         <div class="list-rows">
-          <div class="list-row">
+          <div class="list-row" id="row-cartao">
             <div class="list-row-divider-top"></div>
             <div class="list-row-content">
               <div class="list-row-icon">
@@ -281,7 +281,7 @@
             <div class="list-row-divider-bottom"></div>
           </div>
 
-          <div class="list-row">
+          <div class="list-row" id="row-debito">
             <div class="list-row-divider-top"></div>
             <div class="list-row-content">
               <div class="list-row-icon">
@@ -333,7 +333,18 @@
       window.location.href = 'screen-6-1.html';
     });
 
+    document.getElementById('row-cartao').addEventListener('click', function() {
+      localStorage.setItem('pos-selected-payment', JSON.stringify({ label: 'Cartão Nu Empresas' }));
+      window.location.href = 'screen-6-1.html';
+    });
+
+    document.getElementById('row-debito').addEventListener('click', function() {
+      localStorage.setItem('pos-selected-payment', JSON.stringify({ label: 'Débito em conta' }));
+      window.location.href = 'screen-6-1.html';
+    });
+
     document.getElementById('row-desconto').addEventListener('click', function() {
+      localStorage.setItem('pos-selected-payment', JSON.stringify({ label: 'Desconto nos recebíveis' }));
       window.location.href = 'screen-6-1.html';
     });
   </script>
