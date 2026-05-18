@@ -386,6 +386,20 @@
     var days = document.querySelectorAll('.day-item');
     var checkboxAll = document.getElementById('checkbox-all');
 
+    (function loadSavedDays() {
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem('pos-selected-days')); } catch(e) {}
+      if (saved && saved.days && saved.days.length > 0) {
+        days.forEach(function(d) {
+          if (saved.days.indexOf(d.dataset.day) !== -1) {
+            d.classList.add('selected');
+          } else {
+            d.classList.remove('selected');
+          }
+        });
+      }
+    })();
+
     function updateCheckboxState() {
       var allSelected = Array.from(days).every(function(d) {
         return d.classList.contains('selected');
@@ -425,18 +439,17 @@
 
     document.getElementById('btn-continuar').addEventListener('click', function() {
       var selected = [];
-      var dayNames = { seg: 'Segunda-feira', ter: 'Terça-feira', qua: 'Quarta-feira', qui: 'Quinta-feira', sex: 'Sexta-feira', sab: 'Sábado' };
+      var dayAbbr = { seg: 'Seg', ter: 'Ter', qua: 'Qua', qui: 'Qui', sex: 'Sex', sab: 'Sáb' };
       days.forEach(function(d) {
         if (d.classList.contains('selected')) selected.push(d.dataset.day);
       });
       if (selected.length > 0) {
+        var names = selected.map(function(d) { return dayAbbr[d]; });
         var label;
-        if (selected.length === 6) {
-          label = 'Todos os dias';
-        } else if (selected.length === 1) {
-          label = dayNames[selected[0]];
+        if (names.length === 1) {
+          label = names[0];
         } else {
-          label = dayNames[selected[0]] + ' a ' + dayNames[selected[selected.length - 1]];
+          label = names.slice(0, -1).join(', ') + ' e ' + names[names.length - 1];
         }
         localStorage.setItem('pos-selected-days', JSON.stringify({ days: selected, label: label }));
       }
